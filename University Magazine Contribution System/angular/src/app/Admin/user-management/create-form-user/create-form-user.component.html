@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-header">
+        <div class="col col-md-4">
+            <h5 class="card-title">
+                {{ 'Add User Information'}}
+            </h5>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <form [formGroup]="form" >
+            <div class="mt-2">
+                <label>Login name</label><span> * </span>
+                <input type="text" class="form-control" formControlName="loginName" />
+            </div>
+        
+            <div class="mt-2">
+                <label>Full Name</label><span> * </span>
+                <input type="text" class="form-control" formControlName="fullName" />
+            </div>
+        
+            <div class="mt-2">
+                <label>Status</label><span> * </span>
+                <input type="text" class="form-control" formControlName="status" />
+            </div>
+
+            <div class="mt-2">
+                <label>Password</label><span>*</span>
+                <input type="text" class="form-control" formControlName="password"/>
+
+            </div>
+
+            <div class="mt-2">
+                <label> Role </label> <span>*</span>
+                <input type="text" class="form-control" formControlName="role"/>
+
+            </div>
+
+            <div class="mt-2">
+                <label>Falcuty</label><span>*</span>
+                <input type="text" class="form-control" formControlName="falcuty"/>
+            </div>
+
+            
+
+        </form>
+        <div class="mt-4 text-center">
+            <button mat-raised-button color="primary" (click)="Save()">Save</button>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,79 @@
+$text-black: #181818;
+$bgn: #262626;
+$text-gray: #909090;
+$text-white: #fff;
+$btn:#E27A25;
+
+
+$mobile: 576px;
+$table: 768px;
+$ipad-mini: 992px;
+$laptop: 1024px;
+$desktop: 1440px;
+
+@mixin btn{
+    background-color: $btn;
+    transition: all 0.5s;
+    border: none;
+    &:hover{
+        background-color: $text-gray;
+        transition: all 0.5s;
+    }
+}
+@mixin blog-btn{
+    background-color: $text-black;
+    transition: all 0.5s;
+    border: none;
+    &:hover{
+        background-color: $btn;
+        transition: all 0.5s;
+    }
+}
+
+@mixin btn-nonact{
+    transition: all 0.5s;
+    border: none;
+    a{
+        transition: all 0.5s;
+    }
+
+    &:hover{
+        color: $text-white !important;
+        background-color: $btn;
+        transition: all 0.5s;
+        a{
+            transition: all 0.5s;
+            color: $text-white !important;
+        }
+    }
+}
+@mixin blog-btn-nonact{
+    transition: all 0.5s;
+    border: none;
+    a{
+        transition: all 0.5s;
+    }
+
+    &:hover{
+        color: $text-white !important;
+        background-color: $text-gray;
+        transition: all 0.5s;
+        a{
+            transition: all 0.5s;
+            color: $text-white !important;
+        }
+    }
+}
+
+@mixin text-hovering{
+    transition: all 0.5s;
+    &:hover{
+        transition: all 0.5s;
+        color: $btn !important;
+    }
+}
+
+@mixin centerit{
+    display: flex;
+    justify-content: center;
+}

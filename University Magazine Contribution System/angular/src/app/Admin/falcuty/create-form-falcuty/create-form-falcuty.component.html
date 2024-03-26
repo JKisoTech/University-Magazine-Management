@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-header">
+        <div class="col col-md-4">
+            <h5 class="card-title">
+                {{ 'Add Falcuty'}}
+            </h5>
+        </div>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="form" >
+            <div class="mt-2">
+                <label>Falcuty Name</label><span> * </span>
+                <input type="text" class="form-control" formControlName="name" />
+            </div>
+        
+            <div class="mt-2">
+                <label>Falcuty Description</label><span> * </span>
+                <input type="text" class="form-control" formControlName="description" />
+            </div>
+        </form>
+        <div class="mt-4 text-center">
+            <button mat-raised-button color="primary" (click)="Save()">Save</button>
+        </div>
+    </div>
+</div>
