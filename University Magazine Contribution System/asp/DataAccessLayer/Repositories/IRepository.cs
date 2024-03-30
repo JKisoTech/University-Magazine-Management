@@ -8,11 +8,11 @@ namespace DataAccessLayer.Repositories
 {
     public interface IRepository<T> where T : class
     {
-        public Task<T> GetbyIDAsync(int id);
+        public Task<T> GetbyIDAsync(string id);
         public Task<IEnumerable<T>> GetAllAsync();
         public Task AddAsync(T entity);
         public Task UpdateAsync(T entity);
-        public Task DeleteAsync(int id);
+        public Task DeleteAsync(string id);
 
     }
 }

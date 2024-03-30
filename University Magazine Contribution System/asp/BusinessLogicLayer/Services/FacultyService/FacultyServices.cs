@@ -22,7 +22,7 @@ namespace BusinessLogicLayer.Services.FacultyService
         }
 
 
-        public async Task<FacultyDTO> GetFacultyByIdAsync(int id)
+        public async Task<FacultyDTO> GetFacultyByIdAsync(string id)
         {
             var facultyEntity = await _repository.GetByIdAsync(id);
             return _mapper.Map<FacultyDTO>(facultyEntity);
@@ -52,7 +52,7 @@ namespace BusinessLogicLayer.Services.FacultyService
             }
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(string id)
         {
             await _repository.DeleteFacultyAsync(id);
         }

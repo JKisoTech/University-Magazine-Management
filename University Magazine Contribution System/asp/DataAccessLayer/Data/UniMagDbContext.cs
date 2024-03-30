@@ -25,18 +25,18 @@ namespace DataAccessLayer.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<User>().ToTable("users");
             modelBuilder.Entity<Contribution>().ToTable("Contributions");
-            modelBuilder.Entity<Student>().ToTable("students");
-                    
+            modelBuilder.Entity<Student>()
+                .HasOne(u => u.user).WithOne(s => s.student).HasPrincipalKey<Student>(si => si.StudentID);
 
-            //modelBuilder.Entity<StudentUserLink>()
-            //        .HasOne(l => l.User)
-            //        .WithOne(u => u.studentUserLink)
-            //        .HasForeignKey<StudentUserLink>(l => l.UserLoginName);
-            modelBuilder.Entity<Faculty>().ToTable("faculties");
             modelBuilder.Entity<Comment>().ToTable("comments");
-            modelBuilder.Entity<User_Faculty>().ToTable("user_faculties");
+
+            modelBuilder.Entity<Faculty>()
+                .HasMany(f => f.user_Faculties).WithOne(uf => uf.faculty).HasForeignKey(i => i.FacultyId);
+
+
+            modelBuilder.Entity<User>()
+                .HasMany(uf => uf.user_Faculties).WithOne(u => u.user).HasForeignKey(l => l.LoginName);
             modelBuilder.Entity<SystemParameter>().ToTable("systemParameters").HasNoKey();
 
 

@@ -18,9 +18,9 @@ namespace DataAccessLayer.Repositories.FacultyRepo
             _context = context;
         }
 
-        public async Task<Faculty> GetByIdAsync(int id)
+        public async Task<Faculty> GetByIdAsync(string id)
         {
-            return await _context.faculty.FirstOrDefaultAsync(u => u.FacultyID == id);
+            return await _context.faculty.FirstOrDefaultAsync(f => f.FacultyID == id);
         }
 
         public async Task<List<Faculty>> GetFacultyAsync()
@@ -34,7 +34,7 @@ namespace DataAccessLayer.Repositories.FacultyRepo
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteFacultyAsync(int id)
+        public async Task DeleteFacultyAsync(string  id)
         {
             var faculty = await GetByIdAsync(id);
             if (faculty != null)

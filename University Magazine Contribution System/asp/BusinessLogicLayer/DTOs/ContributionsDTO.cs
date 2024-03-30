@@ -13,7 +13,7 @@ namespace BusinessLogicLayer.DTOs
     {
         [Required]
         public int ContributionID { get; set; }
-        public int StudentID { get; set; }
+        public string StudentID { get; set; }
         [Required]
         public string Content { get; set; }
         [Required]

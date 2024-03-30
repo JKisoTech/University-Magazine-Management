@@ -17,7 +17,7 @@ namespace DataAccessLayer.Repositories
             _context = context;
         }
 
-        public async Task<T> GetbyIDAsync(int id) => await _context.Set<T>().FindAsync(id);
+        public async Task<T> GetbyIDAsync(string id) => await _context.Set<T>().FindAsync(id);
 
         public async Task<IEnumerable<T>> GetAllAsync() => await _context.Set<T>().ToListAsync();
 
@@ -33,7 +33,7 @@ namespace DataAccessLayer.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(string id)
         {
             var entity = await GetbyIDAsync(id);
             if(entity != null)

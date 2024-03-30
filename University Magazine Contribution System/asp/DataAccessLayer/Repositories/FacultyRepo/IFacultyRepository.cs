@@ -9,10 +9,10 @@ namespace DataAccessLayer.Repositories.FacultyRepo
 {
     public interface IFacultyRepository
     {
-        public Task<Faculty> GetByIdAsync(int id);
+        public Task<Faculty> GetByIdAsync(string id);
         public Task<List<Faculty>> GetFacultyAsync();
         public Task AddFacultyAsync(Faculty faculty);
-        public Task DeleteFacultyAsync(int id);
+        public Task DeleteFacultyAsync(string id);
         public Task UpdateFacultyAsync(Faculty faculty);
     }
 }

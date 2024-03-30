@@ -8,7 +8,7 @@ namespace DataAccessLayer.Models
         [Key]
         public int ContributionID { get; set; }
         [ForeignKey("Student")]
-        public int StudentID { get; set; }
+        public string StudentID { get; set; }
         public string Content { get; set; }
         public string Status { get; set; }
         public DateTime SubmissionDate { get; set; }
@@ -18,6 +18,6 @@ namespace DataAccessLayer.Models
         public DateTime Published { get; set; }
         public bool AgreeOnTerm { get; set; }
         public string Expired { get; set; }
-
+    
     }
 }

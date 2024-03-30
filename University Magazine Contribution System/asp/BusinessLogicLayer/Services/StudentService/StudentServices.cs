@@ -33,9 +33,10 @@ namespace BusinessLogicLayer.Services.StudentService
             throw new NotImplementedException();
         }
 
-        public Task<List<StudentDTO>> GetAllStudentAsync()
+        public async Task<List<StudentDTO>> GetAllStudentAsync()
         {
-            throw new NotImplementedException();
+            var studentEntity = await _studentRepository.GetAllAsync();
+            return _mapper.Map<List<StudentDTO>>(studentEntity);
         }
 
         public Task<StudentDTO> GetStudentByIdAsync(string _loginName)

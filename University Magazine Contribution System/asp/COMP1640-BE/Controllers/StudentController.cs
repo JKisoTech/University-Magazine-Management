@@ -54,35 +54,7 @@ namespace COMP1640_BE.Controllers
             return StatusCode(200, "Student Added Successfully");
         }
 
-        [HttpPut("UpdateStudent/{Name}")]
-        public async Task<ActionResult> UpdateUser(string id, [FromBody] StudentDTO studentDTO)
-        {
-            if (id != null)
-            {
-                return StatusCode(400, " No User Found");
-            }
-
-            await _studentServices.GetStudentByIdAsync(id);
-
-            return NoContent();
-        }
-
-        [HttpDelete("DeactiveStudent/{LoginName}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> DeActiveUser(string id)
-        {
-            var existingStudent = await _studentServices.GetStudentByIdAsync(id);
-
-            if (existingStudent == null)
-            {
-                return StatusCode(404, "No Student found");
-            }
-
-            await _studentServices.DeactiveStudent(existingStudent);
-            return new NoContentResult();
-
-             
-        }
+       
 
        
 

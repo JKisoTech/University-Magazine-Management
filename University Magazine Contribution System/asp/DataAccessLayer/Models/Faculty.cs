@@ -5,8 +5,8 @@ namespace DataAccessLayer.Models
     public class Faculty
     {
         [Key]
-        public int FacultyID { get; set; }
+        public string FacultyID { get; set; }
         public string FacultyName { get; set; }
-        public string Description {  get; set; }
+        public List<User_Faculty> user_Faculties { get; set; }
     }
 }

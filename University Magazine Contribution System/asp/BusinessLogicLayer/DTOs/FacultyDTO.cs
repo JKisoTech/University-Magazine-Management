@@ -10,9 +10,9 @@ namespace BusinessLogicLayer.DTOs
     public class FacultyDTO
     {
         [Required]
-        public int FacultyID { get; set; }
+        public string FacultyID { get; set; }
         [Required]
         public string FacultyName { get; set; }
-        public string Description { get; set; }
+
     }
 }

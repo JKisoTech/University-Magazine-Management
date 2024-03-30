@@ -21,6 +21,6 @@ namespace BusinessLogicLayer.DTOs
         [Required]
         public int  Role { get; set; }
    
-        public string Faculty { get; set; }
+
     }
 }

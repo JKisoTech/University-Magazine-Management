@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(UniMagDbContext))]
-    [Migration("20240322064048_Initial")]
+    [Migration("20240330025901_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -83,8 +83,9 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StudentID")
-                        .HasColumnType("int");
+                    b.Property<string>("StudentID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("SubmissionDate")
                         .HasColumnType("datetime2");
@@ -98,15 +99,8 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Models.Faculty", b =>
                 {
-                    b.Property<int>("FacultyID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FacultyID"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("FacultyID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FacultyName")
                         .IsRequired()
@@ -114,19 +108,17 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("FacultyID");
 
-                    b.ToTable("faculties", (string)null);
+                    b.ToTable("faculty");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Models.Student", b =>
                 {
-                    b.Property<int>("StudentID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("StudentID")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentID"));
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DateOfBirth")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -144,7 +136,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("StudentID");
 
-                    b.ToTable("students", (string)null);
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Models.SystemParameter", b =>
@@ -168,10 +160,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("LoginName")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Faculty")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -188,24 +176,32 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("LoginName");
 
-                    b.ToTable("users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Models.User_Faculty", b =>
                 {
-                    b.Property<int>("FacultyId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FacultyId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FacultyId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("FacultyId");
+                    b.HasKey("Id");
 
-                    b.ToTable("user_faculties", (string)null);
+                    b.HasIndex("FacultyId");
+
+                    b.HasIndex("LoginName");
+
+                    b.ToTable("user_Faculties");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Models.Comment", b =>
@@ -226,14 +222,57 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("DataAccessLayer.Models.User", b =>
+                {
+                    b.HasOne("DataAccessLayer.Models.Student", "student")
+                        .WithOne("user")
+                        .HasForeignKey("DataAccessLayer.Models.User", "LoginName")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("student");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.User_Faculty", b =>
+                {
+                    b.HasOne("DataAccessLayer.Models.Faculty", "faculty")
+                        .WithMany("user_Faculties")
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataAccessLayer.Models.User", "user")
+                        .WithMany("user_Faculties")
+                        .HasForeignKey("LoginName")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("faculty");
+
+                    b.Navigation("user");
+                });
+
             modelBuilder.Entity("DataAccessLayer.Models.Contribution", b =>
                 {
                     b.Navigation("Comments");
                 });
 
+            modelBuilder.Entity("DataAccessLayer.Models.Faculty", b =>
+                {
+                    b.Navigation("user_Faculties");
+                });
+
             modelBuilder.Entity("DataAccessLayer.Models.Student", b =>
                 {
                     b.Navigation("Contributions");
+
+                    b.Navigation("user")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.User", b =>
+                {
+                    b.Navigation("user_Faculties");
                 });
 #pragma warning restore 612, 618
         }

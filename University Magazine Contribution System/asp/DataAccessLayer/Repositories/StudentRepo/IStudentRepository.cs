@@ -10,6 +10,6 @@ namespace DataAccessLayer.Repositories.StudentRepo
     public interface IStudentRepository : IRepository<Student>
     {
         Task<Student> GetStudentByEmailAsync(string email);
-        Task<Student> GetStudentWithContributionsByIdAsync(int id);
+        Task<Student> GetStudentWithContributionsByIdAsync(string id);
     }
 }

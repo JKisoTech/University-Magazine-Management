@@ -11,11 +11,11 @@ namespace BusinessLogicLayer.DTOs
     public class StudentDTO
     {
         [Required]
-        public int StudentID { get; set; }
+        public string StudentID { get; set; }
         [Required]
         public string StudentName { get; set; }
         [Required]
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }
@@ -23,6 +23,6 @@ namespace BusinessLogicLayer.DTOs
        
         public int Phones { get; set; }
         [Required]
-        public int FacultyID { get; set; }
+        public string FacultyID { get; set; }
     }
 }

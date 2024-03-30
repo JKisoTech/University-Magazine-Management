@@ -24,7 +24,7 @@ namespace DataAccessLayer.Repositories.StudentRepo
             await _uniMagDbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(string  id)
         {
             var student = await GetbyIDAsync(id);
             if (student != null)
@@ -40,7 +40,7 @@ namespace DataAccessLayer.Repositories.StudentRepo
         }
 
 
-        public async Task<Student> GetbyIDAsync(int id)
+        public async Task<Student> GetbyIDAsync(string  id)
         {
             return await _uniMagDbContext.Students.FirstOrDefaultAsync(u => u.StudentID == id);
         }
@@ -51,7 +51,7 @@ namespace DataAccessLayer.Repositories.StudentRepo
                 .FirstOrDefaultAsync(s => s.Email == email);
         }
 
-        public async Task<Student> GetStudentWithContributionsByIdAsync(int id)
+        public async Task<Student> GetStudentWithContributionsByIdAsync(string id)
         {
             return await _uniMagDbContext.Students.Include(s => s.Contributions).FirstOrDefaultAsync(c => c.StudentID == id);
         }

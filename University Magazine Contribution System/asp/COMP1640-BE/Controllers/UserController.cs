@@ -13,13 +13,29 @@ namespace COMP1640_BE.Controllers
     {
 
         private readonly IUserServices _userServices;
-        
+
+        public UserController(IUserServices userServices)
+        {
+            _userServices = userServices;
+        }
+
+
+        [HttpPost("CreateUser")]
+        public async Task<ActionResult<UserDTO>> user_save([FromBody] UserDTO userDTO)
+        {
+            await _userServices.AddUserAsync(userDTO);
+            return StatusCode(200, "User Added Successfully");
+        }
         #region HttpGet
         [HttpGet("GetUser")]
         public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
         {
 
             var users = await _userServices.GetAllUserAsync();
+            if (users == null || !users.Any())
+            {
+                return NotFound("No Student Found");
+            }
             return Ok(users);
 
         }
@@ -66,7 +82,7 @@ namespace COMP1640_BE.Controllers
         #region HttpPut
         [HttpPut("UpdateUser/{_loginName}")]
 
-        public async Task<ActionResult> UpdateUser(string _loginName, [FromBody] UserDTO userDTO)
+        public async Task<ActionResult> update_user(string _loginName, [FromBody] UserDTO userDTO)
         {
             if (_loginName != userDTO.LoginName)
             {
@@ -79,30 +95,25 @@ namespace COMP1640_BE.Controllers
         }
 
         [HttpPut("ChangePassword/{_loginName}")]
-        public async Task<ActionResult<UserDTO>> ChangePass(string _loginName, [FromBody] UserDTO userDto)
+        public async Task<ActionResult<UserDTO>> change_user_pass(string _loginName, [FromBody] UserDTO userDto)
         {
             return StatusCode(204, "Still doing");
         }
         
         [HttpPut("BlockUser/{_loginName}")]
-        public async Task<ActionResult<UserDTO>> Block(string _loginName, [FromBody] UserDTO userDto)
+        public async Task<ActionResult<UserDTO>> user_block(string _loginName, [FromBody] UserDTO userDto)
         {
             return StatusCode(204, "Still doing");
         } 
         [HttpPut("UnBlockUser/{_loginName}")]
-        public async Task<ActionResult<UserDTO>> UnBlock(string _loginName, [FromBody] UserDTO userDto)
+        public async Task<ActionResult<UserDTO>> user_unblock(string _loginName, [FromBody] UserDTO userDto)
         {
             return StatusCode(204, "Still doing");
         }
         #endregion
 
 
-        [HttpPost("CreateUser")]
-        public async Task<ActionResult<UserDTO>> SaveUser([FromBody] UserDTO userDTO)
-        {
-            await _userServices.AddUserAsync(userDTO);
-            return StatusCode(200, "User Added Successfully");
-        }
+      
 
         //[HttpPost("signin")]
         //public IActionResult SignIn(string username, string password)
