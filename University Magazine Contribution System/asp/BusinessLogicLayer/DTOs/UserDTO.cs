@@ -20,7 +20,8 @@ namespace BusinessLogicLayer.DTOs
         public bool Status { get; set; }
         [Required]
         public int  Role { get; set; }
-   
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow.Date;
 
+        public string? FacultyID { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.User;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace DataAccessLayer.Repositories.UsersRepo
@@ -15,18 +16,11 @@ namespace DataAccessLayer.Repositories.UsersRepo
             _context = context;
         }
 
-        public Models.User GetUserByUsernameAndPassword(string username, string password)
+        public Task<Models.User> GetUserByUsernameAndPassword(string username, string password)
         {
 
-
-            var user = _context.Users.FirstOrDefault(u => u.LoginName == username);
-
-            if (user != null && VerifyPasswordHash(user.Password, password)) 
-            {
-                return user;
-            }
-
-            return null;
+            var users = _context.Users.Where(u => u.LoginName == username && u.Password == password).FirstOrDefaultAsync();
+            return users;
         }
 
         public async Task<Models.User> GetByIdAsync(string _loginName)
@@ -39,9 +33,31 @@ namespace DataAccessLayer.Repositories.UsersRepo
             return await _context.Users.ToListAsync();
         }
 
-        public async Task AddUserAsync(Models.User _user)
+        public async Task AddUserAsync(Models.User _user, string facultyID)
         {
             _context.Users.Add(_user);
+
+            if (_user.Role == 1)
+            {
+                var userFaculty = new User_Faculty
+                {
+                    LoginName = _user.LoginName,
+                    FacultyId = facultyID
+                };
+
+                _context.user_Faculties.Add(userFaculty);
+            }
+            else if (_user.Role == 2)
+            {
+                var userFacultyList = facultyID.Select(facultyId => new User_Faculty
+                {
+                    LoginName = _user.LoginName,
+                    FacultyId = facultyId.ToString()
+                });
+
+                _context.user_Faculties.AddRange(userFacultyList);
+            }
+
             await _context.SaveChangesAsync();
         }
 
@@ -65,22 +81,17 @@ namespace DataAccessLayer.Repositories.UsersRepo
         {
             return _context.Users.Any(u => u.LoginName == _loginName);
         }
-
-
-        private bool VerifyPasswordHash(string passwordHash, string password)
+        public string VerifyPasswordHash(string password)
         {
-            using var hmac = new System.Security.Cryptography.HMACSHA512();
-
-           
-            var saltBytes = Convert.FromBase64String(passwordHash.Substring(0, 16));
-
-            
-            var passwordWithSalt = Encoding.UTF8.GetBytes(password + Encoding.UTF8.GetString(saltBytes));
-
-            
-            var computedHash = hmac.ComputeHash(passwordWithSalt);
-            var computedHashBytes = hmac.Key;
-            return computedHash.SequenceEqual(Convert.FromBase64String(passwordHash.Substring(16)));
+            using (var md5 = MD5.Create())
+            {
+                var hashBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
+                var hashString = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+                return hashString;
+            }
         }
+       
+
+
     }
 }

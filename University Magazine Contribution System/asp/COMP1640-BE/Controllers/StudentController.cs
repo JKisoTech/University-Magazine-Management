@@ -1,5 +1,4 @@
 ﻿using BusinessLogicLayer.DTOs;
-using BusinessLogicLayer.Services.AuthenticateService;
 using BusinessLogicLayer.Services.StudentService;
 using BusinessLogicLayer.Services.User;
 using Microsoft.AspNetCore.Http;
@@ -12,12 +11,11 @@ namespace COMP1640_BE.Controllers
     public class StudentController : ControllerBase
     {
         private readonly IStudentServices _studentServices;
-        private readonly IAuthenticationServices _authenticationServices;
+    
         
-        public StudentController(IStudentServices studentServices, IAuthenticationServices authenticationServices)
+        public StudentController(IStudentServices studentServices )
         {
             _studentServices = studentServices;
-            _authenticationServices = authenticationServices;
         }
 
         [HttpGet("GetStudent")]
@@ -53,6 +51,7 @@ namespace COMP1640_BE.Controllers
 
             return StatusCode(200, "Student Added Successfully");
         }
+
 
        
 

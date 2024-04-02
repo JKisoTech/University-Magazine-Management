@@ -1,5 +1,4 @@
 using BusinessLogicLayer.DTOs;
-using BusinessLogicLayer.Services.AuthenticateService;
 using BusinessLogicLayer.Services.User;
 using BusinessLogicLayer.Services.UsersService;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -19,13 +18,51 @@ namespace COMP1640_BE.Controllers
             _userServices = userServices;
         }
 
+        #region HttpPost
+        [HttpPost]
+        [Route("Login")]
+        public async Task<ActionResult<UserDTO>> Login(string _loginName, string _password)
+        {
+        
+            var user = await _userServices.UserLogin(_loginName, _password);
+
+            if (user == null)
+            {
+                return NotFound("User Not Found.");
+            } 
+
+            return Ok(user);
+        }
+
+        [HttpPost]
+        [Route("AdminLogin")]
+        public async Task<ActionResult<UserDTO>> AdminLogin(string _loginName, string _password)
+        {
+
+            var admin = await _userServices.AdminLogin(_loginName, _password);
+
+            if (admin == null)
+            {
+                return NotFound("User Not Found.");
+            }
+
+            return Ok(admin);
+        }
 
         [HttpPost("CreateUser")]
-        public async Task<ActionResult<UserDTO>> user_save([FromBody] UserDTO userDTO)
+        public async Task<ActionResult<UserDTO>> user_save([FromBody] UserDTO userDTO, string facultyID)
         {
-            await _userServices.AddUserAsync(userDTO);
+            
+            if (userDTO.FacultyID == "2")
+            {
+                userDTO.FacultyID = null;
+            }
+            await _userServices.AddUserAsync(userDTO, facultyID);
             return StatusCode(200, "User Added Successfully");
         }
+
+        #endregion
+
         #region HttpGet
         [HttpGet("GetUser")]
         public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
@@ -48,10 +85,16 @@ namespace COMP1640_BE.Controllers
         }
         
         [HttpGet("GetRole")]
-        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersRole()
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersRole(string _loginName)
         {
 
-            return StatusCode(204, "Still doing");
+            var user = await _userServices.GetUserByLoginNameAsync(_loginName);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
 
         }
         
@@ -115,22 +158,6 @@ namespace COMP1640_BE.Controllers
 
       
 
-        //[HttpPost("signin")]
-        //public IActionResult SignIn(string username, string password)
-        //{
-        //    if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-        //    {
-        //        return BadRequest("Username and password cannot be empty.");
-        //    }
-
-
-        //    var userDto = _authenticationServices.Authenticate(username, password);
-        //    if (userDto == null)
-        //    {
-        //        return Unauthorized("Invalid username or password.");
-        //    }
-
-        //    return Ok(userDto);
-        //}
+       
     }
 }

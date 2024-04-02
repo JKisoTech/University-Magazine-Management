@@ -6,7 +6,7 @@ namespace DataAccessLayer.Models
     public class Contribution
     {
         [Key]
-        public int ContributionID { get; set; }
+        public string ContributionID { get; set; }
         [ForeignKey("Student")]
         public string StudentID { get; set; }
         public string Content { get; set; }

@@ -19,11 +19,11 @@ namespace DataAccessLayer.Repositories.ContributionRepo
         }
         public async Task<Contribution> AddContributionAsync(Contribution contribution)
         {
-            var createdContribution = await _context.contributions.AddAsync(contribution);
+            _context.contributions.Add(contribution);
             await _context.SaveChangesAsync();
-            return createdContribution.Entity;
+            return contribution;
         }
-        public async Task<Contribution> GetByIdAsync(int id)
+        public async Task<Contribution> GetByIdAsync(string id)
         {
             return await _context.contributions.FirstOrDefaultAsync(u => u.ContributionID == id);
         }
@@ -36,7 +36,7 @@ namespace DataAccessLayer.Repositories.ContributionRepo
             _context.contributions.Update(contribution);
             await _context.SaveChangesAsync();
         }
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(string id)
         {
             var contributionID = await GetByIdAsync(id);
             if(contributionID != null)

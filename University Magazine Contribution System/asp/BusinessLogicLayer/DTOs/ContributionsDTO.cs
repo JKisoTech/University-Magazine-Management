@@ -12,25 +12,15 @@ namespace BusinessLogicLayer.DTOs
     public class ContributionsDTO
     {
         [Required]
-        public int ContributionID { get; set; }
+        public string ContributionID { get; set; }
         public string StudentID { get; set; }
         [Required]
         public string Content { get; set; }
         [Required]
-        public string Status { get; set; }
+        public bool Status { get; set; }
         [Required]
-        public DateTime SubmissionDate { get; set; }
-        [Required]
-        public DateTime LastUpdateDate { get; set; }
-        [Required]
-        public List<Comment> Comments { get; set; }
-        [Required]
-        public string Image {  get; set; }
-        [Required]
-        public DateTime Published { get; set; }
-        [Required]
-        public bool AgreeOnTerm { get; set; }
-        [Required]
-        public string Expired { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Type { get; set; }
     }
 }

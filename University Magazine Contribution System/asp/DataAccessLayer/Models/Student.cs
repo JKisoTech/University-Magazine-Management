@@ -12,7 +12,6 @@ namespace DataAccessLayer.Models
         public string Email { get; set; }
         public int Phones { get; set; }
         public string FacultyID { get; set; }
-        public User user { get; set; }
         public ICollection<Contribution> Contributions { get; set;}
 
     }

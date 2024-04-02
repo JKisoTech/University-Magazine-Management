@@ -9,15 +9,16 @@ namespace DataAccessLayer.Repositories.User
 {
     public interface IUserRepository
     {
-        public Models.User GetUserByUsernameAndPassword(string username, string password);
+        public Task<Models.User> GetUserByUsernameAndPassword(string username, string password);
         public Task<Models.User> GetByIdAsync(string _loginName);
 
         public Task<List<Models.User>> GetUsersAsync();
 
-        public Task AddUserAsync(Models.User user);
+        public Task AddUserAsync(Models.User user, string facultyID);
         public Task DeleteAsync(string _loginName);
         public Task UpdateAsync(Models.User user);
         public bool ExistUser(string _loginName);
+        public string VerifyPasswordHash(string password);
 
 
     }

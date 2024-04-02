@@ -27,7 +27,6 @@ namespace BusinessLogicLayer.Services.ContributionService
 
         public async Task AddContributionAync(ContributionsDTO contributionsDTO)
         {
-            contributionsDTO.Status = "Active";
             var contributionEntity = _mapper.Map<Contribution>(contributionsDTO);
             await _contributionRepository.AddContributionAsync(contributionEntity);
 
@@ -54,51 +53,50 @@ namespace BusinessLogicLayer.Services.ContributionService
         {
             var id = contributionsDTO.ContributionID;
             await _contributionRepository.GetByIdAsync(id);
-            contributionsDTO.Status = "Deactive";
         }
 
-        public async Task SubmitContribution(int id)
-        {
-            var contribution = await _contributionRepository.GetByIdAsync(id);
-            if (contribution.Status == "Saved")
-            {
-                throw new Exception("Contribution cannot be submitted in current state.");
-            }
-            if (contribution.Image != null)
-            {
+        //public async Task SubmitContribution(int id)
+        //{
+        //    var contribution = await _contributionRepository.GetByIdAsync(id);
+        //    if (contribution.Status == "Saved")
+        //    {
+        //        throw new Exception("Contribution cannot be submitted in current state.");
+        //    }
+        //    if (contribution.Image != null)
+        //    {
 
-                var temporaryImagePath = Path.Combine(_configuration["TemporaryImagesPath"], contribution.Image);
-                if (System.IO.File.Exists(temporaryImagePath))
-                {
+        //        var temporaryImagePath = Path.Combine(_configuration["TemporaryImagesPath"], contribution.Image);
+        //        if (System.IO.File.Exists(temporaryImagePath))
+        //        {
 
-                    var newImagePath = await UpdateImageStorageAsync(temporaryImagePath);
-                    contribution.Image = newImagePath.Replace(_configuration["TemporaryImagesPath"], "");
-                }
+        //            var newImagePath = await UpdateImageStorageAsync(temporaryImagePath);
+        //            contribution.Image = newImagePath.Replace(_configuration["TemporaryImagesPath"], "");
+        //        }
 
 
-                contribution.Status = "Submitted";
-                contribution.SubmissionDate = DateTime.UtcNow;
-                await _contributionRepository.UpdateAsync(contribution);
-            }
-        }
+        //        contribution.Status = "Submitted";
+        //        contribution.SubmissionDate = DateTime.UtcNow;
+        //        await _contributionRepository.UpdateAsync(contribution);
+        //    }
+        //}
 
-            public async Task CancelSubmission(int id)
-            {
-                var contribution = await _contributionRepository.GetByIdAsync(id);
-                if (contribution == null)
-                {
-                    throw new Exception("Contribution not found.");
-                }
+            //public async Task CancelSubmission(int id)
+            //{
+            //    var contribution = await _contributionRepository.GetByIdAsync(id);
+            //    if (contribution == null)
+            //    {
+            //        throw new Exception("Contribution not found.");
+            //    }
 
-                if (contribution.Status != "Submitted")
-                {
-                    throw new Exception("Contribution cannot be canceled in current state.");
-                }
+            //    if (contribution.Status != "Submitted")
+            //    {
+            //        throw new Exception("Contribution cannot be canceled in current state.");
+            //    }
 
-                contribution.Status = "Canceled";
+            //    contribution.Status = "Canceled";
 
-                await _contributionRepository.UpdateAsync(contribution);
-            }
+            //    await _contributionRepository.UpdateAsync(contribution);
+            //}
 
             public async Task<string> UpdateImageStorageAsync(string temporaryImagePath)
             {

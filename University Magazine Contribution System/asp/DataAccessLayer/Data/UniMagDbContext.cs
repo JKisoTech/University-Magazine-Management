@@ -26,10 +26,9 @@ namespace DataAccessLayer.Data
         {
 
             modelBuilder.Entity<Contribution>().ToTable("Contributions");
-            modelBuilder.Entity<Student>()
-                .HasOne(u => u.user).WithOne(s => s.student).HasPrincipalKey<Student>(si => si.StudentID);
+            modelBuilder.Entity<Student>().ToTable("Students");
 
-            modelBuilder.Entity<Comment>().ToTable("comments");
+            modelBuilder.Entity<Comment>().ToTable("Comments");
 
             modelBuilder.Entity<Faculty>()
                 .HasMany(f => f.user_Faculties).WithOne(uf => uf.faculty).HasForeignKey(i => i.FacultyId);
@@ -37,7 +36,7 @@ namespace DataAccessLayer.Data
 
             modelBuilder.Entity<User>()
                 .HasMany(uf => uf.user_Faculties).WithOne(u => u.user).HasForeignKey(l => l.LoginName);
-            modelBuilder.Entity<SystemParameter>().ToTable("systemParameters").HasNoKey();
+            modelBuilder.Entity<SystemParameter>().ToTable("SystemParameters").HasNoKey();
 
 
             base.OnModelCreating(modelBuilder);

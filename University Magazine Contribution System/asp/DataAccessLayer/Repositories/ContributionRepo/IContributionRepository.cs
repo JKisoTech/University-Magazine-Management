@@ -10,9 +10,9 @@ namespace DataAccessLayer.Repositories.ContributionRepo
     public interface IContributionRepository
     {
         Task<Contribution> AddContributionAsync(Contribution contribution);
-        Task<Contribution> GetByIdAsync(int id);
+        Task<Contribution> GetByIdAsync(string id);
         Task<IEnumerable<Contribution>> GetAllAsync();
         Task UpdateAsync(Contribution contribution);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(string id);
     }
 }

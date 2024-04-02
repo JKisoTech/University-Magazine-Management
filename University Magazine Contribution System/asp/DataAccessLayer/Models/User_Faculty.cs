@@ -6,6 +6,7 @@ namespace DataAccessLayer.Models
     public class User_Faculty
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [ForeignKey("Faculty")]
         public string FacultyId { get; set; }

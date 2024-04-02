@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(UniMagDbContext))]
-    [Migration("20240330021455_UpdateStudent")]
-    partial class UpdateStudent
+    [Migration("20240402083627_Update2")]
+    partial class Update2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,20 +43,20 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("ContributionID")
                         .HasColumnType("int");
 
+                    b.Property<string>("ContributionID1")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("CoordinatorID");
 
-                    b.HasIndex("ContributionID");
+                    b.HasIndex("ContributionID1");
 
-                    b.ToTable("comments", (string)null);
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("DataAccessLayer.Models.Contribution", b =>
                 {
-                    b.Property<int>("ContributionID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContributionID"));
+                    b.Property<string>("ContributionID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("AgreeOnTerm")
                         .HasColumnType("bit");
@@ -116,15 +116,17 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("StudentID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DateOfBirth")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FacultyID")
-                        .HasColumnType("int");
+                    b.Property<string>("FacultyID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Phones")
                         .HasColumnType("int");
@@ -135,7 +137,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("StudentID");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("DataAccessLayer.Models.SystemParameter", b =>
@@ -151,13 +153,19 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("systemParameters", (string)null);
+                    b.ToTable("SystemParameters", (string)null);
                 });
 
             modelBuilder.Entity("DataAccessLayer.Models.User", b =>
                 {
                     b.Property<string>("LoginName")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FacultyID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -207,9 +215,7 @@ namespace DataAccessLayer.Migrations
                 {
                     b.HasOne("DataAccessLayer.Models.Contribution", null)
                         .WithMany("Comments")
-                        .HasForeignKey("ContributionID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ContributionID1");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Models.Contribution", b =>
@@ -219,17 +225,6 @@ namespace DataAccessLayer.Migrations
                         .HasForeignKey("StudentID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("DataAccessLayer.Models.User", b =>
-                {
-                    b.HasOne("DataAccessLayer.Models.Student", "student")
-                        .WithOne("user")
-                        .HasForeignKey("DataAccessLayer.Models.User", "LoginName")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("student");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Models.User_Faculty", b =>
@@ -264,9 +259,6 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("DataAccessLayer.Models.Student", b =>
                 {
                     b.Navigation("Contributions");
-
-                    b.Navigation("user")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("DataAccessLayer.Models.User", b =>

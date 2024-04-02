@@ -12,7 +12,8 @@ namespace DataAccessLayer.Models
         public string Password { get; set; }
         public bool Status { get; set; }
         public int Role { get; set; }
-        public Student student { get; set; }
+        public string? FacultyID { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow.Date;
         public List<User_Faculty> user_Faculties { get; set; }
     }
 
