@@ -11,7 +11,7 @@ import { Header2Component } from './Admin/header/header.component';
 import { LandingPageUserComponent } from './User/landing-page-user/landing-page-user.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatTableModule } from '@angular/material/table';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateFormUserComponent } from './Admin/user-management/create-form-user/create-form-user.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,6 +22,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { EditFormFalcutyComponent } from './Admin/falcuty/edit-form-falcuty/edit-form-falcuty.component';
 import { CreateFormFalcutyComponent } from './Admin/falcuty/create-form-falcuty/create-form-falcuty.component';
+import { StudentPageComponent } from './Student/student-page/student-page.component';
+import { MarketingCordinatorPageComponent } from './Marketing-Cordinator/marketing-cordinator-page/marketing-cordinator-page.component';
+import { ManagerPageComponent } from './Manager/manager-page/manager-page.component';
+import { HeaderMarketingCordinatorComponent } from './Marketing-Cordinator/header-marketing-cordinator/header-marketing-cordinator.component';
+import { ContributionMarketingCordinatorComponent } from './Marketing-Cordinator/contribution-marketing-cordinator/contribution-marketing-cordinator.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 
 @NgModule({
@@ -37,7 +43,13 @@ import { CreateFormFalcutyComponent } from './Admin/falcuty/create-form-falcuty/
     FalcutyComponent,
     EditFormUserComponent,
     EditFormFalcutyComponent,
-    CreateFormFalcutyComponent
+    CreateFormFalcutyComponent,
+    StudentPageComponent,
+    MarketingCordinatorPageComponent,
+    ManagerPageComponent,
+    HeaderMarketingCordinatorComponent,
+    ContributionMarketingCordinatorComponent,
+    UserLoginComponent
 
   ],
   imports: [
@@ -49,7 +61,8 @@ import { CreateFormFalcutyComponent } from './Admin/falcuty/create-form-falcuty/
     MatDialogModule,
     MatMenuModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync()

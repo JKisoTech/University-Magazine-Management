@@ -1,0 +1,79 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "loginName": "123",
+      "fullName": "123",
+      "status": "123",
+      "password": "123",
+      "role": "123",
+      "falcuty": "123"
+      
+    },
+    {
+      "id": 2,
+      "loginName": "cordinator123",
+      "fullName": "Nguyen thi A ",
+      "status": "unactive",
+      "password": "123456",
+      "role": "Cordinator",
+      "falcuty": "IT"
+    },
+    {
+      "id": 3,
+      "loginName": "toilathinh123",
+      "fullName": "Vũ Hồng Thịnh",
+      "status": "Active",
+      "password": "0943330432",
+      "role": "Student",
+      "falcuty": "Contribution"
+    }
+  ],
+  "falcuty": [
+    {
+      "name": "BA",
+      "description": "Bussiness and Analysis",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Information Technology",
+      "description": "IT Description"
+    }
+  ],
+  "student" : [
+    {
+      "id": 1,
+      "studentName": "Thinh",
+      "dob": "15/05/2003",
+      "email": "toilathinh150503@gmail.com",
+      "phone": "0943330432",
+      "falcuty_id": 1
+    }
+  ],
+  "contribution": [
+    {
+      "id": 1,
+      "student_id": 1,
+      "title": " Assignment 1 of OOP",
+      "description": " Submit Assignment 1",
+      "content": "F2G Course",
+      "type": "word",
+      "submittedDate": "04/03/2023",
+      "lastUpdate": "05/03/2023",
+      "status": "Submit for Grading",
+      "expired": "20/03/2023",
+      "published": "21/03/2023",
+      "aggreeOnItem": "Published"
+    }
+  ],
+  "comment": [
+    {
+      "contribution_id": 1,
+      "id": 1,
+      "cordinator_id": "Vu Hong Thinh",
+      "comment": "Aggree",
+      "comment_date": "21/03/2023" 
+    }
+  ]
+}
