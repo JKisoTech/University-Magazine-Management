@@ -1,6 +1,8 @@
+using Azure.Core;
 using BusinessLogicLayer.DTOs;
 using BusinessLogicLayer.Services.User;
 using BusinessLogicLayer.Services.UsersService;
+using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -140,7 +142,30 @@ namespace COMP1640_BE.Controllers
         [HttpPut("ChangePassword/{_loginName}")]
         public async Task<ActionResult<UserDTO>> change_user_pass(string _loginName, [FromBody] UserDTO userDto)
         {
-            return StatusCode(204, "Still doing");
+
+
+            //if (string.IsNullOrEmpty(oldPassword) || string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
+            //{
+            //    return BadRequest("All fields are required.");
+            //}
+            //if (newPassword != confirmPassword)
+            //{
+            //    return BadRequest("The new password and confirmation password do not match.");
+            //}
+            //var userName = _userServices.GetUserByLoginNameAsync(loginName);
+            //if (userName == null)
+            //{
+            //    return NotFound("User not found.");
+            //}
+            //var isOld = await _userServices.user_change_password(loginName, oldPassword);
+
+            //if (!isOld)
+            //{
+            //    return BadRequest("Incorrect Old Password !");
+            //}
+            //var updatedUser = await _userServices.user_change_password(loginName, newPassword);
+            //_userServices.UpdateUserAsync(updatedUser);
+            return Ok();
         }
         
         [HttpPut("BlockUser/{_loginName}")]

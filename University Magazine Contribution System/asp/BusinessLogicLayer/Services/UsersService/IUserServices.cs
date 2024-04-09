@@ -17,5 +17,7 @@ namespace BusinessLogicLayer.Services.User
         public Task UpdateUserAsync(UserDTO userDTO);
         public Task<UserDTO> UserLogin(string _loginName, string _password);
         public Task<UserDTO> AdminLogin(string _loginname, string _password);
+
+        public Task<UserDTO> user_change_password(string _loginname, string _password);
     }
 }

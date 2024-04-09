@@ -74,12 +74,25 @@ namespace BusinessLogicLayer.Services.UsersService
         public async Task<UserDTO> UserLogin(string _loginName, string _password)
         {
             var pass = _userRepository.VerifyPasswordHash(_password);
-            var userEntity = await _userRepository.GetUserByUsernameAndPassword(_loginName, pass);
+            var user = await _userRepository.GetUserByUsernameAndPassword(_loginName, pass);
             
-            return _mapper.Map<UserDTO>(userEntity); ;
+            return _mapper.Map<UserDTO>(user); ;
         }
 
+        public async Task<UserDTO> user_change_password(string _loginname, string _password)
+        {
+            var user = await _userRepository.GetByIdAsync(_loginname);
 
+            if (!await _userRepository.VerifyPass(_password, user.Password))
+            {
+                return null;
+            }
+
+            user.Password = _userRepository.VerifyPasswordHash(_password);
+            await _userRepository.UpdateAsync(user);
+
+            return _mapper.Map<UserDTO>(user);
+        }
 
     }
 }

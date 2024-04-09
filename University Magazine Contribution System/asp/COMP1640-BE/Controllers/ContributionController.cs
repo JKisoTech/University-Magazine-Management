@@ -11,9 +11,9 @@ namespace COMP1640_BE.Controllers
     [ApiController]
     public class ContributionController : ControllerBase
     {
-        private readonly ContributionServices _contributionServices;
+        private readonly IContributionServices _contributionServices;
 
-        public ContributionController(ContributionServices contributionServices)
+        public ContributionController(IContributionServices contributionServices)
         {
             _contributionServices = contributionServices;
         }
@@ -36,7 +36,7 @@ namespace COMP1640_BE.Controllers
         public async Task<ActionResult<ContributionsDTO>> SaveContributor([FromBody] ContributionsDTO contributionsDTO)
         {
             await _contributionServices.AddContributionAync(contributionsDTO);
-            return Ok();
+            return Ok("User Submit successfully");
         }
 
         [HttpPut("UpdateContributor")]

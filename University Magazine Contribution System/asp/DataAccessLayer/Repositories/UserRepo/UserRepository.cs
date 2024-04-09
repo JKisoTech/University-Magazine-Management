@@ -82,7 +82,7 @@ namespace DataAccessLayer.Repositories.UsersRepo
             return _context.Users.Any(u => u.LoginName == _loginName);
         }
         public string VerifyPasswordHash(string password)
-        {
+        {   
             using (var md5 = MD5.Create())
             {
                 var hashBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
@@ -90,7 +90,13 @@ namespace DataAccessLayer.Repositories.UsersRepo
                 return hashString;
             }
         }
-       
+
+        public async Task<bool> VerifyPass(string _password, string hashPass)
+        {
+            var InputPass = VerifyPasswordHash(_password);
+            return InputPass == hashPass;
+        }
+
 
 
     }

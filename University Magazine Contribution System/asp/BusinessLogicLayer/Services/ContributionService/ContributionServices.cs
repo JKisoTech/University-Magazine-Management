@@ -27,8 +27,13 @@ namespace BusinessLogicLayer.Services.ContributionService
 
         public async Task AddContributionAync(ContributionsDTO contributionsDTO)
         {
+            
+            var title = contributionsDTO.Title; 
+            var description = contributionsDTO.Description;
+            var content = contributionsDTO.Content;
+            var type = contributionsDTO.Type;
             var contributionEntity = _mapper.Map<Contribution>(contributionsDTO);
-            await _contributionRepository.AddContributionAsync(contributionEntity);
+            await _contributionRepository.AddContributionAsync(contributionEntity ,title, description, content, type);
 
         }
 

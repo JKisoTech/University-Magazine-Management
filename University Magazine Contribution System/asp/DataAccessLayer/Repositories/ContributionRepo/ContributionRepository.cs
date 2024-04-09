@@ -1,11 +1,15 @@
 ﻿using DataAccessLayer.Data;
 using DataAccessLayer.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DataAccessLayer.Repositories.ContributionRepo
 {
@@ -13,15 +17,40 @@ namespace DataAccessLayer.Repositories.ContributionRepo
     {
         private readonly UniMagDbContext _context;
 
+
         public ContributionRepository(UniMagDbContext context)
         {
             _context = context;
         }
-        public async Task<Contribution> AddContributionAsync(Contribution contribution)
+        public async Task<Contribution> AddContributionAsync(Contribution contribution, string title, string description, string content, string type)
         {
-            _context.contributions.Add(contribution);
+
+        var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == contribution.StudentID);
+            if (existingUser == null)
+            {
+                existingUser = new Models.User
+                {
+                    LoginName = contribution.StudentID,
+                    Role = 1,
+                };
+                _context.Users.Add(existingUser);
+                await _context.SaveChangesAsync();
+            }
+
+            var contributions = new Contribution
+            {
+                StudentID = existingUser.LoginName,
+                Title = title,
+                Description = description,
+                Content = content,
+                Type = type,
+                ContributionID = existingUser.LoginName
+            };
+            _context.contributions.Add(contributions);
+
+
             await _context.SaveChangesAsync();
-            return contribution;
+            return contributions;
         }
         public async Task<Contribution> GetByIdAsync(string id)
         {
@@ -45,5 +74,8 @@ namespace DataAccessLayer.Repositories.ContributionRepo
                 await _context.SaveChangesAsync();
             }
         }
+
+
     }
 }
+
