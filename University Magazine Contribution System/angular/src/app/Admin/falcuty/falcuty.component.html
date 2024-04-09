@@ -6,36 +6,23 @@
             <h5 class="card-title">
                 {{ 'Falcuty'}}
             </h5>
-            <div class="d-flex" role="search">
-                <button class="btn btn-outline-success" (click)="CreateFalcuty()" >Add</button>
-            </div>
         </div>
     </div>
     <div class="card-body">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-            <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef>Action</th>
-                <td mat-cell *matCellDef="let row">
-                  <button mat-icon-button [matMenuTriggerFor]="actionMenu">
-                    <mat-icon>more_vert</mat-icon>
-                  </button>
-                  <mat-menu #actionMenu="matMenu">
-                    <button mat-menu-item (click)="EditFalcuty(row.id)">Edit</button>
-                    <button mat-menu-item (click)="DeleteFalcuty(row.id)">Delete</button>
-                  </mat-menu>
-                </td>
-              </ng-container>
+            
 
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef>{{'Falcuty Name'}}</th>
-                <td mat-cell *matCellDef="let row">{{row.name}}</td>
+            <ng-container matColumnDef="facultyID">
+                <th mat-header-cell *matHeaderCellDef>{{'Falcuty Id'}}</th>
+                <td mat-cell *matCellDef="let row">{{row.facultyID}}</td>
             </ng-container>
 
-            <ng-container matColumnDef="description">
-                <th mat-header-cell *matHeaderCellDef>{{'Falcuty Description'}}</th>
-                <td mat-cell *matCellDef="let row">{{row.description}}</td>
+            <ng-container matColumnDef="facultyName">
+              <th mat-header-cell *matHeaderCellDef>{{'Falcuty Name'}}</th>
+              <td mat-cell *matCellDef="let row">{{row.facultyName}}</td>
             </ng-container>
+          
 
            
 

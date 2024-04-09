@@ -22,7 +22,7 @@ export class UserManagementComponent implements OnInit {
   isEditOpen = false;
   isModalOpen = false;
   dataSource: MatTableDataSource<UserDto>;
-  displayColumns: string [] = ['action' , 'loginName', 'fullName', 'status', 'password','role','falcuty'];
+  displayColumns: string [] = ['action' , 'loginName', 'fullName', 'status', 'password','role','facultyId'];
 
 
   constructor(

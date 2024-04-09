@@ -22,6 +22,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { EditFormFalcutyComponent } from './Admin/falcuty/edit-form-falcuty/edit-form-falcuty.component';
 import { CreateFormFalcutyComponent } from './Admin/falcuty/create-form-falcuty/create-form-falcuty.component';
+import { UserLoginComponent } from './Login/user-login/user-login.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -37,7 +40,8 @@ import { CreateFormFalcutyComponent } from './Admin/falcuty/create-form-falcuty/
     FalcutyComponent,
     EditFormUserComponent,
     EditFormFalcutyComponent,
-    CreateFormFalcutyComponent
+    CreateFormFalcutyComponent,
+    UserLoginComponent
 
   ],
   imports: [
@@ -49,7 +53,10 @@ import { CreateFormFalcutyComponent } from './Admin/falcuty/create-form-falcuty/
     MatDialogModule,
     MatMenuModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule
+    
   ],
   providers: [
     provideAnimationsAsync()

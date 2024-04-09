@@ -8,18 +8,18 @@ import { UserDto } from './model';
     providedIn: 'root',
 })
 export class UserService {
-    private baseUrl = 'http://localhost:3000/user';
+    private baseUrl = 'https://localhost:7101/User';
 
 
     constructor( private http: HttpClient){}
 
 
     CreateUser(data: UserDto): Observable<any> {
-        return this.http.post(this.baseUrl, data);
+        return this.http.post(`${this.baseUrl}/CreateUser`, data);
     }
 
     GetAllUser(): Observable<any> {
-        return this.http.get(this.baseUrl);
+        return this.http.get(`${this.baseUrl}/GetUser`);
     }
 
     DeleteUser(id: number ) : Observable<any> {
@@ -35,4 +35,11 @@ export class UserService {
         return this.http.put(`${this.baseUrl}/${id}`, data)
     }
     
+    UserLogin(loginName: string, password: string): Observable<any> {
+        const loginData = { loginName, password }; // Create an object with loginName and password
+        return this.http.post(`${this.baseUrl}/Login`, loginData);
+    }
+    
+
+
 }
