@@ -19,7 +19,7 @@ namespace DataAccessLayer.Repositories.User
         public Task UpdateAsync(Models.User user);
         public bool ExistUser(string _loginName);
         public string VerifyPasswordHash(string password);
-
+        public Task<bool> VerifyPass(string _password, string hashPass);
 
     }
 }

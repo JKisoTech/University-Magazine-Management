@@ -29,7 +29,7 @@ namespace COMP1640_BE
 
             builder.Services.AddScoped<IUserServices, UserServices>();
             builder.Services.AddScoped<IFacultyServices, FacultyServices>();
-            builder.Services.AddScoped<IContributionServices, ContributionServices>();
+            builder.Services.AddScoped<IContributionServices,ContributionServices>();
             builder.Services.AddScoped<IStudentServices, StudentServices>();
             
             
