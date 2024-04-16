@@ -26,19 +26,25 @@ export class UserService {
         return this.http.delete(`${this.baseUrl}/${id}`);
     }
 
-    GetUserId(id: number) : Observable<any> {
-        return this.http.get(`${this.baseUrl}/${id}`);
-    
-    }
+    GetUserByLoginName(loginName: string): Observable<any> {
+        const url = `${this.baseUrl}/GetUserByLoginName?_loginName=${loginName}`;
+        return this.http.get(url);
+      }
 
     UpdateUser(id: number, data: UserDto) : Observable<any> {
         return this.http.put(`${this.baseUrl}/${id}`, data)
     }
     
     UserLogin(loginName: string, password: string): Observable<any> {
-        const loginData = { loginName, password }; // Create an object with loginName and password
-        return this.http.post(`${this.baseUrl}/Login`, loginData);
-    }
+        // Construct the URL with query parameters
+        const url = `${this.baseUrl}/Login?_loginName=${loginName}&_password=${password}`;
+        // Send an empty object in the post request since data is passed in the URL
+        return this.http.post(url, {});
+      }
+
+      GetUserRole(loginName: string): Observable<number | null> {
+        return this.http.get<number | null>(`${this.baseUrl}/GetRole?_loginName=${loginName}`);
+      }
     
 
 

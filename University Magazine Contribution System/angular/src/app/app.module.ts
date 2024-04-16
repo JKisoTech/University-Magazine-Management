@@ -11,7 +11,7 @@ import { Header2Component } from './Admin/header/header.component';
 import { LandingPageUserComponent } from './User/landing-page-user/landing-page-user.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatTableModule } from '@angular/material/table';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateFormUserComponent } from './Admin/user-management/create-form-user/create-form-user.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,6 +25,14 @@ import { CreateFormFalcutyComponent } from './Admin/falcuty/create-form-falcuty/
 import { UserLoginComponent } from './Login/user-login/user-login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { ContributionPageComponent } from './User/Contribution/contribution-page/contribution-page.component';
+import { ContributionManagementComponent } from './Admin/Contribution/contribution-management/contribution-management.component';
+import { AuthenticationService } from './API/authentication.service';
+import { AuthenticationGuard } from './authentication.guard';
+import { UserProfileComponent } from './User/user-profile/user-profile.component';
+import { UploadContributionPageComponent } from './User/Contribution/upload-contribution-page/upload-contribution-page.component';
+import { ViewAllContributionComponent } from './User/Contribution/view-all-contribution/view-all-contribution.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -41,7 +49,12 @@ import {MatInputModule} from '@angular/material/input';
     EditFormUserComponent,
     EditFormFalcutyComponent,
     CreateFormFalcutyComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    ContributionPageComponent,
+    ContributionManagementComponent,
+    UserProfileComponent,
+    UploadContributionPageComponent,
+    ViewAllContributionComponent
 
   ],
   imports: [
@@ -55,11 +68,15 @@ import {MatInputModule} from '@angular/material/input';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule,
+    FormsModule,
     ReactiveFormsModule
     
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    AuthenticationService,
+    AuthenticationGuard
   ],
   bootstrap: [AppComponent]
 })
