@@ -72,9 +72,8 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime>("Published")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.Property<string>("StudentID")
                         .IsRequired()
@@ -189,11 +188,11 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Models.User_Faculty", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("uSID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("uSID"));
 
                     b.Property<string>("FacultyId")
                         .IsRequired()
@@ -203,7 +202,7 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("Id");
+                    b.HasKey("uSID");
 
                     b.HasIndex("FacultyId");
 

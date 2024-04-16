@@ -42,16 +42,23 @@ namespace BusinessLogicLayer.Services.ContributionService
             var contributionEntity = await _contributionRepository.GetAllAsync();
             return _mapper.Map<List<ContributionsDTO>>(contributionEntity);
         }
-
-        public async Task UpdateContribution(ContributionsDTO contributionsDTO)
+        public async Task<ContributionsDTO> GetContent(string id)
         {
-            var existingConribution = await _contributionRepository.GetByIdAsync(contributionsDTO.ContributionID);
+            var contributionEntity = await _contributionRepository.GetByIdAsync(id);
+            return _mapper.Map<ContributionsDTO>(contributionEntity);
+        }
 
-            if (existingConribution != null)
-            {
-                _mapper.Map(contributionsDTO, existingConribution);
-                await _contributionRepository.UpdateAsync(existingConribution);
-            }
+        public async Task SetStatus(string id,int  status)
+        {
+            var contributionEntity = await _contributionRepository.SetStatus(id, status);
+            _mapper.Map<ContributionsDTO>(contributionEntity);
+        }
+        public async Task<ContributionsDTO> UpdateContribution(string id, string content, string title, string type, string description)
+        {
+            var contributionEntity = await _contributionRepository.GetByIdAsync(id);  
+                await _contributionRepository.UpdateAsync(id, content, title, type, description);
+                return _mapper.Map<ContributionsDTO>(contributionEntity);
+
         }
 
         public async Task DeactiveContribution(ContributionsDTO contributionsDTO)
@@ -60,6 +67,8 @@ namespace BusinessLogicLayer.Services.ContributionService
             await _contributionRepository.GetByIdAsync(id);
         }
 
+
+     
         //public async Task SubmitContribution(int id)
         //{
         //    var contribution = await _contributionRepository.GetByIdAsync(id);
@@ -102,7 +111,7 @@ namespace BusinessLogicLayer.Services.ContributionService
 
             //    await _contributionRepository.UpdateAsync(contribution);
             //}
-
+            
             public async Task<string> UpdateImageStorageAsync(string temporaryImagePath)
             {
 

@@ -7,7 +7,7 @@ namespace DataAccessLayer.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int uSID { get; set; }
         [ForeignKey("Faculty")]
         public string FacultyId { get; set; }
         [ForeignKey("User")]
@@ -16,5 +16,7 @@ namespace DataAccessLayer.Models
         public Faculty faculty { get; set; }
 
         public User user { get; set; }
+
+       
     }
 }

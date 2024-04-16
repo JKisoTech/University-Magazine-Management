@@ -60,10 +60,27 @@ namespace DataAccessLayer.Repositories.ContributionRepo
         {
             return await _context.contributions.ToListAsync();
         }
-        public async Task UpdateAsync(Contribution contribution)
+        public async Task<Contribution> UpdateAsync(string id, string content, string title, string type, string description)
         {
+            var contributions = await _context.contributions.FindAsync(id);
+            contributions.Content = content;
+            contributions.Title = title;
+            contributions.Type = type;
+            contributions.Description = description;
+            _context.contributions.Update(contributions);
+            await _context.SaveChangesAsync();
+            return contributions;
+        }
+
+        public async Task<Contribution> SetStatus(string id, int status)
+        {
+
+            var contribution = await _context.contributions.FindAsync(id);
+            contribution.Status = status;
+            contribution.LastUpdateDate = DateTime.UtcNow;
             _context.contributions.Update(contribution);
             await _context.SaveChangesAsync();
+            return contribution;
         }
         public async Task DeleteAsync(string id)
         {

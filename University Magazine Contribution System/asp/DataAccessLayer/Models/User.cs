@@ -15,6 +15,7 @@ namespace DataAccessLayer.Models
         public string? FacultyID { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow.Date;
         public List<User_Faculty> user_Faculties { get; set; }
+        public List<Contribution> contribution { get; set; }
     }
 
 }

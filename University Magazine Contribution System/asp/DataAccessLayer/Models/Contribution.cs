@@ -10,7 +10,7 @@ namespace DataAccessLayer.Models
         [ForeignKey("Student")]
         public string StudentID { get; set; }
         public string Content { get; set; }
-        public bool Status { get; set; } = true;
+        public int Status { get; set; }
         public string Title { get; set; }
         public string Type { get; set; }
         public string Description { get; set; }
@@ -20,6 +20,7 @@ namespace DataAccessLayer.Models
         public DateTime Published { get; set; }  
         public bool AgreeOnTerm { get; set; }
 
+        public User user { get; set; }
 
 
     

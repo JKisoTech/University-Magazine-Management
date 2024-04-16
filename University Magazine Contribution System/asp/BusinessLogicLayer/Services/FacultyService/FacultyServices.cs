@@ -52,6 +52,11 @@ namespace BusinessLogicLayer.Services.FacultyService
             }
         }
 
+        public async Task<IEnumerable<Contribution>> GetContributionByFacultyID(string facultyID)
+        {
+            var contribution = await _repository.GetContributionsByFacultyId(facultyID);
+            return contribution;
+        }
         public async Task DeleteAsync(string id)
         {
             await _repository.DeleteFacultyAsync(id);

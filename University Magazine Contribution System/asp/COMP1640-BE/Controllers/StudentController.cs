@@ -32,9 +32,9 @@ namespace COMP1640_BE.Controllers
         }
 
         [HttpGet("GetStudentBy/{LoginName}")]
-        public async Task<ActionResult<StudentDTO>> GetStudentById(string id)
+        public async Task<ActionResult<StudentDTO>> GetStudentById(string _loginName)
         {
-            var students = await _studentServices.GetStudentByIdAsync(id);
+            var students = await _studentServices.GetStudentByIdAsync(_loginName);
 
             if (students == null)
             {
@@ -44,13 +44,13 @@ namespace COMP1640_BE.Controllers
             return Ok(students);
         }
 
-        [HttpPost("CreateStudent")]
-        public async Task<ActionResult<StudentDTO>> CreateUser([FromBody] StudentDTO studentDTO)
-        {
-            await _studentServices.AddStudentAsync(studentDTO);
+        //[HttpPost("CreateStudent")]
+        //public async Task<ActionResult<StudentDTO>> CreateUser([FromBody] StudentDTO studentDTO)
+        //{
+        //    await _studentServices.AddStudentAsync(studentDTO);
 
-            return StatusCode(200, "Student Added Successfully");
-        }
+        //    return StatusCode(200, "Student Added Successfully");
+        //}
 
 
        

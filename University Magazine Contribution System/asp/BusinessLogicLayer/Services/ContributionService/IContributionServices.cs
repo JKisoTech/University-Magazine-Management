@@ -12,7 +12,9 @@ namespace BusinessLogicLayer.Services.ContributionService
     {
         public Task AddContributionAync(ContributionsDTO contributionsDTO);
         public Task<List<ContributionsDTO>> GetContribution();
-        public Task UpdateContribution(ContributionsDTO contributionsDTO);
+        public Task<ContributionsDTO> GetContent(string id);
+        public Task SetStatus(string id,int status);
+        public Task<ContributionsDTO> UpdateContribution(string id, string content, string title, string type, string description);
         public Task DeactiveContribution(ContributionsDTO contributionsDTO);
         public Task<string> UpdateImageStorageAsync(string temporaryImagePath);
         public Task<string> SaveImageAsync(IFormFile imageFile);

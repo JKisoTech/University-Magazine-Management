@@ -26,9 +26,13 @@ namespace COMP1640_BE.Controllers
         }
         
         [HttpGet("GetContent")]
-        public async Task<ActionResult<IEnumerable<ContributionsDTO>>> GetContributionContent()
+        public async Task<ActionResult<IEnumerable<ContributionsDTO>>> GetContributionContent(string Id)
         {
-            var contributors = await _contributionServices.GetContribution();
+            var contributors = await _contributionServices.GetContent(Id);
+            if (contributors == null)
+            {
+                return NotFound("There is no Contribution with Id: " + Id);
+            }
             return Ok(contributors);
         }
 
@@ -36,24 +40,31 @@ namespace COMP1640_BE.Controllers
         public async Task<ActionResult<ContributionsDTO>> SaveContributor([FromBody] ContributionsDTO contributionsDTO)
         {
             await _contributionServices.AddContributionAync(contributionsDTO);
-            return Ok("User Submit successfully");
+            return StatusCode(201,"User Submit successfully");
         }
 
         [HttpPut("UpdateContributor")]
-        public async Task<ActionResult> UpdateContributor(string id, [FromBody] ContributionsDTO contributionsDTO)
+        public async Task<ActionResult> UpdateContributor(string id, string content, string title, string type, string description)
         {
-            if (id != contributionsDTO.ContributionID)
+            var existingContribution = await _contributionServices.GetContent(id);
+            if (existingContribution == null)
             {
                 return StatusCode(404, "Contributor Not found");
             }
-            return StatusCode(204, "Haven't develop Update function");
+            await _contributionServices.UpdateContribution( id,  content,  title,  type, description);
+            return Ok("Updated");
         }
         
         [HttpPut("UpdateContributorStatus")]
-        public async Task<ActionResult> SetStatus(string id, bool status, DateTime dueDate ,[FromBody] ContributionsDTO contributionsDTO)
+        public async Task<ActionResult> SetStatus(string id, int status)
         {
             
-            return StatusCode(204, "Haven't develop Update-Status function");
+            if (id == null)
+            {
+                return NoContent();
+            }
+            await _contributionServices.SetStatus(id, status);
+            return Ok(status);
         }
         
         [HttpPut("UpdateContributorComment")]
