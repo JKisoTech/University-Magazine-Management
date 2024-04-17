@@ -426,3 +426,5 @@ O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE
 O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\obj\Debug\net8.0\COMP1640-BE.pdb
 O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\obj\Debug\net8.0\COMP1640-BE.genruntimeconfig.cache
 O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\obj\Debug\net8.0\ref\COMP1640-BE.dll
+O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\Microsoft.Exchange.WebServices.Auth.dll
+O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\Microsoft.Exchange.WebServices.dll

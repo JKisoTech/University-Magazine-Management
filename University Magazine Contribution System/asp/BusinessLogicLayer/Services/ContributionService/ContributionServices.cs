@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Azure;
 using BusinessLogicLayer.DTOs;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.ContributionRepo;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,18 +27,23 @@ namespace BusinessLogicLayer.Services.ContributionService
             _configuration = configuration;
         }
 
-        public async Task AddContributionAync(ContributionsDTO contributionsDTO)
+        public async Task<ContributionsDTO> AddContributionAync(string id,string content, string title, IFormFile type, string description)
         {
+            var filename = await WriteFile(type);
+                var contributionDTO = new ContributionsDTO
+                {
+                    ContributionID = id,
+                    Title = title,
+                    Content = content,
+                    Description = description,
+                    Type = filename
+                };
+                await _contributionRepository.AddContributionAsync(id,title, description, content, filename);
+                _mapper.Map<ContributionsDTO>(contributionDTO);
+                return contributionDTO;
             
-            var title = contributionsDTO.Title; 
-            var description = contributionsDTO.Description;
-            var content = contributionsDTO.Content;
-            var type = contributionsDTO.Type;
-            var contributionEntity = _mapper.Map<Contribution>(contributionsDTO);
-            await _contributionRepository.AddContributionAsync(contributionEntity ,title, description, content, type);
-
         }
-
+    
         public async Task<List<ContributionsDTO>> GetContribution()
         {
             var contributionEntity = await _contributionRepository.GetAllAsync();
@@ -53,10 +60,11 @@ namespace BusinessLogicLayer.Services.ContributionService
             var contributionEntity = await _contributionRepository.SetStatus(id, status);
             _mapper.Map<ContributionsDTO>(contributionEntity);
         }
-        public async Task<ContributionsDTO> UpdateContribution(string id, string content, string title, string type, string description)
+        public async Task<ContributionsDTO> UpdateContribution(string id, string content, string title, IFormFile type, string description)
         {
+            var filename = await WriteFile(type);
             var contributionEntity = await _contributionRepository.GetByIdAsync(id);  
-                await _contributionRepository.UpdateAsync(id, content, title, type, description);
+                await _contributionRepository.UpdateAsync(id, content, title, filename, description);
                 return _mapper.Map<ContributionsDTO>(contributionEntity);
 
         }
@@ -68,51 +76,31 @@ namespace BusinessLogicLayer.Services.ContributionService
         }
 
 
-     
-        //public async Task SubmitContribution(int id)
-        //{
-        //    var contribution = await _contributionRepository.GetByIdAsync(id);
-        //    if (contribution.Status == "Saved")
-        //    {
-        //        throw new Exception("Contribution cannot be submitted in current state.");
-        //    }
-        //    if (contribution.Image != null)
-        //    {
+        public async Task<string> WriteFile(IFormFile file)
+        {
+            string filename = "";
+            var filepath = Path.Combine(Directory.GetCurrentDirectory(), "ContributionFiles");
+            try
+            {
+                var extension = "." + file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
+                filename = file.FileName;
+                if (!Directory.Exists(filepath))
+                {
+                    Directory.CreateDirectory(filepath);
+                }
 
-        //        var temporaryImagePath = Path.Combine(_configuration["TemporaryImagesPath"], contribution.Image);
-        //        if (System.IO.File.Exists(temporaryImagePath))
-        //        {
+                var exactpath = Path.Combine(Directory.GetCurrentDirectory(), "ContributionFiles", filename);
+                using (var stream = new FileStream(exactpath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                
+            }
+            catch (Exception ex) { }
+            return filename;
+        }
 
-        //            var newImagePath = await UpdateImageStorageAsync(temporaryImagePath);
-        //            contribution.Image = newImagePath.Replace(_configuration["TemporaryImagesPath"], "");
-        //        }
-
-
-        //        contribution.Status = "Submitted";
-        //        contribution.SubmissionDate = DateTime.UtcNow;
-        //        await _contributionRepository.UpdateAsync(contribution);
-        //    }
-        //}
-
-            //public async Task CancelSubmission(int id)
-            //{
-            //    var contribution = await _contributionRepository.GetByIdAsync(id);
-            //    if (contribution == null)
-            //    {
-            //        throw new Exception("Contribution not found.");
-            //    }
-
-            //    if (contribution.Status != "Submitted")
-            //    {
-            //        throw new Exception("Contribution cannot be canceled in current state.");
-            //    }
-
-            //    contribution.Status = "Canceled";
-
-            //    await _contributionRepository.UpdateAsync(contribution);
-            //}
-            
-            public async Task<string> UpdateImageStorageAsync(string temporaryImagePath)
+        public async Task<string> UpdateImageStorageAsync(string temporaryImagePath)
             {
 
                 var imageBytes = await System.IO.File.ReadAllBytesAsync(temporaryImagePath);

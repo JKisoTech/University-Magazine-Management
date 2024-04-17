@@ -1,9 +1,11 @@
 ﻿using BusinessLogicLayer.DTOs;
 using BusinessLogicLayer.Services.ContributionService;
+using DataAccessLayer;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.ContributionRepo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Exchange.WebServices.Data;
 
 namespace COMP1640_BE.Controllers
 {
@@ -37,14 +39,21 @@ namespace COMP1640_BE.Controllers
         }
 
         [HttpPost("CreateContributor")]
-        public async Task<ActionResult<ContributionsDTO>> SaveContributor([FromBody] ContributionsDTO contributionsDTO)
+        public async Task<ActionResult<ContributionsDTO>> SaveContributor(string user_id,string content, string title, IFormFile type, string description)
         {
-            await _contributionServices.AddContributionAync(contributionsDTO);
+
+           
+            await _contributionServices.AddContributionAync(user_id,content, title, type, description);
+            if (user_id == null)
+            {
+                return BadRequest();
+            }
+            await _contributionServices.WriteFile(type);
             return StatusCode(201,"User Submit successfully");
         }
 
         [HttpPut("UpdateContributor")]
-        public async Task<ActionResult> UpdateContributor(string id, string content, string title, string type, string description)
+        public async Task<ActionResult> UpdateContributor(string id, string content, string title, IFormFile type, string description)
         {
             var existingContribution = await _contributionServices.GetContent(id);
             if (existingContribution == null)

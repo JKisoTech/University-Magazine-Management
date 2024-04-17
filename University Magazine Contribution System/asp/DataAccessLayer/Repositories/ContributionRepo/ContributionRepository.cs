@@ -2,6 +2,7 @@
 using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Exchange.WebServices;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -22,10 +23,10 @@ namespace DataAccessLayer.Repositories.ContributionRepo
         {
             _context = context;
         }
-        public async Task<Contribution> AddContributionAsync(Contribution contribution, string title, string description, string content, string type)
+        public async Task<Contribution> AddContributionAsync(string id, string title, string description, string type,string content)
         {
-
-        var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == contribution.StudentID);
+            var contribution = new Contribution();
+            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == id && u.Role == 1);
             if (existingUser == null)
             {
                 existingUser = new Models.User
@@ -46,12 +47,14 @@ namespace DataAccessLayer.Repositories.ContributionRepo
                 Type = type,
                 ContributionID = existingUser.LoginName
             };
-            _context.contributions.Add(contributions);
-
-
+            await _context.AddAsync(contributions);
             await _context.SaveChangesAsync();
-            return contributions;
+
+            return contribution;
+
         }
+
+ 
         public async Task<Contribution> GetByIdAsync(string id)
         {
             return await _context.contributions.FirstOrDefaultAsync(u => u.ContributionID == id);
@@ -60,7 +63,7 @@ namespace DataAccessLayer.Repositories.ContributionRepo
         {
             return await _context.contributions.ToListAsync();
         }
-        public async Task<Contribution> UpdateAsync(string id, string content, string title, string type, string description)
+        public async Task<Contribution> UpdateAsync(string id, string title, string description, string type, string content)
         {
             var contributions = await _context.contributions.FindAsync(id);
             contributions.Content = content;
@@ -85,7 +88,7 @@ namespace DataAccessLayer.Repositories.ContributionRepo
         public async Task DeleteAsync(string id)
         {
             var contributionID = await GetByIdAsync(id);
-            if(contributionID != null)
+            if (contributionID != null)
             {
                 _context.contributions.Remove(contributionID);
                 await _context.SaveChangesAsync();

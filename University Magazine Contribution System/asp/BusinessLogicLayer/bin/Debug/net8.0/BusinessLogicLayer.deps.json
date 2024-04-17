@@ -16,6 +16,7 @@
           "Microsoft.EntityFrameworkCore.Design": "8.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.3",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.3",
+          "Microsoft.Exchange.WebServices": "2.2.0",
           "Microsoft.Extensions.Configuration.Binder": "8.0.1",
           "Microsoft.Extensions.DependencyInjection": "8.0.0"
         },
@@ -483,6 +484,18 @@
       "Microsoft.EntityFrameworkCore.Tools/8.0.3": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Design": "8.0.3"
+        }
+      },
+      "Microsoft.Exchange.WebServices/2.2.0": {
+        "runtime": {
+          "lib/40/Microsoft.Exchange.WebServices.Auth.dll": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "15.0.913.0"
+          },
+          "lib/40/Microsoft.Exchange.WebServices.dll": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "15.0.913.15"
+          }
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/8.0.0": {
@@ -1026,6 +1039,7 @@
           "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.EntityFrameworkCore": "8.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.3",
+          "Microsoft.Exchange.WebServices": "2.2.0",
           "Microsoft.Extensions.Configuration.Binder": "8.0.1",
           "Microsoft.Extensions.DependencyInjection": "8.0.0"
         },
@@ -1208,6 +1222,13 @@
       "sha512": "sha512-jKczLbj13jY6TvYsXgAYqfhkIow6VdqumCv0m8EvNr3vU1+nJ6LKoG+6pPKnkVOHycXHGy5DEhH0GN0ldmx7Kw==",
       "path": "microsoft.entityframeworkcore.tools/8.0.3",
       "hashPath": "microsoft.entityframeworkcore.tools.8.0.3.nupkg.sha512"
+    },
+    "Microsoft.Exchange.WebServices/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NlkaTD0uWtg9VbiWq0VDWMBPzHFknH3tmstrxt0acrT09LBGqATTjRpsGOODz6tUdX7/dehBinxsf75U5Uw/+A==",
+      "path": "microsoft.exchange.webservices/2.2.0",
+      "hashPath": "microsoft.exchange.webservices.2.2.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/8.0.0": {
       "type": "package",

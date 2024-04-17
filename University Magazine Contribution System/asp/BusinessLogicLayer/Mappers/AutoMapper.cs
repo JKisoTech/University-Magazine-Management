@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer.DTOs;
+using DataAccessLayer;
 using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,14 @@ namespace BusinessLogicLayer.Mappers
         {
             CreateMap<User, UserDTO>()
                 .ReverseMap();
-            CreateMap<Contribution, ContributionsDTO>() 
-                .ReverseMap();
+                
+            CreateMap<Contribution, ContributionsDTO>() .ReverseMap();
             CreateMap<Student, StudentDTO>() 
                 .ReverseMap();
             CreateMap<Faculty, FacultyDTO>()
                 .ReverseMap();
-
+            CreateMap<Comment, CommentDTO>()
+                .ReverseMap();
 
         }
     }

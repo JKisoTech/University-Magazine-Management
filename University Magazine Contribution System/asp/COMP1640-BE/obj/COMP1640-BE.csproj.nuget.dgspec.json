@@ -86,6 +86,10 @@
               "target": "Package",
               "version": "[8.0.3, )"
             },
+            "Microsoft.Exchange.WebServices": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.Extensions.Configuration.Binder": {
               "target": "Package",
               "version": "[8.0.1, )"
@@ -196,6 +200,10 @@
               "target": "Package",
               "version": "[8.0.3, )"
             },
+            "Microsoft.Exchange.WebServices": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.Extensions.Configuration.Binder": {
               "target": "Package",
               "version": "[8.0.1, )"
@@ -301,6 +309,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.3, )"
+            },
+            "Microsoft.Exchange.WebServices": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.Extensions.Configuration.Binder": {
               "target": "Package",

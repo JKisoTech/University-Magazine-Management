@@ -6,9 +6,9 @@ namespace DataAccessLayer.Models
     public class Comment
     {
         [Key]
-        public int CoordinatorID { get; set; }
+        public string CoordinatorID { get; set; }
         [ForeignKey("Contribution")]
-        public int ContributionID { get; set; }
+        public string ContributionID { get; set; }
         public string Comments { get; set; }
         public DateTime CommentDate { get; set; }
     }
