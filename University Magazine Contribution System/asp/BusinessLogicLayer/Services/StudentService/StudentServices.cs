@@ -39,10 +39,9 @@ namespace BusinessLogicLayer.Services.StudentService
             return _mapper.Map<List<StudentDTO>>(studentEntity);
         }
 
-        public async Task<StudentDTO> GetStudentByIdAsync(string _loginName)
+        public Task<StudentDTO> GetStudentByIdAsync(string _loginName)
         {
-            var studentEntity = await _studentRepository.GetbyIDAsync(_loginName) ;
-            return _mapper.Map<StudentDTO>(studentEntity);
+            throw new NotImplementedException();
         }
 
         public Task UpdateStudentAsync(StudentDTO studentDTO)

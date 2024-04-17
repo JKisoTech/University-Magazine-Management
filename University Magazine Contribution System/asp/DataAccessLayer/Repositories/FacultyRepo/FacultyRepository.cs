@@ -44,16 +44,6 @@ namespace DataAccessLayer.Repositories.FacultyRepo
             }
         }
 
-
-        public async Task<IEnumerable<Contribution>> GetContributionsByFacultyId(string facultyId)
-        {
-            var contributions = await _context.contributions
-                .Include(c => c.user)
-                .Where(c => c.user.user_Faculties.Any(uf => uf.faculty.FacultyID == facultyId))
-                .ToListAsync();
-
-            return contributions;
-        }
         public async Task UpdateFacultyAsync(Faculty faculty)
         {
             _context.faculty.Update(faculty);

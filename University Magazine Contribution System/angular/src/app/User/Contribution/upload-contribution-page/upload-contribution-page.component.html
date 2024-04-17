@@ -1,0 +1,56 @@
+<div class="card">
+    <div class="card-header">
+        <div class="col col-md-4">
+            <h5 class="card-title">
+                {{ 'Upload New Contribution'}}
+            </h5>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <form [formGroup]="formGroup" >
+            <div class="mt-2">
+                <label>Contribution ID</label><span> * </span>
+                <input type="text" class="form-control" formControlName="contributionID" />
+            </div>
+        
+            <div class="mt-2">
+                <label>Student ID</label><span> * </span>
+                <input type="text" class="form-control" formControlName="studentID" />
+              </div>
+
+              <div class="mt-2">
+                <label>Content</label><span>*</span>
+                <input type="file" class="form-control" formControlName="content" (change)="onFileChange($event)" />
+            </div>
+              
+              
+        
+            <div class="mt-2">
+                <label>Status</label><span> * </span>
+                <mat-checkbox formControlName="status" [checked]="formGroup.controls['status'].value">Status</mat-checkbox>
+            </div>
+
+            <div class="mt-2">
+                <label>Title</label><span>*</span>
+                <input type="text" class="form-control" formControlName="title"/>
+
+            </div>
+
+            <div class="mt-2">
+                <label> Description </label> <span>*</span>
+                <input type="text" class="form-control" formControlName="description"/>
+
+            </div>
+
+            <div class="mt-2">
+                <label>Type</label><span>*</span>
+                <input type="text" class="form-control" formControlName="type"/>
+            </div>  
+        </form>
+        <div class="mt-4 text-center">
+            <button mat-raised-button color="primary" (click)="Save()">Save</button>
+        </div>
+    </div>
+
+</div>

@@ -71,7 +71,7 @@ namespace COMP1640_BE.Controllers
         [HttpGet("GetContribution")]
         public async Task<ActionResult<FacultyDTO>> get_contributors(string id)
         {
-            var user = await _facultyServices.GetContributionByFacultyID(id);
+            var user = await _facultyServices.GetFacultyByIdAsync(id);
 
             if (user == null)
             {
@@ -84,7 +84,7 @@ namespace COMP1640_BE.Controllers
         [HttpGet("GetContribution/{id}")]
         public async Task<ActionResult<FacultyDTO>> get_contributor(string id)
         {
-            var user = await _facultyServices.GetContributionByFacultyID(id);
+            var user = await _facultyServices.GetFacultyByIdAsync(id);
 
             if (user == null)
             {

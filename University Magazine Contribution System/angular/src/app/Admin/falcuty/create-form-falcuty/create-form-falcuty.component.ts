@@ -30,9 +30,5 @@ export class CreateFormFalcutyComponent implements OnInit {
     })
   }
 
-  Save(){
-    this.falcutyService.CreateFalcuty(this.form.value).subscribe(() => {
-      this.dialogRef.close();
-    })
-  }
+  
 }

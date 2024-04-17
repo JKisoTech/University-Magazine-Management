@@ -25,11 +25,7 @@ namespace DataAccessLayer.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Contribution>()
-                .HasOne(c => c.user)
-                .WithMany(u => u.contribution)
-                .HasForeignKey(c => c.ContributionID)
-                .HasPrincipalKey(u => u.LoginName);
+            modelBuilder.Entity<Contribution>().ToTable("Contributions");
             modelBuilder.Entity<Student>().ToTable("Students");
 
             modelBuilder.Entity<Comment>().ToTable("Comments");

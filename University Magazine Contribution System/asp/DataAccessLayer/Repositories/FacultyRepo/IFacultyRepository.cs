@@ -13,7 +13,6 @@ namespace DataAccessLayer.Repositories.FacultyRepo
         public Task<List<Faculty>> GetFacultyAsync();
         public Task AddFacultyAsync(Faculty faculty);
         public Task DeleteFacultyAsync(string id);
-        public Task<IEnumerable<Contribution>> GetContributionsByFacultyId(string facultyId);
         public Task UpdateFacultyAsync(Faculty faculty);
     }
 }

@@ -22,7 +22,7 @@ export class UserManagementComponent implements OnInit {
   isEditOpen = false;
   isModalOpen = false;
   dataSource: MatTableDataSource<UserDto>;
-  displayColumns: string [] = ['action' , 'loginName', 'fullName', 'status', 'password','role','falcuty'];
+  displayColumns: string [] = ['action' , 'loginName', 'fullName', 'status', 'password','role','facultyId'];
 
 
   constructor(
@@ -47,22 +47,6 @@ export class UserManagementComponent implements OnInit {
     })
   }
 
-  
-  
-
-  edituser(id :number){
-    this.userService.GetUserId(id).subscribe((response) => {
-      this.currentId = id;
-      const dialogRef = this.dialog.open(EditFormUserComponent, {
-        width: '400px',
-        data: { user: response, currentId: this.currentId },
-      });
-
-      dialogRef.afterClosed().subscribe(() => {
-        this.ngOnInit();
-      })
-    })
-  }
 
   
 

@@ -1,4 +1,4 @@
 export interface FalcutyDTO {
-    name?: string;
-    description?: string;
+    facultyId?: string;
+    facultyName?: string;
 }

@@ -1,0 +1,76 @@
+@import '../../../styles.scss';
+
+
+.user-infor-page{
+    margin-top: 50px;
+    .my-line {
+        /* Adjust these properties for customization */
+        border: 1px solid $text-gray; /* Change color and thickness */
+        margin-top: 30px; /* Add some margin for spacing */
+    }
+
+    .sidebar-user-infor{
+        .user-infor{
+            img{
+                height: 90px;
+                border-radius: 100%;
+            }
+        }
+        .user-option{
+            ul{
+                border-bottom: none !important;
+                li{
+                    a{
+                        margin-top: 10px;
+                        i{
+                            padding-right: 10px;
+                            font-weight: 600;
+                        }
+                    }
+                    .active{
+                        background: none ;
+                        border: none;
+                        font-weight: 600;
+                    }
+
+                }
+            }
+        }
+    }
+
+    
+    .user-information{
+        border-radius: 10px;
+        border: 1px solid #000;
+        background: $text-white;
+        padding: 32px 42px;
+
+        .user-infor{
+            h2{
+                a{
+                    font-size: 16px;
+                    color: $text-gray !important;
+                    margin-left: 10px;
+                    @include text-hovering;
+
+                }
+            }
+            .user-details{
+                p{
+                    margin: 20px;
+                }
+                span{
+                    font-size: 20px;
+                    color: var(--Text-gray, #909090);
+                    // padding-right: 70px;
+
+                    &:nth-child(2){
+                        color: $text-black;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+
+}

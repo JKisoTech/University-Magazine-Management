@@ -11,14 +11,11 @@ import { FalcutyDTO } from './model';
 export class FalcutyService {
     constructor(private http: HttpClient){}
 
-    private baseUrl = 'http://localhost:3000/falcuty';
+    private baseUrl = 'https://localhost:7101/api/Faculty';
 
-    CreateFalcuty(data: FalcutyDTO): Observable<any> {
-        return this.http.post(this.baseUrl, data);
-    }
-
+    
     GetAllFalcuty(): Observable<any> {
-        return this.http.get(this.baseUrl);
+        return this.http.get(`${this.baseUrl}/GetFaculty`);
     }
 
     DeleteFalcuty(id: number ) : Observable<any> {

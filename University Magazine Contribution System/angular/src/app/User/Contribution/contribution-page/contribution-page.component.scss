@@ -1,0 +1,90 @@
+@import '../../../../styles.scss';
+
+.document-content{
+    margin-top: 20px;
+}
+
+
+.sidebar-infor{
+    background: $text-white;
+    border-radius: 20px;
+    margin-left: 20px;
+    padding: 20px 20px;
+
+    .sidebar-doc-infor{
+        p{
+            margin: 10px 0;
+        }
+        h4{
+            margin-bottom: 50px;
+        }
+    }
+
+    .my-line {
+        /* Adjust these properties for customization */
+        border: 1px solid $text-gray; /* Change color and thickness */
+        margin-top: 30px; /* Add some margin for spacing */
+    }
+
+
+    .sidebar-uploader{
+        p{
+            margin-bottom: 10px;
+        }
+        img{
+            border-radius: 10px;
+            height: 80px;
+        }
+          .sidebar-uploader-infor{
+            p{
+                color: $text-gray;
+            }
+          }
+          
+    }
+
+
+    .sidebar-doc-comment{
+        .sidebar-doc-comment-input{
+            display: none;
+        }
+        h5{
+            color: $text-gray;
+        }
+        .sidebar-doc-comment-details{
+        }
+    }
+
+}
+
+
+.document{
+    .document-information{
+        margin: 20px 0;
+        h2{
+            // margin: 20px 0 10px 0px;
+            margin-bottom: 10px;
+            color: $text-black;
+        }
+        p{
+            color: $text-gray;
+            // margin-bottom: 10px;
+            a{
+                color: $text-gray !important;
+                @include text-hovering;
+            }
+            &:last-child{
+                margin-top: 20px;
+            }
+        }
+
+    }
+    
+
+    .document-file{
+        iframe{
+            height: 1010px;
+            
+        }
+    }
+} 

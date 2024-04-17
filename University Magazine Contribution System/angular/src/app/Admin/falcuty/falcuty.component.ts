@@ -20,7 +20,7 @@ export class FalcutyComponent implements OnInit {
   form: FormGroup;
   currentId: number;
   dataSource: MatTableDataSource<FalcutyDTO>;
-  displayColumns: string[] = ['action', 'name', 'description'];
+  displayColumns: string[] = [ 'facultyID', 'facultyName'];
 
   constructor(
     private fb: FormBuilder,
@@ -31,34 +31,6 @@ export class FalcutyComponent implements OnInit {
   ngOnInit(): void {
     this.falcutyService.GetAllFalcuty().subscribe((result) => {
       this.dataSource = new MatTableDataSource(result);
-    })
-  }
-
-  CreateFalcuty(): void {
-    const dialogRef = this.dialog.open(CreateFormFalcutyComponent, {
-      width: '400px'
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      this.ngOnInit();
-    })
-  }
-
-  EditFalcuty(id: number) {
-    this.falcutyService.GetFalcutyId(id).subscribe((response) => {
-      this.currentId = id;
-      const dialogRef = this.dialog.open(EditFormFalcutyComponent, {
-        width: '400px',
-        data: { falcuty: response, currenId: this.currentId},
-      });
-
-      dialogRef.afterClosed().subscribe(() => {
-        this.ngOnInit();
-      })
-    })
-  }
-  DeleteFalcuty(id: number) {
-    this.falcutyService.DeleteFalcuty(id).subscribe(() => {
-      this.ngOnInit();
     })
   }
 

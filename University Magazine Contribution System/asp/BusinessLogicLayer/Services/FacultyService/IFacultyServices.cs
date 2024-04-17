@@ -1,5 +1,4 @@
 ﻿using BusinessLogicLayer.DTOs;
-using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +13,6 @@ namespace BusinessLogicLayer.Services.FacultyService
         public Task<List<FacultyDTO>> GetAllFacultyAsync();
         public Task AddFacultyAsync(FacultyDTO facultyDTO);
         public Task UpdateFacultyAsync(FacultyDTO facultyDTO);
-
-        public Task<IEnumerable<Contribution>> GetContributionByFacultyID(string facultyID);
         public Task DeleteAsync(string id);
     }
 }
