@@ -11,6 +11,9 @@ import { ContributionManagementComponent } from './Admin/Contribution/contributi
 import { AuthenticationGuard } from './authentication.guard';
 import { UserProfileComponent } from './User/user-profile/user-profile.component';
 import { ViewAllContributionComponent } from './User/Contribution/view-all-contribution/view-all-contribution.component';
+import { UpdateContributionPageComponent } from './User/Contribution/update-contribution-page/update-contribution-page.component';
+import { UploadContributionPageComponent } from './User/Contribution/upload-contribution-page/upload-contribution-page.component';
+import { StudentManagementComponent } from './Admin/Student/student-management/student-management.component';
 
 
 const routes: Routes = [
@@ -18,10 +21,12 @@ const routes: Routes = [
   {path: 'usermanagement', component: UserManagementComponent},
   { path : 'falcuty', component: FalcutyComponent},
   { path : 'userlogin', component: UserLoginComponent},
-  { path: 'contribution', component: ContributionPageComponent, canActivate: [AuthenticationGuard]},
+  { path: 'contribution/:id', component: ContributionPageComponent, canActivate: [AuthenticationGuard]},
   { path: 'contribution-management', component: ContributionManagementComponent},
   { path: 'user-profile', component: UserProfileComponent},
-  { path: 'view-all-contribution', component: ViewAllContributionComponent}
+  { path: 'view-all-contribution', component: ViewAllContributionComponent},
+  { path : 'upload-contribution', component: UploadContributionPageComponent},
+  { path: 'admin/studentmanagement', component : StudentManagementComponent}
 ];
 
 @NgModule({

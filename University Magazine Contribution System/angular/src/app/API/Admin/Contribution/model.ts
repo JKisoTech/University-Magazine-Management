@@ -1,9 +1,9 @@
 export interface ContributionDto {
-    contributionID?: string;
-    studentID?: string;
-    content?: string;
-    status?: boolean;
-    title?: string;
-    description?: string;
-    type?: string;
+    contributionID: string;
+    studentID: string;
+    content: string;
+    status: number;
+    title: string;
+    description: string;
+    type: string;
 }

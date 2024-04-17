@@ -45,7 +45,7 @@ login(): void {
       this.loginSuccess.emit();
       // Handle successful login (store token, navigate, etc.)
       console.log('Login successful');
-      this.router.navigate(['/contribution']); // Redirect to dashboard or desired route
+      this.router.navigate(['/']); // Redirect to dashboard or desired route
     },
     (error) => {
       // Handle login error (display error message, etc.)

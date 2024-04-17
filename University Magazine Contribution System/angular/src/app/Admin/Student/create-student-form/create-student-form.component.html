@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-header">
+        <div class="col col-md-4">
+            <h5 class="card-title">
+                {{ 'Add Student Information'}}
+            </h5>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <form [formGroup]="form" >
+            <div class="mt-2">
+                <label>Student Id</label><span> * </span>
+                <input type="text" class="form-control" formControlName="studentID" />
+            </div>
+        
+            <div class="mt-2">
+                <label>Student Name</label><span> * </span>
+                <input type="text" class="form-control" formControlName="studentName" />
+            </div>
+        
+            <div class="mt-2">
+                <label>Date Of Birth</label><span> * </span>
+                <input type="text" class="form-control" formControlName="dateOfBirth" />
+            </div>
+
+            <div class="mt-2">
+                <label>Email</label><span>*</span>
+                <input type="text" class="form-control" formControlName="email"/>
+
+            </div>
+
+            <div class="mt-2">
+                <label> Phone Number </label> <span>*</span>
+                <input type="text" class="form-control" formControlName="phones"/>
+
+            </div>
+
+            <div class="mt-2">
+                <label>Faculty Id</label><span>*</span>
+                <input type="text" class="form-control" formControlName="facultyID"/>
+            </div>
+
+            
+
+        </form>
+        <div class="mt-4 text-center">
+            <button mat-raised-button color="primary" (click)="Save()">Save</button>
+        </div>
+    </div>
+
+</div>

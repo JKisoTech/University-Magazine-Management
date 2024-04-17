@@ -33,6 +33,9 @@ import { UserProfileComponent } from './User/user-profile/user-profile.component
 import { UploadContributionPageComponent } from './User/Contribution/upload-contribution-page/upload-contribution-page.component';
 import { ViewAllContributionComponent } from './User/Contribution/view-all-contribution/view-all-contribution.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { UpdateContributionPageComponent } from './User/Contribution/update-contribution-page/update-contribution-page.component';
+import { StudentManagementComponent } from './Admin/Student/student-management/student-management.component';
+import { CreateStudentFormComponent } from './Admin/Student/create-student-form/create-student-form.component';
 
 
 @NgModule({
@@ -54,7 +57,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ContributionManagementComponent,
     UserProfileComponent,
     UploadContributionPageComponent,
-    ViewAllContributionComponent
+    ViewAllContributionComponent,
+    UpdateContributionPageComponent,
+    StudentManagementComponent,
+    CreateStudentFormComponent
 
   ],
   imports: [

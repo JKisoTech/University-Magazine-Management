@@ -15,7 +15,7 @@ import { UserDto } from '../../../API/Admin/User/model';
 export class CreateFormUserComponent implements OnInit {
 
 
-  form: FormGroup
+  form: FormGroup;
   dataSource: MatTableDataSource<UserDto>;
 
   constructor(

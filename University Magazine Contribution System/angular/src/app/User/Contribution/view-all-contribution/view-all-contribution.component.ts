@@ -4,6 +4,8 @@ import { ContributionDto } from '../../../API/Admin/Contribution/model';
 import { ContributionService } from '../../../API/Admin/Contribution/contribution.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UploadContributionPageComponent } from '../upload-contribution-page/upload-contribution-page.component';
+import { Router } from '@angular/router';
+import { UpdateContributionPageComponent } from '../update-contribution-page/update-contribution-page.component';
 
 
 
@@ -20,11 +22,12 @@ export class ViewAllContributionComponent implements OnInit{
 
   getData: any;
   dataSource: MatTableDataSource<ContributionDto>;
-  displayColumns: string [] = ['contributionID','studentID', 'title', 'type'];
+  displayColumns: string [] = ['action','contributionID','studentID', 'title', 'type'];
 
   constructor(
     private contributionService: ContributionService,
     private dialog: MatDialog,
+    private router : Router
   ){}
 
   ngOnInit(): void {
@@ -34,12 +37,30 @@ export class ViewAllContributionComponent implements OnInit{
   }
 
   OpenUploadContribution(): void {
-    const dialogRef = this.dialog.open(UploadContributionPageComponent, {
-     width: '400px'
-   });
-   dialogRef.afterClosed().subscribe(() => {
-     this.ngOnInit();
-   })
+    this.router.navigate(['/upload-contribution']);
  }
+ viewContribution(id: string) {
+  this.contributionService.GetContributorId(id).subscribe(contribution => {
+    this.router.navigate(['/contribution', contribution.contributionID]);
+  });
+}
+editContribution(id: string) {
+  this.contributionService.GetContributorId(id).subscribe(
+    (contribution) => {
+      // Navigate to the update page with the contribution details
+      const dialogRef = this.dialog.open(UpdateContributionPageComponent, {
+        width: '400px',
+        data: { contributionId: id, contributionData: contribution }
+        
+      });
+      dialogRef.afterClosed().subscribe(() => {
+        this.ngOnInit();
+      })
+    },
+    (error) => {
+      // Handle error
+    }
+  );
+}
 
 }

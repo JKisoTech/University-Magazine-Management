@@ -15,6 +15,20 @@
     <div class="card-body">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let row">
+
+                  <button mat-icon-button [matMenuTriggerFor]="actionMenu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #actionMenu="matMenu">
+                    <button mat-menu-item (click)="editContribution(row.contributionID)">Update Contribution</button>
+                  </mat-menu>
+                  
+                </td>
+              </ng-container>
+
             <ng-container matColumnDef="contributionID">
                 <th mat-header-cell *matHeaderCellDef>{{'Contribution ID'}}</th>
                 <td mat-cell *matCellDef="let row">{{row.contributionID}}</td>
@@ -32,7 +46,9 @@
 
             <ng-container matColumnDef="type">
                 <th mat-header-cell *matHeaderCellDef>{{'Type'}}</th>
-                <td mat-cell *matCellDef="let row">{{row.type}}</td>
+                <td mat-cell *matCellDef="let row" (click)="viewContribution(row.contributionID)">
+                    <a href="/contribution/:id">{{row.type}}</a>
+                  </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>

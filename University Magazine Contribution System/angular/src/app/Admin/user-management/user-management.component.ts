@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserDto } from '../../API/Admin/User/model';
 import { UserService } from '../../API/Admin/User/user.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 import { CreateFormUserComponent } from './create-form-user/create-form-user.component';
 import { EditFormUserComponent } from './edit-form-user/edit-form-user.component';

@@ -15,7 +15,8 @@ export class StudentService {
     }
     
     CreateStudent(data: StudentDTO): Observable<any> {
-        return this.http.post(`${this.baseUrl}/CreateStudent`, data);
+        const url = `${this.baseUrl}/CreateStudent`;
+        return this.http.post(url, data, { responseType: 'text' });
     }
     
 }
