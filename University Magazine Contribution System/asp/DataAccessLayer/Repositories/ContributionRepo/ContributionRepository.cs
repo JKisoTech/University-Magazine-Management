@@ -45,7 +45,7 @@ namespace DataAccessLayer.Repositories.ContributionRepo
                 Description = description,
                 Content = content,
                 Type = type,
-                ContributionID = existingUser.LoginName
+                ContributionID = existingUser.LoginName + "CTB"
             };
             await _context.AddAsync(contributions);
             await _context.SaveChangesAsync();
@@ -70,6 +70,7 @@ namespace DataAccessLayer.Repositories.ContributionRepo
             contributions.Title = title;
             contributions.Type = type;
             contributions.Description = description;
+            contributions.LastUpdateDate = DateTime.UtcNow;
             _context.contributions.Update(contributions);
             await _context.SaveChangesAsync();
             return contributions;

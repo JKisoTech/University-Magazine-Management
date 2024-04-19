@@ -15,9 +15,8 @@ namespace BusinessLogicLayer.Services.ContributionService
         public Task<ContributionsDTO> GetContent(string id);
         public Task SetStatus(string id,int status);
         public Task<ContributionsDTO> UpdateContribution(string id, string content, string title, IFormFile type, string description);
-        public Task DeactiveContribution(ContributionsDTO contributionsDTO);
-        public Task<string> UpdateImageStorageAsync(string temporaryImagePath);
-        public Task<string> SaveImageAsync(IFormFile imageFile);
+        public Task DeactiveContribution(string id);
+      
 
         public Task<string> WriteFile(IFormFile file);
     }

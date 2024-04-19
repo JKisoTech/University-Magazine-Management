@@ -29,11 +29,11 @@ namespace COMP1640_BE
 
             builder.Services.AddScoped<IUserServices, UserServices>();
             builder.Services.AddScoped<IFacultyServices, FacultyServices>();
-            builder.Services.AddScoped<IContributionServices,ContributionServices>();
+            builder.Services.AddScoped<IContributionServices, ContributionServices>();
             builder.Services.AddScoped<IStudentServices, StudentServices>();
-            
-            
-            
+
+
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -47,6 +47,18 @@ namespace COMP1640_BE
                 options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
 
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowLocalhost4200",
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost:4200")
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                    });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -56,6 +68,8 @@ namespace COMP1640_BE
                 app.UseSwaggerUI();
             }
 
+
+            app.UseCors("AllowLocalhost4200");
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
@@ -67,3 +81,4 @@ namespace COMP1640_BE
         }
     }
 }
+

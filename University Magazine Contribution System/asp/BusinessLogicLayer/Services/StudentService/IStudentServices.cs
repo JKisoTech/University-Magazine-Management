@@ -9,12 +9,9 @@ namespace BusinessLogicLayer.Services.StudentService
 {
     public interface IStudentServices
     {
-        public Task<StudentDTO> GetStudentByIdAsync(string _loginName);
+        public Task<StudentDTO> GetStudentByIDAsync(string id);
 
         public Task<List<StudentDTO>> GetAllStudentAsync();
 
-        public Task AddStudentAsync(StudentDTO studentDTO);
-        public Task UpdateStudentAsync(StudentDTO studentDTO);
-        public Task DeactiveStudent(StudentDTO studentDTO);
     }
 }

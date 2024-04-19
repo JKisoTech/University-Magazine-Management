@@ -3,6 +3,7 @@ using BusinessLogicLayer.Services.ContributionService;
 using DataAccessLayer;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.ContributionRepo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Exchange.WebServices.Data;
@@ -31,12 +32,13 @@ namespace COMP1640_BE.Controllers
         public async Task<ActionResult<IEnumerable<ContributionsDTO>>> GetContributionContent(string Id)
         {
             var contributors = await _contributionServices.GetContent(Id);
-            if (contributors == null)
+            if (Id != contributors.ContributionID)
             {
                 return NotFound("There is no Contribution with Id: " + Id);
             }
             return Ok(contributors);
         }
+
 
         [HttpPost("CreateContributor")]
         public async Task<ActionResult<ContributionsDTO>> SaveContributor(string user_id,string content, string title, IFormFile type, string description)
