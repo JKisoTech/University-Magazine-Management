@@ -47,9 +47,9 @@ export class ContributionService {
 
         
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append('type', file);
         
-        return this.http.put(url, formData);
+        return this.http.put(url, formData , { responseType: 'text' });
     }
       
 }

@@ -18,5 +18,10 @@ export class StudentService {
         const url = `${this.baseUrl}/CreateStudent`;
         return this.http.post(url, data, { responseType: 'text' });
     }
+
+    GetStudentById(id: string): Observable<any> {
+        const url = `${this.baseUrl}/GetStudentByID?id=${id}`;
+        return this.http.get(url);
+    }
     
 }
