@@ -35,7 +35,7 @@ namespace DataAccessLayer.Repositories.UsersRepo
 
         public async Task AddUserAsync(Models.User _user, string facultyID)
         {
-
+            _context.Users.Add(_user);
             if (_user.Role == 1 || _user.Role == 2)
             {
                 var userFacultyList = facultyID.Select(facultyId => new User_Faculty
@@ -43,6 +43,7 @@ namespace DataAccessLayer.Repositories.UsersRepo
                     LoginName = _user.LoginName,
                     FacultyId = facultyId.ToString()
                 });
+
                 if (_user.Role == 3)
                 {
                     var newUser = new Models.User
@@ -50,7 +51,7 @@ namespace DataAccessLayer.Repositories.UsersRepo
                         LoginName = _user.LoginName,
                         FacultyID = null,
                     };
-                    _context.Users.Add(newUser);
+                    await _context.Users.AddAsync(newUser);
                     _context.user_Faculties.AddRange(userFacultyList);
                 }
             }
