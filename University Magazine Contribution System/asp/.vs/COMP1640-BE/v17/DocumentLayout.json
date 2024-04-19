@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9E763A12-9D36-4C18-B99A-569115C276CB}|BusinessLogicLayer\\BusinessLogicLayer.csproj|o:\\github local\\comp1640\\university magazine contribution system\\asp\\businesslogiclayer\\services\\contributionservice\\contributionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E763A12-9D36-4C18-B99A-569115C276CB}|BusinessLogicLayer\\BusinessLogicLayer.csproj|solutionrelative:businesslogiclayer\\services\\contributionservice\\contributionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F40E18B2-E1C8-4B87-B7DC-E04D52EDBD47}|DataAccessLayer\\DataAccessLayer.csproj|o:\\github local\\comp1640\\university magazine contribution system\\asp\\dataaccesslayer\\repositories\\userrepo\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F40E18B2-E1C8-4B87-B7DC-E04D52EDBD47}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\repositories\\userrepo\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1EFD577-D82D-466A-B5F4-CBE37D25147A}|COMP1640-BE\\COMP1640-BE.csproj|o:\\github local\\comp1640\\university magazine contribution system\\asp\\comp1640-be\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1EFD577-D82D-466A-B5F4-CBE37D25147A}|COMP1640-BE\\COMP1640-BE.csproj|solutionrelative:comp1640-be\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1EFD577-D82D-466A-B5F4-CBE37D25147A}|COMP1640-BE\\COMP1640-BE.csproj|o:\\github local\\comp1640\\university magazine contribution system\\asp\\comp1640-be\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1EFD577-D82D-466A-B5F4-CBE37D25147A}|COMP1640-BE\\COMP1640-BE.csproj|solutionrelative:comp1640-be\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E763A12-9D36-4C18-B99A-569115C276CB}|BusinessLogicLayer\\BusinessLogicLayer.csproj|o:\\github local\\comp1640\\university magazine contribution system\\asp\\businesslogiclayer\\services\\usersservice\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E763A12-9D36-4C18-B99A-569115C276CB}|BusinessLogicLayer\\BusinessLogicLayer.csproj|solutionrelative:businesslogiclayer\\services\\usersservice\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E763A12-9D36-4C18-B99A-569115C276CB}|BusinessLogicLayer\\BusinessLogicLayer.csproj|o:\\github local\\comp1640\\university magazine contribution system\\asp\\businesslogiclayer\\services\\contributionservice\\contributionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E763A12-9D36-4C18-B99A-569115C276CB}|BusinessLogicLayer\\BusinessLogicLayer.csproj|solutionrelative:businesslogiclayer\\services\\contributionservice\\contributionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F40E18B2-E1C8-4B87-B7DC-E04D52EDBD47}|DataAccessLayer\\DataAccessLayer.csproj|o:\\github local\\comp1640\\university magazine contribution system\\asp\\dataaccesslayer\\models\\user_faculty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,14 +35,6 @@
       "RelativeMoniker": "D:0:0:{9E763A12-9D36-4C18-B99A-569115C276CB}|BusinessLogicLayer\\BusinessLogicLayer.csproj|solutionrelative:businesslogiclayer\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E763A12-9D36-4C18-B99A-569115C276CB}|BusinessLogicLayer\\BusinessLogicLayer.csproj|o:\\github local\\comp1640\\university magazine contribution system\\asp\\businesslogiclayer\\services\\usersservice\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E763A12-9D36-4C18-B99A-569115C276CB}|BusinessLogicLayer\\BusinessLogicLayer.csproj|solutionrelative:businesslogiclayer\\services\\usersservice\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1EFD577-D82D-466A-B5F4-CBE37D25147A}|COMP1640-BE\\COMP1640-BE.csproj|o:\\github local\\comp1640\\university magazine contribution system\\asp\\comp1640-be\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1EFD577-D82D-466A-B5F4-CBE37D25147A}|COMP1640-BE\\COMP1640-BE.csproj|solutionrelative:comp1640-be\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9E763A12-9D36-4C18-B99A-569115C276CB}|BusinessLogicLayer\\BusinessLogicLayer.csproj|o:\\github local\\comp1640\\university magazine contribution system\\asp\\businesslogiclayer\\services\\studentservice\\istudentservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E763A12-9D36-4C18-B99A-569115C276CB}|BusinessLogicLayer\\BusinessLogicLayer.csproj|solutionrelative:businesslogiclayer\\services\\studentservice\\istudentservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -41,10 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F40E18B2-E1C8-4B87-B7DC-E04D52EDBD47}|DataAccessLayer\\DataAccessLayer.csproj|o:\\github local\\comp1640\\university magazine contribution system\\asp\\dataaccesslayer\\repositories\\studentrepo\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F40E18B2-E1C8-4B87-B7DC-E04D52EDBD47}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\repositories\\studentrepo\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1EFD577-D82D-466A-B5F4-CBE37D25147A}|COMP1640-BE\\COMP1640-BE.csproj|o:\\github local\\comp1640\\university magazine contribution system\\asp\\comp1640-be\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1EFD577-D82D-466A-B5F4-CBE37D25147A}|COMP1640-BE\\COMP1640-BE.csproj|solutionrelative:comp1640-be\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C1EFD577-D82D-466A-B5F4-CBE37D25147A}|COMP1640-BE\\COMP1640-BE.csproj|o:\\github local\\comp1640\\university magazine contribution system\\asp\\comp1640-be\\controllers\\contributioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -146,17 +146,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 191,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\DataAccessLayer\\Repositories\\UserRepo\\UserRepository.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Repositories\\UserRepo\\UserRepository.cs",
               "ToolTip": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\DataAccessLayer\\Repositories\\UserRepo\\UserRepository.cs",
               "RelativeToolTip": "DataAccessLayer\\Repositories\\UserRepo\\UserRepository.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAiwCMAAAABAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAA2wC0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-02T08:14:23.488Z",
               "IsPinned": true,
@@ -164,13 +164,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "ContributionServices.cs",
               "DocumentMoniker": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\BusinessLogicLayer\\Services\\ContributionService\\ContributionServices.cs",
               "RelativeDocumentMoniker": "BusinessLogicLayer\\Services\\ContributionService\\ContributionServices.cs",
               "ToolTip": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\BusinessLogicLayer\\Services\\ContributionService\\ContributionServices.cs",
               "RelativeToolTip": "BusinessLogicLayer\\Services\\ContributionService\\ContributionServices.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAQwDQAAAAIAAAA",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAAADQAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-10T04:25:47.761Z",
               "IsPinned": true,
@@ -178,7 +178,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "IStudentServices.cs",
               "DocumentMoniker": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\BusinessLogicLayer\\Services\\StudentService\\IStudentServices.cs",
               "RelativeDocumentMoniker": "BusinessLogicLayer\\Services\\StudentService\\IStudentServices.cs",
@@ -190,7 +190,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "StudentServices.cs",
               "DocumentMoniker": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\BusinessLogicLayer\\Services\\StudentService\\StudentServices.cs",
               "RelativeDocumentMoniker": "BusinessLogicLayer\\Services\\StudentService\\StudentServices.cs",
@@ -202,20 +202,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "UserServices.cs",
               "DocumentMoniker": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\BusinessLogicLayer\\Services\\UsersService\\UserServices.cs",
               "RelativeDocumentMoniker": "BusinessLogicLayer\\Services\\UsersService\\UserServices.cs",
               "ToolTip": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\BusinessLogicLayer\\Services\\UsersService\\UserServices.cs",
               "RelativeToolTip": "BusinessLogicLayer\\Services\\UsersService\\UserServices.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAowDAAAAAuAAAA",
+              "ViewState": "AQIAABwAAAAAAAAAAAAgwDAAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-19T05:31:45.51Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "UserDTO.cs",
               "DocumentMoniker": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\BusinessLogicLayer\\DTOs\\UserDTO.cs",
               "RelativeDocumentMoniker": "BusinessLogicLayer\\DTOs\\UserDTO.cs",
@@ -223,8 +223,7 @@
               "RelativeToolTip": "BusinessLogicLayer\\DTOs\\UserDTO.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAQwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T17:25:17.136Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-18T17:25:17.136Z"
             },
             {
               "$type": "Document",
@@ -252,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "User.cs",
               "DocumentMoniker": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\DataAccessLayer\\Models\\User.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Models\\User.cs",
@@ -260,8 +259,7 @@
               "RelativeToolTip": "DataAccessLayer\\Models\\User.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T08:53:59.714Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T08:53:59.714Z"
             },
             {
               "$type": "Document",
@@ -277,28 +275,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "StudentController.cs",
               "DocumentMoniker": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\COMP1640-BE\\Controllers\\StudentController.cs",
               "RelativeDocumentMoniker": "COMP1640-BE\\Controllers\\StudentController.cs",
               "ToolTip": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\COMP1640-BE\\Controllers\\StudentController.cs",
               "RelativeToolTip": "COMP1640-BE\\Controllers\\StudentController.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAAAjwCQAAABFAAAA",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAtwCQAAABFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-18T09:33:10.728Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
               "Title": "UserController.cs",
               "DocumentMoniker": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\COMP1640-BE\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "COMP1640-BE\\Controllers\\UserController.cs",
               "ToolTip": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\COMP1640-BE\\Controllers\\UserController.cs",
               "RelativeToolTip": "COMP1640-BE\\Controllers\\UserController.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAowAAAAAAAAAAA",
+              "ViewState": "AQIAACwAAAAAAAAAAAAwwEgAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T09:33:15.448Z"
+              "WhenOpened": "2024-04-18T09:33:15.448Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -338,7 +337,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "User_Faculty.cs",
               "DocumentMoniker": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\DataAccessLayer\\Models\\User_Faculty.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Models\\User_Faculty.cs",
@@ -346,8 +345,7 @@
               "RelativeToolTip": "DataAccessLayer\\Models\\User_Faculty.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T09:08:10.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-18T09:08:10.673Z"
             },
             {
               "$type": "Document",
@@ -555,7 +553,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "StudentRepository.cs",
               "DocumentMoniker": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\DataAccessLayer\\Repositories\\StudentRepo\\StudentRepository.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Repositories\\StudentRepo\\StudentRepository.cs",
