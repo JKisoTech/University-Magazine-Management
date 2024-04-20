@@ -23,6 +23,7 @@ export class ViewAllContributionComponent implements OnInit{
   getData: any;
   dataSource: MatTableDataSource<ContributionDto>;
   displayColumns: string [] = ['action','contributionID','studentID', 'title', 'type'];
+  contribution: ContributionDto | null = null;
 
   constructor(
     private contributionService: ContributionService,
@@ -39,13 +40,11 @@ export class ViewAllContributionComponent implements OnInit{
   OpenUploadContribution(): void {
     this.router.navigate(['/upload-contribution']);
  }
- viewContribution(id: string) {
-  this.contributionService.GetContributorId(id).subscribe(contribution => {
-    this.router.navigate(['/contribution', contribution.contributionID]);
-  });
+ viewContribution(contributionID: string) {
+  this.router.navigate(['/contribution', contributionID]);
 }
 editContribution(id: string) {
-  this.contributionService.GetContributorId(id).subscribe(
+  this.contributionService.GetContent(id).subscribe(
     (contribution) => {
       // Navigate to the update page with the contribution details
       const dialogRef = this.dialog.open(UpdateContributionPageComponent, {

@@ -33,9 +33,9 @@ export class ContributionService {
     }
 
       
-    GetContributorId(contributionId: string): Observable<any> {
-        const url = `${this.baseUrl}/GetContent?Id=${contributionId}`;
-        return this.http.get(url);
+    GetContent(contributionId: string): Observable<any> {
+        const url = `https://localhost:7101/api/Contribution/GetContent?Id=${contributionId}`;
+        return this.http.get(url, { responseType: 'text' });
     }
 
     UpdateContributor(data: ContributionDto, file: File) : Observable<any>{

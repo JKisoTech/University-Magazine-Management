@@ -35,7 +35,7 @@ export class UpdateContributionPageComponent implements OnInit {
 
     const contributionId = this.data.contributionId;
     if (contributionId) {
-      this.contributionService.GetContributorId(contributionId).subscribe(
+      this.contributionService.GetContent(contributionId).subscribe(
         (contribution) => {
           this.populateForm(contribution);
         },

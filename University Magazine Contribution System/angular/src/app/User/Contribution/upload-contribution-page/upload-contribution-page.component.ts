@@ -8,6 +8,11 @@ import { AuthenticationService } from '../../../API/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
 
+import { convert } from 'libreoffice-convert';
+
+
+
+
 @Component({
   selector: 'app-upload-contribution-page',
   templateUrl: './upload-contribution-page.component.html',
@@ -19,6 +24,7 @@ export class UploadContributionPageComponent implements OnInit{
   user: UserDto | null = null;
   selectedFile: File ;
    baseUrl = 'https://localhost:7101/api/Contribution';
+   
 
 
 

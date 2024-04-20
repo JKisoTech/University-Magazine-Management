@@ -6,7 +6,7 @@
 
 
 
-<!-- <div class="card">
+<div class="card">
     <div class="card-header">
         <div class="col col-md-4">
             <h5 class="card-title">
@@ -52,7 +52,7 @@
             <ng-container matColumnDef="type">
                 <th mat-header-cell *matHeaderCellDef>{{'Type'}}</th>
                 <td mat-cell *matCellDef="let row" (click)="viewContribution(row.contributionID)">
-                    <a [routerLink]="['contribution', row.contributionID]">{{row.type}}</a>
+                    <a >{{row.type}}</a>
                   </td>
             </ng-container>
 
@@ -61,4 +61,4 @@
 
         </table>
     </div>
-</div> -->
+</div>
