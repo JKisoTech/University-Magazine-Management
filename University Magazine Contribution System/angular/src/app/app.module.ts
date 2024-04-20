@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserManagementComponent } from './Admin/user-management/user-management.component';
 import { Header2Component } from './Admin/header/header.component';
 import { LandingPageUserComponent } from './User/landing-page-user/landing-page-user.component';
@@ -38,14 +37,15 @@ import { StudentManagementComponent } from './Admin/Student/student-management/s
 import { CreateStudentFormComponent } from './Admin/Student/create-student-form/create-student-form.component';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-
+import { StudentComponent } from './User/Student/student.component';
+import { StudentProfileComponent } from './User/Student/student-profile/student-profile.component';
+import { StudentDocumentsComponent } from './User/Student/student-documents/student-documents.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LandingPageComponent,
     UserManagementComponent,
     Header2Component,
     LandingPageUserComponent,
@@ -63,6 +63,9 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     UpdateContributionPageComponent,
     StudentManagementComponent,
     CreateStudentFormComponent,
+    StudentComponent,
+    StudentProfileComponent,
+    StudentDocumentsComponent,
     
 
   ],
