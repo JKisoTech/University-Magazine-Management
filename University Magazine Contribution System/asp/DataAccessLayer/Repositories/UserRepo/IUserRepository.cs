@@ -17,6 +17,7 @@ namespace DataAccessLayer.Repositories.User
         public Task AddUserAsync(Models.User user, string facultyID);
         public Task DeleteAsync(string _loginName);
         public Task UpdateAsync(Models.User user);
+        public Task<Models.User> SetStatus(string _loginName, bool status);
         public bool ExistUser(string _loginName);
         public string VerifyPasswordHash(string password);
         public Task<bool> VerifyPass(string _password, string hashPass);

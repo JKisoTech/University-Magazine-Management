@@ -75,6 +75,15 @@ namespace DataAccessLayer.Repositories.UsersRepo
             await _context.SaveChangesAsync();
         }
 
+        public async Task<Models.User> SetStatus(string _loginName, bool status)
+        {
+            var user = await _context.Users.FindAsync(_loginName);
+            user.Status = status;
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+            return user;
+        }
+
         public bool ExistUser(string _loginName)
         {
             return _context.Users.Any(u => u.LoginName == _loginName);

@@ -140,44 +140,29 @@ namespace COMP1640_BE.Controllers
         }
 
         [HttpPut("ChangePassword/{_loginName}")]
-        public async Task<ActionResult<UserDTO>> change_user_pass(string _loginName, [FromBody] UserDTO userDto)
+        public async Task<ActionResult<UserDTO>> change_user_pass(string _loginName, string _Oldpassword, string _Newpassword)
         {
-
-
-            //if (string.IsNullOrEmpty(oldPassword) || string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
-            //{
-            //    return BadRequest("All fields are required.");
-            //}
-            //if (newPassword != confirmPassword)
-            //{
-            //    return BadRequest("The new password and confirmation password do not match.");
-            //}
-            //var userName = _userServices.GetUserByLoginNameAsync(loginName);
-            //if (userName == null)
-            //{
-            //    return NotFound("User not found.");
-            //}
-            //var isOld = await _userServices.user_change_password(loginName, oldPassword);
-
-            //if (!isOld)
-            //{
-            //    return BadRequest("Incorrect Old Password !");
-            //}
-            //var updatedUser = await _userServices.user_change_password(loginName, newPassword);
-            //_userServices.UpdateUserAsync(updatedUser);
-            return Ok();
+            var user = await _userServices.GetUserByLoginNameAsync(_loginName);
+            if (user == null)
+            {
+                return NotFound("No User found with LoginName: " + _loginName);
+            }
+            await _userServices.user_change_password(_loginName, _Oldpassword, _Newpassword);
+            return Ok("Password Change successfully");
         }
         
-        [HttpPut("BlockUser/{_loginName}")]
-        public async Task<ActionResult<UserDTO>> user_block(string _loginName, [FromBody] UserDTO userDto)
+        [HttpPut("Status/{_loginName}")]
+        public async Task<ActionResult<UserDTO>> set_user_status(string _loginName, bool status)
         {
-            return StatusCode(204, "Still doing");
+            var user = await _userServices.GetUserByLoginNameAsync(_loginName);
+            if( user == null)
+            {
+                return NotFound("No User found with LoginName: " + _loginName);
+            }
+            await _userServices.SetStatus(_loginName, status);
+            return Ok(user);
         } 
-        [HttpPut("UnBlockUser/{_loginName}")]
-        public async Task<ActionResult<UserDTO>> user_unblock(string _loginName, [FromBody] UserDTO userDto)
-        {
-            return StatusCode(204, "Still doing");
-        }
+
         #endregion
 
 
