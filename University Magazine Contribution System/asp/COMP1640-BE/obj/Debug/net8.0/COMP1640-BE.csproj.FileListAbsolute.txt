@@ -452,3 +452,5 @@ O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE
 O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\obj\Debug\net8.0\COMP1640-BE.MvcApplicationPartsAssemblyInfo.cs
 O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\Xceed.PDF.NET5.dll
+O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\ConvertApi.dll
+O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\Newtonsoft.Json.dll

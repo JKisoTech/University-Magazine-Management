@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "ConvertApi": {
+              "target": "Package",
+              "version": "[3.0.14, )"
+            },
             "Microsoft.AspNetCore.Hosting": {
               "target": "Package",
               "version": "[2.2.7, )"
@@ -73,6 +77,10 @@
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
               "version": "[5.0.17, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
             },
             "Microsoft.AspNetCore.StaticFiles": {
               "target": "Package",
