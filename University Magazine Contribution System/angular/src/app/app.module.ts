@@ -36,6 +36,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UpdateContributionPageComponent } from './User/Contribution/update-contribution-page/update-contribution-page.component';
 import { StudentManagementComponent } from './Admin/Student/student-management/student-management.component';
 import { CreateStudentFormComponent } from './Admin/Student/create-student-form/create-student-form.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { StudentProfileComponent } from './User/Student/student-profile/student-profile.component';
+import { SideBarComponent } from './User/Student/side-bar/side-bar.component';
+import { StudentViewDocumentComponent } from './User/Student/student-view-document/student-view-document.component';
 
 
 @NgModule({
@@ -60,7 +64,10 @@ import { CreateStudentFormComponent } from './Admin/Student/create-student-form/
     ViewAllContributionComponent,
     UpdateContributionPageComponent,
     StudentManagementComponent,
-    CreateStudentFormComponent
+    CreateStudentFormComponent,
+    StudentProfileComponent,
+    SideBarComponent,
+    StudentViewDocumentComponent
 
   ],
   imports: [
@@ -76,7 +83,8 @@ import { CreateStudentFormComponent } from './Admin/Student/create-student-form/
     MatInputModule,
     MatCheckboxModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PdfViewerModule
     
   ],
   providers: [

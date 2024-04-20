@@ -30,12 +30,13 @@ export class ContributionPageComponent implements OnInit {
   contributionId: string | null = null;
   student: StudentDTO | null = null;
 
+
   constructor(private authService: AuthenticationService, private userService : UserService,
     private dialog: MatDialog,
     private contributionService: ContributionService,
     private route: ActivatedRoute,
     private studentService: StudentService,
-    private sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -75,15 +76,7 @@ export class ContributionPageComponent implements OnInit {
     
 
   }
-  getDocumentUrl(): SafeResourceUrl {
-    if (this.contribution && this.contribution.type) {
-      if (this.contribution.type.toLowerCase().endsWith('.pdf')) {
-        const filePath = this.contribution.type; // Assuming the contribution.type contains the URL or path of the PDF file
-        return this.sanitizer.bypassSecurityTrustResourceUrl(filePath);
-      }
-    }
-    return '';
-  }
+  
 
 }
 

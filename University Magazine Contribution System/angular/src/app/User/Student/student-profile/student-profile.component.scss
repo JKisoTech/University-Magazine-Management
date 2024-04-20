@@ -55,21 +55,7 @@
 
                 }
             }
-            .user-details{
-                p{
-                    margin: 20px;
-                }
-                span{
-                    font-size: 20px;
-                    color: var(--Text-gray, #909090);
-                    // padding-right: 70px;
-
-                    &:nth-child(2){
-                        color: $text-black;
-                        font-weight: 500;
-                    }
-                }
-            }
+            
 
             .user-doc-details{
                 .user-doc-infor{

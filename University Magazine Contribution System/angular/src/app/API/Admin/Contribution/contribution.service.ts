@@ -11,6 +11,7 @@ import { ContributionDto } from './model';
 export class ContributionService {
     constructor(private http: HttpClient) {}
 
+
     private baseUrl = 'https://localhost:7101/api/Contribution';
 
     GetContributor(): Observable<any> {
