@@ -5,6 +5,7 @@ using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.ContributionRepo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using System.IO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Exchange.WebServices.Data;
 
@@ -29,14 +30,20 @@ namespace COMP1640_BE.Controllers
         }
         
         [HttpGet("GetContent")]
-        public async Task<ActionResult<IEnumerable<ContributionsDTO>>> GetContributionContent(string Id)
+        public async Task<ActionResult<ContributionsDTO>> GetContributionContent(string Id)
         {
             var contributors = await _contributionServices.GetContent(Id);
             if (Id != contributors.ContributionID)
             {
                 return NotFound("There is no Contribution with Id: " + Id);
             }
-            return Ok(contributors);
+            var filepath = Path.Combine("ContributionFiles", contributors.Type);
+            if (System.IO.File.Exists(filepath))
+            {
+                return File(System.IO.File.OpenRead(filepath), "application/pdf");
+
+            }
+            return NotFound();
         }
 
 

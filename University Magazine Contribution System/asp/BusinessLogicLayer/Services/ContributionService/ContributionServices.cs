@@ -4,8 +4,10 @@ using Azure;
 using BusinessLogicLayer.DTOs;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.ContributionRepo;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
@@ -42,7 +44,6 @@ namespace BusinessLogicLayer.Services.ContributionService
             await _contributionRepository.AddContributionAsync(id, title, description, content, filename);
             _mapper.Map<ContributionsDTO>(contributionDTO);
             return contributionDTO;
-
         }
 
         public async Task<List<ContributionsDTO>> GetContribution()
@@ -53,12 +54,7 @@ namespace BusinessLogicLayer.Services.ContributionService
         public async Task<ContributionsDTO> GetContent(string id)
         {
             var contributionEntity = await _contributionRepository.GetByIdAsync(id);
-            if (Path.GetExtension(contributionEntity.Type).ToLowerInvariant() == ".docx")
-            {
-                var convertFilePath = await ConvertToPdf(contributionEntity.Type);
-
-                contributionEntity.Type = convertFilePath;
-            }
+            
             return _mapper.Map<ContributionsDTO>(contributionEntity);
         }
 
@@ -119,17 +115,6 @@ namespace BusinessLogicLayer.Services.ContributionService
             }
             catch (Exception ex) { }
             return filename;
-        }
-
-
-        public async Task<string> ConvertToPdf(string filename)
-        {
-            var filepath = Path.Combine(Directory.GetCurrentDirectory(), "ContributionFiles");
-            var wordFilePath = Path.Combine(filepath, filename);
-
-            var pdfFileName = Path.ChangeExtension(filename, ".pdf");
-            var pdfFilePath = Path.Combine(filepath, pdfFileName);
-            return pdfFileName;
         }
     }
 }
