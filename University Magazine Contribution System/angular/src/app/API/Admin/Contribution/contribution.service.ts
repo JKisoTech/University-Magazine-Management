@@ -38,6 +38,11 @@ export class ContributionService {
         return this.http.get(url, { responseType: 'text' });
     }
 
+    GetContributionbyId(contributionId: string): Observable<any>{
+        const url = `${this.baseUrl}/GetContribution/${contributionId}`;
+        return this.http.get(url, { responseType: 'text' })
+    }
+
     UpdateContributor(data: ContributionDto, file: File) : Observable<any>{
         const id = data.contributionID;
         const content = encodeURIComponent(data.content);
