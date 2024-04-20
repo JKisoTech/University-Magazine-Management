@@ -5,6 +5,7 @@ using DataAccessLayer.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -79,20 +80,29 @@ namespace BusinessLogicLayer.Services.UsersService
             return _mapper.Map<UserDTO>(user); ;
         }
 
-        public async Task<UserDTO> user_change_password(string _loginname, string _password)
+        public async Task<UserDTO> user_change_password(string _loginname, string _Oldpassword, string _Newpassword)
         {
             var user = await _userRepository.GetByIdAsync(_loginname);
-
-            if (!await _userRepository.VerifyPass(_password, user.Password))
+            _Oldpassword = _userRepository.VerifyPasswordHash(_Oldpassword);
+            if (_Oldpassword == user.Password)
             {
-                return null;
+                user.Password = _userRepository.VerifyPasswordHash(_Newpassword);
+                await _userRepository.UpdateAsync(user);
+            }
+            else
+            {
+                var message = "Wrong Password";
+                throw new Exception(message);
             }
 
-            user.Password = _userRepository.VerifyPasswordHash(_password);
-            await _userRepository.UpdateAsync(user);
-
+          
             return _mapper.Map<UserDTO>(user);
         }
 
+        public async Task<UserDTO> SetStatus(string _loginName,bool status)
+        {
+            var userEntity = await _userRepository.SetStatus(_loginName, status);
+            return _mapper.Map<UserDTO>(userEntity);
+        }
     }
 }

@@ -45,7 +45,14 @@ namespace COMP1640_BE.Controllers
             }
             return NotFound();
         }
+        [HttpGet]
+        [Route("GetContribution/{ID}")]
 
+        public async Task<ActionResult<ContributionsDTO>> GetContributionbyID(string ID)
+        {
+            var contrbution = await _contributionServices.GetContent(ID);
+            return Ok(contrbution); 
+        }
 
         [HttpPost("CreateContributor")]
         public async Task<ActionResult<ContributionsDTO>> SaveContributor(string user_id,string content, string title, IFormFile type, string description)
