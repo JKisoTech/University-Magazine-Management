@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -40,6 +41,11 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { StudentComponent } from './User/Student/student.component';
 import { StudentProfileComponent } from './User/Student/student-profile/student-profile.component';
 import { StudentDocumentsComponent } from './User/Student/student-documents/student-documents.component';
+import { AdminfeComponent } from './adminfe/adminfe.component';
+import { DashboardComponent } from './adminfe/dashboard/dashboard.component';
+import { DocumentsManagementComponent } from './adminfe/documents-management/documents-management.component';
+import { AdHeaderComponent } from './adminfe/ad-header/ad-header.component';
+import { UserContronllerComponent } from './adminfe/user-contronller/user-contronller.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +72,11 @@ import { StudentDocumentsComponent } from './User/Student/student-documents/stud
     StudentComponent,
     StudentProfileComponent,
     StudentDocumentsComponent,
+    AdminfeComponent,
+    DashboardComponent,
+    DocumentsManagementComponent,
+    AdHeaderComponent,
+    UserContronllerComponent,
     
 
   ],

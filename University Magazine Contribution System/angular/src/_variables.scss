@@ -1,8 +1,8 @@
 $text-black: #181818;
 $bgn: #262626;
-$text-gray: #909090;
 $text-white: #fff;
 $btn:#E27A25;
+$text-gray: #909090;
 
 
 $mobile: 576px;
@@ -17,8 +17,20 @@ $desktop: 1440px;
     border: none;
     &:hover{
         background-color: $text-gray;
+        color: $text-white;
         transition: all 0.5s;
     }
+}
+@mixin btn-confirm{
+    background-color: $btn;
+    transition: all 0.5s;
+    border: none;
+    &:hover{
+        opacity: 0.8;
+        color: $text-white;
+        transition: all 0.5s;
+    }
+
 }
 @mixin blog-btn{
     background-color: $text-black;

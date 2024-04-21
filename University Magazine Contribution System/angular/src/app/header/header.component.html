@@ -1,7 +1,7 @@
 <header>
     <!-- place navbar here -->
     <div class="container-fluid logo">
-        <img src="assets/Image/logo1.png" class="mx-auto d-block " alt="">
+        <img src="../assets/Image/logo1.png" class="mx-auto d-block " alt="">
     </div>
     <div class="container hd-nav">
         <div class="row">
@@ -19,9 +19,9 @@
                             <li class="nav-item">
                                 <a href="shopping.html" class="nav-link">Shop</a>
                             </li>
-                            <li class="nav-item"  *ngIf="userRole$ | async as userRole">
-                                <a href="view-all-contribution" class="nav-link">Contribution</a>
-                              </li>
+                            <li class="nav-item">
+                                <a href="blog.html" class="nav-link">Blog</a>
+                            </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">About Us</a>
                             </li>
@@ -31,17 +31,21 @@
                         </ul>
                     </div>
                     <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
+                        <li class="nav-item dropdown" id="hd-user-dropdown">
+                            <button class="nav-link dropdown-toggle" mat-button [matMenuTriggerFor]="menu">User Name <i class="fa-solid fa-user"></i></button>
+                            <mat-menu #menu="matMenu">
+                              <button mat-menu-item>Item 1</button>
+                              <button mat-menu-item><i class="fa-solid fa-right-from-bracket"></i>Log out</button>
+                            </mat-menu>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="fa-solid fa-heart"></i></a>
                         </li>
                         <li class="nav-item">
-                            <button (click)="logout()">Logout</button>
+                            <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
                         </li>
                     </ul>
-        
+    
                 </div>
             </nav>
             

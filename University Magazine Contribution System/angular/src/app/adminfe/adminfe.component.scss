@@ -1,0 +1,49 @@
+@import '../../styles.scss';
+
+.admin-nav-header{
+    
+    a{
+        font-weight: bold;
+        
+        img{
+            padding: 15px;
+        }
+    }
+
+    ul{
+        li{
+            a{
+                color: $text-white !important;
+            }
+        }
+    }
+}
+
+.admin-infor-page{
+    margin-top: 50px;
+    .sidebar-admin{
+        .admin-function{
+            ul{
+                border-bottom: none !important;
+                li{
+                    a{
+                        margin-top: 10px;
+                        padding-left: 10px;
+                        i{
+                            padding-right: 10px;
+                            font-weight: 600;
+                        }
+                    }
+                    .active{
+                        background: none ;
+                        border: 1px solid $text-gray;
+                        font-weight: 600;
+                    }
+        
+                }
+            }
+        
+        }
+
+    }
+}

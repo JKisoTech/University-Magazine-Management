@@ -1,0 +1,105 @@
+
+<body>
+    <header>
+        <!-- place navbar here -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark bg-body-tertiary admin-nav-header" data-bs-theme="dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img src="../assets/Image/logo1.png" class="w-100" alt=""></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Admin Name
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Action 2</a></li>
+                      <li><a class="dropdown-item" href="#">Action 3</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item"> 
+                    <a class="nav-link invisible" href="#">aaaa</a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <main>    
+        <div class="container-fluid admin-infor-page">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 sidebar-admin ">
+                    <div class="admin-infor">
+                        <div class="d-flex">
+                            <div class="ms-3 sidebar-admin-infor ">
+                                <h3 class="text-capitalize ">Admin Name</h3>
+                                <p class="text-capitalize">Admin Roles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-line">
+                    <div class="admin-function">
+                        <ul class="navbar-nav nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active text-capitalize" href="#admin-dashboard" data-bs-toggle="tab"><i class="fa-solid fa-user"></i>Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-capitalize" href="#admin-user-manager" data-bs-toggle="tab"><i class="fa-solid fa-user"></i>User Management</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-capitalize" href="#admin-user-doc" data-bs-toggle="tab"><i class="fa-solid fa-book"></i>User Documents</a>
+                            </li>
+                        </ul>
+
+                </div>
+
+
+                    
+                </div>
+                <div class="col-xl-8 col-lg-8 col-md-8 admin-tabs">
+                    <div class="tab-content">
+                        <app-dashboard></app-dashboard>
+                        <app-user-contronller></app-user-contronller>
+                        <app-documents-management></app-documents-management>
+
+                        
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </main>    
+    
+
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
+        integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./Assets/JS/script.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"
+        integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
