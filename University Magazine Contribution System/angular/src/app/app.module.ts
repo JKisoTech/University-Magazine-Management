@@ -46,6 +46,7 @@ import { DashboardComponent } from './adminfe/dashboard/dashboard.component';
 import { DocumentsManagementComponent } from './adminfe/documents-management/documents-management.component';
 import { AdHeaderComponent } from './adminfe/ad-header/ad-header.component';
 import { UserContronllerComponent } from './adminfe/user-contronller/user-contronller.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { UserContronllerComponent } from './adminfe/user-contronller/user-contro
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
-    PdfViewerModule
+    PdfViewerModule,
+    NgbModule
     
   ],
   providers: [
