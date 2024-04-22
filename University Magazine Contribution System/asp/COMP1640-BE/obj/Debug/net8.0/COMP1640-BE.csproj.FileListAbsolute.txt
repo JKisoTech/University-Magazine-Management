@@ -454,3 +454,8 @@ O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE
 O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\Xceed.PDF.NET5.dll
 O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\ConvertApi.dll
 O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\Newtonsoft.Json.dll
+O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\GemBox.Document.dll
+O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\BouncyCastle.Crypto.dll
+O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\SixLabors.Fonts.dll
+O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\SixLabors.ImageSharp.dll
+O:\Github local\COMP1640\University Magazine Contribution System\asp\COMP1640-BE\bin\Debug\net8.0\SixLabors.ImageSharp.Drawing.dll

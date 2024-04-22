@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <Folder Include="ContributionFiles\" />
+    <Folder Include="PDFFiles\" />
   </ItemGroup>
 
 </Project>

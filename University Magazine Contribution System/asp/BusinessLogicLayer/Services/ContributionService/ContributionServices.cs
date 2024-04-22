@@ -4,7 +4,7 @@ using Azure;
 using BusinessLogicLayer.DTOs;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.ContributionRepo;
-
+using GemBox.Document;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc;
@@ -41,7 +41,7 @@ namespace BusinessLogicLayer.Services.ContributionService
                 Description = description,
                 Type = filename
             };
-            await _contributionRepository.AddContributionAsync(id, title, description, content, filename);
+            await _contributionRepository.AddContributionAsync(id, title, description, filename, content);
             _mapper.Map<ContributionsDTO>(contributionDTO);
             return contributionDTO;
         }
@@ -53,8 +53,10 @@ namespace BusinessLogicLayer.Services.ContributionService
         }
         public async Task<ContributionsDTO> GetContent(string id)
         {
+            
             var contributionEntity = await _contributionRepository.GetByIdAsync(id);
             
+
             return _mapper.Map<ContributionsDTO>(contributionEntity);
         }
 
@@ -87,10 +89,25 @@ namespace BusinessLogicLayer.Services.ContributionService
 
         }
 
-        public async Task DeactiveContribution(string id)
+        public async Task<int> check_SubmitDate()
         {
-            var contribution = await _contributionRepository.GetByIdAsync(id);
-            await _contributionRepository.GetByIdAsync(id);
+            DateTime currentDate = DateTime.UtcNow.Date;
+            DateTime submit_duedate = new DateTime(2024, 4, 30);
+            if (currentDate <= submit_duedate)
+            {
+                return 0;
+            }
+            return 1;
+        } 
+        public async Task<int> check_CompleteDate()
+        {
+            DateTime currentDate = DateTime.UtcNow.Date;
+            DateTime complete_duedate = new DateTime(2024, 4, 30);
+            if (currentDate <= complete_duedate)
+            {
+                return 0;
+            }
+            return 1;
         }
 
         public async Task<string> WriteFile(IFormFile file)
@@ -116,5 +133,27 @@ namespace BusinessLogicLayer.Services.ContributionService
             catch (Exception ex) { }
             return filename;
         }
+
+        public async Task ConvertDocxToPDF(string id)
+        {
+            var existContribution = await _contributionRepository.GetByIdAsync(id);
+            var filepath = Path.Combine(Directory.GetCurrentDirectory(),"ContributionFiles");
+            var wordpath = Path.Combine(filepath, existContribution.Type);
+            if (System.IO.File.Exists(wordpath))
+            {
+                var pdfPath = Path.Combine(Directory.GetCurrentDirectory(), "PDFFiles");
+                var pdfName =  Path.ChangeExtension(wordpath, "pdf");
+                var pdfFilePath = Path.Combine(pdfPath, pdfName);
+                ComponentInfo.SetLicense("FREE-LIMITED-KEY");
+                ComponentInfo.FreeLimitReached += (eventSender, args) => args.FreeLimitReachedAction
+                    = FreeLimitReachedAction.ContinueAsTrial;
+                var document = DocumentModel.Load(wordpath);
+                document.Save(pdfFilePath);
+
+            }
+       
+
+        }
+
     }
 }
