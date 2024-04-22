@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserManagementComponent } from './Admin/user-management/user-management.component';
 import { LandingPageUserComponent } from './User/landing-page-user/landing-page-user.component';
 import { FalcutyComponent } from './Admin/falcuty/falcuty.component';
@@ -14,6 +13,7 @@ import { ViewAllContributionComponent } from './User/Contribution/view-all-contr
 import { UpdateContributionPageComponent } from './User/Contribution/update-contribution-page/update-contribution-page.component';
 import { UploadContributionPageComponent } from './User/Contribution/upload-contribution-page/upload-contribution-page.component';
 import { StudentManagementComponent } from './Admin/Student/student-management/student-management.component';
+import { StudentComponent } from './User/Student/student.component';
 
 
 const routes: Routes = [
@@ -26,7 +26,8 @@ const routes: Routes = [
   { path: 'user-profile', component: UserProfileComponent},
   { path: 'view-all-contribution', component: ViewAllContributionComponent},
   { path : 'upload-contribution', component: UploadContributionPageComponent},
-  { path: 'admin/studentmanagement', component : StudentManagementComponent}
+  { path: 'admin/studentmanagement', component : StudentManagementComponent},
+  {path: 'student-page', component: StudentComponent},
 ];
 
 @NgModule({

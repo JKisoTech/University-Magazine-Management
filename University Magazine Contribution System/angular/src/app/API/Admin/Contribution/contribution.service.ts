@@ -11,6 +11,7 @@ import { ContributionDto } from './model';
 export class ContributionService {
     constructor(private http: HttpClient) {}
 
+
     private baseUrl = 'https://localhost:7101/api/Contribution';
 
     GetContributor(): Observable<any> {
@@ -32,9 +33,14 @@ export class ContributionService {
     }
 
       
-    GetContributorId(contributionId: string): Observable<any> {
-        const url = `${this.baseUrl}/GetContent?Id=${contributionId}`;
-        return this.http.get(url);
+    GetContent(contributionId: string): Observable<any> {
+        const url = `https://localhost:7101/api/Contribution/GetContent?Id=${contributionId}`;
+        return this.http.get(url, { responseType: 'text' });
+    }
+
+    GetContributionbyId(contributionId: string): Observable<any>{
+        const url = `${this.baseUrl}/GetContribution/${contributionId}`;
+        return this.http.get(url, { responseType: 'text' })
     }
 
     UpdateContributor(data: ContributionDto, file: File) : Observable<any>{
@@ -47,9 +53,9 @@ export class ContributionService {
 
         
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append('type', file);
         
-        return this.http.put(url, formData);
+        return this.http.put(url, formData , { responseType: 'text' });
     }
       
 }
