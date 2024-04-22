@@ -2,6 +2,7 @@
 using AutoMapper;
 using Azure;
 using BusinessLogicLayer.DTOs;
+using BusinessLogicLayer.Services.SystemService;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.ContributionRepo;
 using GemBox.Document;
@@ -22,13 +23,13 @@ namespace BusinessLogicLayer.Services.ContributionService
     {
         private readonly IContributionRepository _contributionRepository;
         private readonly IMapper _mapper;
-        private readonly IConfiguration _configuration;
+        private readonly ISystemPServices _systemPServices;
 
-        public ContributionServices(IContributionRepository contributionRepository, IMapper mapper, IConfiguration configuration)
+        public ContributionServices(IContributionRepository contributionRepository, IMapper mapper, ISystemPServices systemPServices)
         {
             _contributionRepository = contributionRepository;
             _mapper = mapper;
-            _configuration = configuration;
+            _systemPServices = systemPServices;
         }
 
         public async Task<ContributionsDTO> AddContributionAync(string id, string content, string title, IFormFile type, string description)
@@ -39,7 +40,8 @@ namespace BusinessLogicLayer.Services.ContributionService
                 Title = title,
                 Content = content,
                 Description = description,
-                Type = filename
+                Type = filename,
+                
             };
             await _contributionRepository.AddContributionAsync(id, title, description, filename, content);
             _mapper.Map<ContributionsDTO>(contributionDTO);
@@ -95,7 +97,8 @@ namespace BusinessLogicLayer.Services.ContributionService
         public async Task<int> check_SubmitDate()
         {
             DateTime currentDate = DateTime.UtcNow.Date;
-            DateTime submit_duedate = new DateTime(2024, 4, 30);
+            var submitDate = await _systemPServices.get_submitDate("SUBMIT_DATE");
+            DateTime submit_duedate = submitDate.Value;
             if (currentDate <= submit_duedate)
             {
                 return 0;
@@ -105,7 +108,8 @@ namespace BusinessLogicLayer.Services.ContributionService
         public async Task<int> check_CompleteDate()
         {
             DateTime currentDate = DateTime.UtcNow.Date;
-            DateTime complete_duedate = new DateTime(2024, 4, 30);
+            var completeDate = await _systemPServices.get_completeDate("COMPLETE_DATE");
+            DateTime complete_duedate = completeDate.Value;
             if (currentDate <= complete_duedate)
             {
                 return 0;

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Exchange.WebServices.Data;
+using BusinessLogicLayer.Services.SystemService;
 
 namespace COMP1640_BE.Controllers
 {
@@ -16,12 +17,12 @@ namespace COMP1640_BE.Controllers
     public class ContributionController : ControllerBase
     {
         private readonly IContributionServices _contributionServices;
-
+      
         public ContributionController(IContributionServices contributionServices)
         {
             _contributionServices = contributionServices;
         }
- 
+
         [HttpGet("GetContributor")]
         public async Task<ActionResult<IEnumerable<ContributionsDTO>>> getContribution()
         {
@@ -111,7 +112,22 @@ namespace COMP1640_BE.Controllers
             
             return StatusCode(204, "Haven't develop Update-Status function");
         }
-            
+
+        [HttpGet("Check Submit Date")]
+        public async Task<IActionResult> check_SubmitDate()
+        {
+   
+            var submitDate = await _contributionServices.check_SubmitDate();
+            return Ok(submitDate);
+        }
+        [HttpGet("Check PublishDate")]
+        public async Task<IActionResult> check_CompleteDate()
+        {
+    
+            var completeDate = await _contributionServices.check_CompleteDate();
+  
+            return Ok(completeDate);
+        }
     }
 }
 

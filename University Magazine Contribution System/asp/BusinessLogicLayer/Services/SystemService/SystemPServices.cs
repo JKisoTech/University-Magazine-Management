@@ -20,16 +20,24 @@ namespace BusinessLogicLayer.Services.SystemService
             _mapper = mapper;
         }
 
-        public async Task<SystemParameterDTO> get_submitDate(string parameterName)
+        public async Task<DateTime?> get_submitDate(string parameterName)
         {
             var systemEntity = await _systempRepository.Get_Parameter(parameterName);
-            return _mapper.Map<SystemParameterDTO>(systemEntity);
+            if (systemEntity != null && DateTime.TryParse(systemEntity.Value, out DateTime submitDate))
+            {
+                return submitDate;
+            }
+            return null;
         }
 
-        public async Task<SystemParameterDTO> get_completeDate(string parameterName)
+        public async Task<DateTime?> get_completeDate(string parameterName)
         {
             var systemEntity = await _systempRepository.Get_Parameter(parameterName);
-            return _mapper.Map<SystemParameterDTO>(systemEntity);
+            if (systemEntity != null && DateTime.TryParse(systemEntity.Value, out DateTime completeDate))
+            {
+                return completeDate;
+            }
+            return null;
         }
     }
 }

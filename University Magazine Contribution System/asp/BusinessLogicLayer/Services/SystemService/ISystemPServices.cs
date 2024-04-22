@@ -9,7 +9,7 @@ namespace BusinessLogicLayer.Services.SystemService
 {
     public interface ISystemPServices
     {
-        public Task<SystemParameterDTO> get_submitDate(string parameterName);
-        public Task<SystemParameterDTO> get_completeDate(string parameterName);
+        public Task<DateTime?> get_submitDate(string parameterName);
+        public Task<DateTime?> get_completeDate(string parameterName);
     }
 }
