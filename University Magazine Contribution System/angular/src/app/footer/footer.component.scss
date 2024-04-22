@@ -5,6 +5,44 @@
 
 /* SCSS Document */
 
+.service-content {
+  h4 {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $text-black;
+  }
+
+  p {
+    font-size: 13px;
+    color: $text-gray;
+  }
+}
+
+.service-icon {
+  i {
+    font-size: 32px;
+    color: #777;
+  }
+
+  border-right: 1px solid $text-gray;
+  width: 20%;
+  padding: 0 12px;
+}
+
+.service-content {
+  width: 80%;
+  padding: 0 12px;
+
+  .slider {
+    background-image: url("../../assets/Image/banner.png");
+    background-size: cover;
+    padding: 200px 0;
+  }
+}
+
+/* SCSS Document */
+
 @media screen and (max-width: 1199px) {
   .service-icon {
     width: 30%;

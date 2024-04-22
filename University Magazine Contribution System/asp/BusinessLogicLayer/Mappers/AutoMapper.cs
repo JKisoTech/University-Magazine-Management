@@ -16,13 +16,15 @@ namespace BusinessLogicLayer.Mappers
         {
             CreateMap<User, UserDTO>()
                 .ReverseMap();
-                
-            CreateMap<Contribution, ContributionsDTO>() .ReverseMap();
+            CreateMap<Contribution, ContributionsDTO>() 
+                .ReverseMap();
             CreateMap<Student, StudentDTO>() 
                 .ReverseMap();
             CreateMap<Faculty, FacultyDTO>()
                 .ReverseMap();
             CreateMap<Comment, CommentDTO>()
+                .ReverseMap();
+            CreateMap<SystemParameter, SystemParameterDTO>() 
                 .ReverseMap();
 
         }

@@ -37,13 +37,14 @@ namespace COMP1640_BE.Controllers
             {
                 return NotFound("There is no Contribution with Id: " + Id);
             }
-            var filepath = Path.Combine("ContributionFiles", contributors.Type);
+            
+            await _contributionServices.ConvertDocxToPDF(Id);
+            var filepath = Path.Combine(Directory.GetCurrentDirectory(), "PDFFiles", $"{Path.GetFileNameWithoutExtension(contributors.Type)}.pdf");
             if (System.IO.File.Exists(filepath))
             {
                 return File(System.IO.File.OpenRead(filepath), "application/pdf");
-
             }
-            return NotFound();
+            return NotFound("PDF not found");
         }
         [HttpGet]
         [Route("GetContribution/{ID}")]
@@ -67,6 +68,18 @@ namespace COMP1640_BE.Controllers
             await _contributionServices.WriteFile(type);
             return StatusCode(201,"User Submit successfully");
         }
+
+        //[HttpPut("ConvertPDF")]
+        //public async Task<IActionResult> ConvertPDF(string id)
+        //{
+        //    var existingContribution = await _contributionServices.GetContent(id);
+        //    if(existingContribution == null)
+        //    {
+        //        return NotFound("Contribution Not Found");
+        //    }
+        //    await _contributionServices.ConvertDocxToPDF(id);
+        //    return Ok();
+        //}
 
         [HttpPut("UpdateContributor")]
         public async Task<ActionResult> UpdateContributor(string id, string content, string title, IFormFile type, string description)
