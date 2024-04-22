@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <Folder Include="Repositories\CommentRepo\" />
-    <Folder Include="Repositories\User_FacultyRepo\" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,10 @@
+using AutoMapper;
+using BusinessLogicLayer.Mappers;
 using BusinessLogicLayer.Services.ContributionService;
 using BusinessLogicLayer.Services.FacultyService;
 using BusinessLogicLayer.Services.StudentService;
+using DataAccessLayer.Repositories.SystemRepo;
+using BusinessLogicLayer.Services.SystemService;
 using BusinessLogicLayer.Services.User;
 using BusinessLogicLayer.Services.UsersService;
 using DataAccessLayer.Data;
@@ -19,18 +23,22 @@ namespace COMP1640_BE
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // Add repository to the container.
+          
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IFacultyRepository, FacultyRepository>();
             builder.Services.AddScoped<IContributionRepository, ContributionRepository>();
             builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+            builder.Services.AddScoped<ISystemPRepository, SystemPRepository>();
 
-
-
+            // Add services to the container.
+      
             builder.Services.AddScoped<IUserServices, UserServices>();
             builder.Services.AddScoped<IFacultyServices, FacultyServices>();
             builder.Services.AddScoped<IContributionServices, ContributionServices>();
             builder.Services.AddScoped<IStudentServices, StudentServices>();
+            builder.Services.AddScoped<ISystemPServices, SystemPServices>();
+
 
 
 

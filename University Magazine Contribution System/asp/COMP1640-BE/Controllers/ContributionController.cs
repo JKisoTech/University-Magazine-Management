@@ -65,7 +65,7 @@ namespace COMP1640_BE.Controllers
             {
                 return BadRequest();
             }
-            await _contributionServices.WriteFile(type);
+            await _contributionServices.WriteFile(type, user_id);
             return StatusCode(201,"User Submit successfully");
         }
 

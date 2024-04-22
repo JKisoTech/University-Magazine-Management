@@ -33,7 +33,7 @@ namespace BusinessLogicLayer.Services.ContributionService
 
         public async Task<ContributionsDTO> AddContributionAync(string id, string content, string title, IFormFile type, string description)
         {
-            var filename = await WriteFile(type);
+            var filename = await WriteFile(type,id);
             var contributionDTO = new ContributionsDTO
             {
                 Title = title,
@@ -77,10 +77,13 @@ namespace BusinessLogicLayer.Services.ContributionService
                     File.Delete(oldpath);
                 }
             }
-            var filename = await WriteFile(type);
+            
             newContribution.ContributionID = id;
             newContribution.Title = title;
             newContribution.Content = content;
+
+            var filename = await WriteFile(type,id);
+            
             newContribution.Type = filename;
             newContribution.Description = description;
 
@@ -110,14 +113,26 @@ namespace BusinessLogicLayer.Services.ContributionService
             return 1;
         }
 
-        public async Task<string> WriteFile(IFormFile file)
+        public async Task<string> WriteFile(IFormFile file, string id)
         {
+  
             string filename = "";
             var filepath = Path.Combine(Directory.GetCurrentDirectory(), "ContributionFiles");
             try
             {
-                var extension = Path.GetExtension(filename).ToLowerInvariant();
-                filename = Path.GetFileName(file.FileName)+ extension;
+                var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
+                if (extension == ".docx")
+                {
+                    filename = $"{id}{extension}";
+                } else if (extension == ".jpg" || extension == ".jpeg" || extension == ".png")
+                {
+                    filename = $"{id}{extension}";
+                }
+                else
+                {
+                    throw new NotSupportedException("File format not supported.");
+                }
+               
                 if (!Directory.Exists(filepath))
                 {
                     Directory.CreateDirectory(filepath);
@@ -139,10 +154,10 @@ namespace BusinessLogicLayer.Services.ContributionService
             var existContribution = await _contributionRepository.GetByIdAsync(id);
             var filepath = Path.Combine(Directory.GetCurrentDirectory(),"ContributionFiles");
             var wordpath = Path.Combine(filepath, existContribution.Type);
-            if (System.IO.File.Exists(wordpath))
+            if (System.IO.File.Exists(wordpath) && Path.GetExtension(wordpath) == ".docx")
             {
                 var pdfPath = Path.Combine(Directory.GetCurrentDirectory(), "PDFFiles");
-                var pdfName =  Path.ChangeExtension(wordpath, "pdf");
+                var pdfName = $"{id}.pdf";
                 var pdfFilePath = Path.Combine(pdfPath, pdfName);
                 ComponentInfo.SetLicense("FREE-LIMITED-KEY");
                 ComponentInfo.FreeLimitReached += (eventSender, args) => args.FreeLimitReachedAction
