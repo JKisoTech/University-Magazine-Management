@@ -30,7 +30,7 @@
 
     user: UserDto | null = null;
     contribution: ContributionDto | null = null;
-    contributionId: string | null = null;
+    contributionId: string ;
     student: StudentDTO | null = null;
     pdfSrc: SafeResourceUrl | null = null;
 
@@ -58,17 +58,35 @@
           }
         );
       }
+    
       this.route.params.subscribe(params => {
         this.contributionId = params['id'];
         if (this.contributionId) {
           this.contributionService.GetContent(this.contributionId).subscribe(
             (pdfContent) => {
-              const pdfUrl =   `https://localhost:7101/api/Contribution/GetContent?Id=${this.contributionId}`              ; // Replace with the actual PDF URL
+              const pdfUrl = `https://localhost:7101/api/Contribution/GetContent?Id=${this.contributionId}`;
               this.pdfSrc = this.sanitizer.bypassSecurityTrustResourceUrl(pdfUrl);
-            
             },
             (error) => {
               console.error('Failed to fetch PDF content:', error);
+            }
+          );
+    
+          this.contributionService.GetContributionbyId(this.contributionId).subscribe(
+            (response) => {
+              this.contribution = response;
+              // Set the contributionId property of the student object
+              this.studentService.GetStudentById(this.contributionId).subscribe(
+                (studentResponse) => {
+                  this.student = studentResponse;
+                },
+                (error) => {
+                  console.error('Failed to fetch student data:', error);
+                }
+              );
+            },
+            (error) => {
+              console.error('Failed to fetch contribution data:', error);
             }
           );
         }

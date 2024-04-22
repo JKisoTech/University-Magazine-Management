@@ -14,8 +14,6 @@ import { ViewAllContributionComponent } from './User/Contribution/view-all-contr
 import { UpdateContributionPageComponent } from './User/Contribution/update-contribution-page/update-contribution-page.component';
 import { UploadContributionPageComponent } from './User/Contribution/upload-contribution-page/upload-contribution-page.component';
 import { StudentManagementComponent } from './Admin/Student/student-management/student-management.component';
-import { StudentProfileComponent } from './User/Student/student-profile/student-profile.component';
-import { StudentViewDocumentComponent } from './User/Student/student-view-document/student-view-document.component';
 
 
 const routes: Routes = [
@@ -29,8 +27,8 @@ const routes: Routes = [
   { path: 'view-all-contribution', component: ViewAllContributionComponent},
   { path : 'upload-contribution', component: UploadContributionPageComponent},
   { path: 'admin/studentmanagement', component : StudentManagementComponent},
-  { path: 'student-profile', component: StudentProfileComponent},
-  { path: 'student-view-document', component: StudentViewDocumentComponent}
+
+
 ];
 
 @NgModule({
