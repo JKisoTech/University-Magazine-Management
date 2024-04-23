@@ -1,33 +1,47 @@
 <div class="tab-content">
     <div class="user-infor tab-pane active" id="user-infor">
-        <h2 class="text-capitalize">User information <a href="">edit</a></h2>
+        <h2 class="text-capitalize">{{ this.user?.role === 1 ? 'Student Information' : this.user?.role === 2 ? 'Coordinator Information' : this.user?.role === 3 ? 'Marketing Information' : 'User Information' }}</h2>
 
         <hr class="my-line">
         <div class="user-details">
             <div class="container">
                 <div class="row">
                     <div class="col-6">
-                        <p class="">
-                            <span class="text-capitalize">user name:</span>
-                            <span class="text-capitalize  text-end">aasdasd</span>
-                        </p>
-                        <p class="">
-                            <span class="text-capitalize">email:</span>
-                            <span class="text-capitalize text-end">aasdasd</span>
-                        </p>
-                        <p class="">
-                            <span class="text-capitalize">phone numbers:</span>
-                            <span class="text-capitalize text-end">test</span>
-                        </p>
-                        <p class="">
-                            <span class="text-capitalize">Date of birth:</span>
-                            <span class="text-capitalize  text-end">test</span>
-                        </p>
-                        <p class="">
-                            <span class="text-capitalize">Faculty:</span>
-                            <span class="text-capitalize  text-end">test</span>
+                        <p class="" *ngIf="this.user?.role === 3">
+                            <span class="text-capitalize"> Marketing Full name:</span>
+                            <span class="text-capitalize  text-end">{{user.fullName}}</span>
                         </p>
 
+                        <p class="" *ngIf="this.user?.role === 2">
+                            <span class="text-capitalize"> Cordinator Full name:</span>
+                            <span class="text-capitalize  text-end">{{user.fullName}}</span>
+                        </p>
+                        <p class="" *ngIf="this.user?.role === 1">
+                            <span class="text-capitalize"> Student Full name:</span>
+                            <span class="text-capitalize  text-end">{{student?.studentName}}</span>
+                        </p>
+                        
+                        <p class="" *ngIf="this.user?.role === 1">
+                            <span class="text-capitalize"  >Student Email:</span>
+                            <span class="text-capitalize text-end">{{student?.email}}</span>
+                        </p>
+                        <p class="" *ngIf="this.user?.role === 1">
+                            <span class="text-capitalize"  >Phone numbers:</span>
+                            <span class="text-capitalize text-end">{{student?.phones}}</span>
+                        </p>
+                        <p class="" *ngIf="this.user?.role === 1">
+                            <span class="text-capitalize"  >Date of birth:</span>
+                            <span class="text-capitalize  text-end">{{student?.dateOfBirth}}</span>
+                        </p>
+                        <p class="" *ngIf="this.user?.role === 1">
+                            <span class="text-capitalize"  > Student Faculty:</span>
+                            <span class="text-capitalize  text-end">{{student?.facultyID}}</span>
+                        </p>
+                        <p class="" *ngIf="this.user?.role === 2">
+                            <span class="text-capitalize" > Cordinator Faculty:</span>
+                            <span class="text-capitalize  text-end">{{user.facultyID}}</span>
+                        </p>
+ 
                     </div>
                     <div class="col-6">
                         <p>Avatar:</p>

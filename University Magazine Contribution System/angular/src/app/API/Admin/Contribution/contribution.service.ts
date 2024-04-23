@@ -57,5 +57,15 @@ export class ContributionService {
         
         return this.http.put(url, formData , { responseType: 'text' });
     }
+    UpdateContributorStatus(data: ContributionDto) : Observable<any>{ 
+        const id = data.contributionID;
+        const status = encodeURIComponent(data.status);
+        const url = `${this.baseUrl}/UpdateContributorStatus?id=${id}&status=${status}`;
+
+        return this.http.put(url, data);
+
+
+
+    }
       
 }

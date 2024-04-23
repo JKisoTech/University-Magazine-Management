@@ -2,31 +2,18 @@
     <h2 class="text-capitalize">Documents</h2>
     <hr class="my-line">
     <div class="user-doc-details">
-        <div class="user-doc-infor">
-            <h4><a href="">Title 1</a></h4>
-            <p class="text-truncate">Lorem ipsum dolor sit amet consectetur. Feugiat et pharetra mi magna in sed morbi tortor. Consequat quis enim eget aliquet. Fusce cursus semper lobortis fermentum faucibus vel. Et blandit ut quam auctor purus lectus integer convallis.</p>
-            
-        </div>
-        <div class="user-doc-infor">
-            <h4><a href="">Title 2</a></h4>
-            <p class="text-truncate">Lorem ipsum dolor sit amet consectetur. Feugiat et pharetra mi magna in sed morbi tortor. Consequat quis enim eget aliquet. Fusce cursus semper lobortis fermentum faucibus vel. Et blandit ut quam auctor purus lectus integer convallis.</p>
-            
-        </div>
-        <div class="user-doc-infor">
-            <h4><a href="">Title 3</a></h4>
-            <p class="text-truncate">Lorem ipsum dolor sit amet consectetur. Feugiat et pharetra mi magna in sed morbi tortor. Consequat quis enim eget aliquet. Fusce cursus semper lobortis fermentum faucibus vel. Et blandit ut quam auctor purus lectus integer convallis.</p>
-            
-        </div>
-        <div class="user-doc-infor">
-            <h4><a href="">Title 4</a></h4>
-            <p class="text-truncate">Lorem ipsum dolor sit amet consectetur. Feugiat et pharetra mi magna in sed morbi tortor. Consequat quis enim eget aliquet. Fusce cursus semper lobortis fermentum faucibus vel. Et blandit ut quam auctor purus lectus integer convallis.</p>
-            
-        </div>
-        <div class="user-doc-infor">
-            <h4><a href="">Title 5</a></h4>
-            <p class="text-truncate">Lorem ipsum dolor sit amet consectetur. Feugiat et pharetra mi magna in sed morbi tortor. Consequat quis enim eget aliquet. Fusce cursus semper lobortis fermentum faucibus vel. Et blandit ut quam auctor purus lectus integer convallis.</p>
-            
-        </div>
+        <div class="user-doc-infor" *ngFor="let item of contribution">
+            <ng-container *ngIf="user.role === 2 || (user.role === 1 && item.status === 3)">
+                <h4><a (click)="viewContribution(item.contributionID)">{{ item.title }}</a></h4>
+                <p class="text-truncate">{{ item.description }}</p>
+                <div [ngSwitch]="item.status">
+                  <div *ngSwitchCase="0" class="status-unpublic">Unpublic</div>
+                  <div *ngSwitchCase="1" class="status-updated">Updated</div>
+                  <div *ngSwitchCase="2" class="status-public">Public</div>
+                  <div *ngSwitchCase="3" class="status-approved">Approved by Coordinator</div>
+                </div>
+                <button *ngIf="user.role === 2 && item.status !== 3" (click)="confirmApprove(item)">Approve</button>
+              </ng-container>
 
 
     </div>

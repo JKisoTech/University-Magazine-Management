@@ -1,53 +1,52 @@
 <app-header></app-header>
 
 
-
-
-
-
-<div class="card">
-    <div class="card-header">
-        <div class="col col-md-4">
-            <h5 class="card-title">
-                {{ 'Upload New Contribution'}}
-            </h5>
+<form [formGroup]="formGroup" action="" enctype="multipart/form-data">
+    <div class="user-submit-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Contents</label>
+                        <input type="text" name="" id="" class="form-control" placeholder="content" formControlName="content"  />
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Titles</label>
+                        <input type="text" name="" id="" class="form-control" placeholder="title" formControlName="title" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Description:</label>
+                        <textarea class="form-control" formControlName="description"  rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Upload File:</label>
+                        <input
+                            type="file"
+                            class="form-control"
+                            name=""
+                            (change)="onFileChange($event)" formControlName="type"
+                            placeholder=""
+                           
+                        />
+                    </div>
+                    <button type="button" class="btn btn-primary">
+                        Cancel
+                    </button>
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        (click)="submitForm()"
+                    >
+                        Submit
+                    </button>
+                    
+                </div>
+            </div>
+            <div class="col-12">
+            </div>
         </div>
     </div>
+</form>
 
-    <div class="card-body">
-        <form [formGroup]="formGroup" >
-            
-        
-            <div class="mt-2">
-                <label>User ID</label><span> * </span>
-                <input type="text" class="form-control" formControlName="user_id" />
-              </div>
 
-              <div class="mt-2">
-                <label>Content</label><span>*</span>
-                <input type="text" class="form-control" formControlName="content"/>
-            </div>
 
-            <div class="mt-2">
-                <label>Title</label><span>*</span>
-                <input type="text" class="form-control" formControlName="title"/>
-
-            </div>
-
-            <div class="mt-2">
-                <label> Description </label> <span>*</span>
-                <input type="text" class="form-control" formControlName="description"/>
-
-            </div>
-
-            <div class="mt-2">
-                <label>Type</label><span>*</span>
-                <input type="file" class="form-control" (change)="onFileChange($event)" formControlName="type"/>
-              </div>
-        </form>
-        <div class="mt-4 text-center">
-            <button mat-raised-button color="primary" (click)="submitForm()">Save</button>
-        </div>
-    </div>
-
-</div>

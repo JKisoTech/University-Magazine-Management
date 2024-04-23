@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { FalcutyDTO } from '../../API/Admin/falcuty/model';
+import { FacultyDTO } from '../../API/Admin/falcuty/model';
 import { FalcutyService } from '../../API/Admin/falcuty/falcuty.service';
 import { MatDialog} from '@angular/material/dialog';
 import { CreateFormFalcutyComponent } from './create-form-falcuty/create-form-falcuty.component';
@@ -19,7 +19,7 @@ export class FalcutyComponent implements OnInit {
 
   form: FormGroup;
   currentId: number;
-  dataSource: MatTableDataSource<FalcutyDTO>;
+  dataSource: MatTableDataSource<FacultyDTO>;
   displayColumns: string[] = [ 'facultyID', 'facultyName'];
 
   constructor(

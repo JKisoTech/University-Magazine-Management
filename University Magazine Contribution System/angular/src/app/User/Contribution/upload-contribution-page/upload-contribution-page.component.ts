@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
 
 import { convert } from 'libreoffice-convert';
+import { Router } from '@angular/router';
 
 
 
@@ -21,7 +22,7 @@ import { convert } from 'libreoffice-convert';
 export class UploadContributionPageComponent implements OnInit{
 
   formGroup: FormGroup;
-  user: UserDto | null = null;
+  user: UserDto ;
   selectedFile: File ;
    baseUrl = 'https://localhost:7101/api/Contribution';
    
@@ -35,6 +36,7 @@ export class UploadContributionPageComponent implements OnInit{
     private fb: FormBuilder,
     private userService : UserService,
     private authService: AuthenticationService,
+    private router: Router,
     
 
   ){}
@@ -46,6 +48,9 @@ export class UploadContributionPageComponent implements OnInit{
       this.userService.GetUserByLoginName(loggedInUserName).subscribe(
         (response) => {
           this.user = response;
+          this.formGroup.patchValue({
+            user_id: this.user.loginName
+          });
         },
         (error) => {
           console.error('Failed to fetch user data:', error);
@@ -55,7 +60,6 @@ export class UploadContributionPageComponent implements OnInit{
   }
   buildForm() {
     this.formGroup = this.fb.group({
-        user_id: ['', [Validators.required]],
         content: ['', [Validators.required]],
         title: ['', [Validators.required]],
         description: ['', [Validators.required]],
@@ -64,30 +68,33 @@ export class UploadContributionPageComponent implements OnInit{
 }
 
 submitForm() {
-  const user_id = this.formGroup.get('user_id')?.value;
   const content = this.formGroup.get('content')?.value;
   const title = this.formGroup.get('title')?.value;
   const description = this.formGroup.get('description')?.value;
 
-  const contributionData: ContributionDto = {
-      contributionID: user_id,
-      studentID: user_id,
+  // Check if user_id is available
+  if (this.user && this.user.loginName) {
+    const contributionData: ContributionDto = {
+      contributionID: '',
+      studentID: this.user.loginName,
       content: content,
       status: 0,
       title: title,
       description: description,
       type: this.selectedFile ? this.selectedFile.name : ''
-  };
+    };
 
-  this.contributionService.PostContribution(contributionData, this.selectedFile ).subscribe(
+    this.contributionService.PostContribution(contributionData, this.selectedFile).subscribe(
       (response) => {
-        this.ngOnInit();
+        this.router.navigate(['/student-page']);
       },
       (error) => {
         console.error('Error submitting contribution:', error);
-
       }
-  );
+    );
+  } else {
+    console.error('User loginName not available.');
+  }
 }
 
   onFileChange(event: any) {

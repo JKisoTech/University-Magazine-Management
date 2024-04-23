@@ -44,17 +44,10 @@ export class ViewAllContributionComponent implements OnInit{
   this.router.navigate(['/contribution', contributionID]);
 }
 editContribution(id: string) {
-  this.contributionService.GetContent(id).subscribe(
+  this.contributionService.GetContributionbyId(id).subscribe(
     (contribution) => {
       // Navigate to the update page with the contribution details
-      const dialogRef = this.dialog.open(UpdateContributionPageComponent, {
-        width: '400px',
-        data: { contributionId: id, contributionData: contribution }
-        
-      });
-      dialogRef.afterClosed().subscribe(() => {
-        this.ngOnInit();
-      })
+  
     },
     (error) => {
       // Handle error

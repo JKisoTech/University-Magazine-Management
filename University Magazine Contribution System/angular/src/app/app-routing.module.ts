@@ -29,10 +29,14 @@ const routes: Routes = [
   { path: 'user-profile', component: UserProfileComponent},
   { path: 'view-all-contribution', component: ViewAllContributionComponent},
   { path : 'upload-contribution', component: UploadContributionPageComponent},
+  { path : 'update-contribution/:id', component: UpdateContributionPageComponent},
+
   { path: 'admin/studentmanagement', component : StudentManagementComponent},
   { path: 'student-page', component: StudentComponent, canActivate: [AuthenticationGuard]},
   { path: 'adtesting', component:AdminfeComponent},
-  { path: 'student-profile', component: StudentProfileComponent}
+  { path: 'student-profile', component: StudentProfileComponent},
+
+
 ];
 
 @NgModule({

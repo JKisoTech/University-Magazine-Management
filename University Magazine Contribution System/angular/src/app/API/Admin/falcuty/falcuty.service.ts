@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FalcutyDTO } from './model';
+import { FacultyDTO } from './model';
 
 
 @Injectable({
@@ -27,7 +27,7 @@ export class FalcutyService {
     
     }
 
-    UpdateFalcuty(id: number, data: FalcutyDTO) : Observable<any> {
+    UpdateFalcuty(id: number, data: FacultyDTO) : Observable<any> {
         return this.http.put(`${this.baseUrl}/${id}`, data)
     }
 }

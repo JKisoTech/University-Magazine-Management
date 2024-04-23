@@ -33,6 +33,7 @@
     contributionId: string ;
     student: StudentDTO | null = null;
     pdfSrc: SafeResourceUrl | null = null;
+  studentId: string | undefined;
 
 
     constructor(private authService: AuthenticationService, private userService : UserService,
@@ -75,16 +76,20 @@
           this.contributionService.GetContributionbyId(this.contributionId).subscribe(
             (response) => {
               this.contribution = response;
-              // Set the contributionId property of the student object
-              this.studentService.GetStudentById(this.contributionId).subscribe(
-                (studentResponse) => {
-                  this.student = studentResponse;
-                },
-                (error) => {
-                  console.error('Failed to fetch student data:', error);
-                }
-              );
+              const studentId = this.contribution?.studentID; // Retrieve studentID from contribution
+              if (studentId) {
+                // Fetch student data using studentID
+                this.studentService.GetStudentById(studentId).subscribe(
+                  (studentResponse) => {
+                    this.student = studentResponse;
+                  },
+                  (error) => {
+                    console.error('Failed to fetch student data:', error);
+                  }
+                );
+              }
             },
+
             (error) => {
               console.error('Failed to fetch contribution data:', error);
             }

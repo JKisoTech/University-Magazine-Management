@@ -7,6 +7,7 @@ import { UserService } from '../../../API/Admin/User/user.service';
 import { AuthenticationService } from '../../../API/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-contribution-page',
@@ -16,16 +17,17 @@ import { HttpHeaders } from '@angular/common/http';
 export class UpdateContributionPageComponent implements OnInit {
 
   formGroup: FormGroup;
-  user: UserDto | null = null;
+  user: UserDto;
   selectedFile: File | null = null;
+  contribution: ContributionDto;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
     private contributionService: ContributionService,
     private fb: FormBuilder,
-    public dialogRef: MatDialogRef<UpdateContributionPageComponent>,
     private userService : UserService,
     private authService: AuthenticationService,
+    private route : ActivatedRoute,
+    private router : Router,
     
 
   ){}
@@ -33,14 +35,31 @@ export class UpdateContributionPageComponent implements OnInit {
   ngOnInit(): void {
     this.buildForm();
 
-    const contributionId = this.data.contributionId;
-    if (contributionId) {
-      this.contributionService.GetContent(contributionId).subscribe(
-        (contribution) => {
-          this.populateForm(contribution);
+    this.route.params.subscribe(params => {
+      const contributionId = params['id'];
+      if (contributionId) {
+        this.contributionService.GetContributionbyId(contributionId).subscribe(
+          (contribution) => {
+            this.contribution = contribution; // Assign the contribution data
+            this.populateForm(contribution);
+          },
+          (error) => {
+            console.error('Failed to fetch contribution data:', error);
+          }
+        );
+      }
+    });
+    const loggedInUserName = this.authService.getLoggedInUserName();
+    if (loggedInUserName) {
+      this.userService.GetUserByLoginName(loggedInUserName).subscribe(
+        (response) => {
+          this.user = response;
+          this.formGroup.patchValue({
+            user_id: this.user.loginName
+          });
         },
         (error) => {
-          console.error('Failed to fetch contribution data:', error);
+          console.error('Failed to fetch user data:', error);
         }
       );
     }
@@ -72,26 +91,28 @@ submitForm() {
     console.error('No file selected');
     return;
   }
+  if (this.user && this.user.loginName) {
+    const contributionData: ContributionDto = {
+      contributionID: id,
+      studentID: this.user.loginName,
+      content: content,
+      status: 1,
+      title: title,
+      description: description,
+      type: this.selectedFile ? this.selectedFile.name : ''
+    };
 
-  const contributionData: ContributionDto = {
-    contributionID: id,
-    studentID: id,
-    content: content,
-    status: 0,
-    title: title,
-    description: description,
-    type: this.selectedFile.name
-  };
-
-  this.contributionService.UpdateContributor(contributionData, this.selectedFile).subscribe(
-    (response) => {
-       // Log the response
-      this.dialogRef.close();
-    },
-    (error) => {
-      // Handle the error here
-    }
-  );
+    this.contributionService.UpdateContributor(contributionData, this.selectedFile).subscribe(
+      (response) => {
+        this.router.navigate(['/student-page']);
+      },
+      (error) => {
+        console.error('Error submitting contribution:', error);
+      }
+    );
+  } else {
+    console.error('User loginName not available.');
+  }
 }
 
   onFileChange(event: any) {

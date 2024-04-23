@@ -1,0 +1,25 @@
+<div class="user-infor tab-pane " id="user-doc-up">
+    <h2 class="text-capitalize">Documents</h2>
+    <button routerLink="/upload-contribution">Upload New Contribution</button>
+    <hr class="my-line">
+    <div class="user-doc-details">
+        <div class="user-doc-infor" *ngFor="let item of contributions">
+            <h4><a (click)="viewContribution(item.contributionID)">{{ item.title }}</a></h4>
+            <p class="text-truncate">{{ item.description }}</p>
+            <div [ngSwitch]="item.status">
+                <div *ngSwitchCase="0" class="status-unpublic">Unpublic</div>
+                <div *ngSwitchCase="1" class="status-updated">Updated</div>
+                <div *ngSwitchCase="2" class="status-public">Public</div>
+                <div *ngSwitchCase="3" class="status-approved">Approved by Coordinator</div>
+              </div>
+              <button *ngIf="item.status !== 2" (click)="confirmPublic(item)">Public</button>
+              <button routerLink="/update-contribution/{{ item.contributionID }}">Update</button>
+          </div>
+        
+
+
+    </div>
+
+    
+
+</div>

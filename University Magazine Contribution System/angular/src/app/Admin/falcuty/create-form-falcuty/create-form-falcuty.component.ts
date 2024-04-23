@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FalcutyDTO } from '../../../API/Admin/falcuty/model';
+import { FacultyDTO } from '../../../API/Admin/falcuty/model';
 import { FalcutyService } from '../../../API/Admin/falcuty/falcuty.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 

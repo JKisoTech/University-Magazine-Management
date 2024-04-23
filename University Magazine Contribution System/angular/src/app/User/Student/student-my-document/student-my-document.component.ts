@@ -1,27 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { ContributionService } from '../../../API/Admin/Contribution/contribution.service';
-import { ContributionDto } from '../../../API/Admin/Contribution/model';
-import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../API/authentication.service';
 import { UserService } from '../../../API/Admin/User/user.service';
 import { UserDto } from '../../../API/Admin/User/model';
+import { StudentService } from '../../../API/Admin/Student/student.service';
+import { ContributionService } from '../../../API/Admin/Contribution/contribution.service';
+import { ContributionDto } from '../../../API/Admin/Contribution/model';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-student-documents',
-  templateUrl: './student-documents.component.html',
-  styleUrl: './student-documents.component.scss'
+  selector: 'app-student-my-document',
+  templateUrl: './student-my-document.component.html',
+  styleUrl: './student-my-document.component.scss'
 })
-export class StudentDocumentsComponent implements OnInit {
+export class StudentMyDocumentComponent implements OnInit {
 
+  user: UserDto ;
+  contributions: ContributionDto[] = [];
 
-  contribution: ContributionDto[] = [];
-  user: UserDto;
   constructor(
+    private authService: AuthenticationService, 
+    private userService : UserService,
+    private studentService: StudentService,
     private contributionService: ContributionService,
     private router : Router,
-    private authService: AuthenticationService,
-    private userService: UserService,
-
   ){}
 
   ngOnInit(): void {
@@ -31,7 +32,9 @@ export class StudentDocumentsComponent implements OnInit {
         (response) => {
           this.user = response;
           this.contributionService.GetContributor().subscribe((result) => {
-            this.contribution = result;
+            this.contributions = result.filter(
+              (contribution: ContributionDto) => contribution.studentID === this.user.loginName
+            );
           },
           (error) => {
             console.error('Failed to fetch contributions:', error);
@@ -43,13 +46,10 @@ export class StudentDocumentsComponent implements OnInit {
       );
     }
   }
-  viewContribution(contributionID: string) {
-    this.router.navigate(['/contribution', contributionID]);
-  }
-  confirmApprove(contribution: ContributionDto): void {
-    const confirmed = confirm('Are you sure you want to make this contribution Approve?');
+  confirmPublic(contribution: ContributionDto): void {
+    const confirmed = confirm('Are you sure you want to make this contribution public?');
     if (confirmed) {
-      contribution.status = 3; 
+      contribution.status = 2; // Update the status to 2 (Public)
       this.contributionService.UpdateContributorStatus(contribution).subscribe(
         () => {
           // Status updated successfully
@@ -60,6 +60,10 @@ export class StudentDocumentsComponent implements OnInit {
         }
       );
     }
+  }
+  
+  viewContribution(contributionID: string) {
+    this.router.navigate(['/contribution', contributionID]);
   }
 
 }

@@ -3,7 +3,7 @@ export interface UserDto {
     fullName?: string;
     status?: string;
     password?: string;
-    role?: string;  
+    role?: number;  
     createDate?: string;
-    facultyId?: string;
+    facultyID?: string;
 }
