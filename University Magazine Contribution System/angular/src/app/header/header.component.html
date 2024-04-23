@@ -1,7 +1,7 @@
 <header>
     <!-- place navbar here -->
     <div class="container-fluid logo">
-        <img src="assets/Image/logo1.png" class="mx-auto d-block " alt="">
+        <img src="../assets/Image/logo1.png" class="mx-auto d-block " alt="">
     </div>
     <div class="container hd-nav">
         <div class="row">
@@ -19,9 +19,9 @@
                             <li class="nav-item">
                                 <a href="shopping.html" class="nav-link">Shop</a>
                             </li>
-                            <li class="nav-item"  *ngIf="userRole$ | async as userRole">
-                                <a href="view-all-contribution" class="nav-link">Contribution</a>
-                              </li>
+                            <li class="nav-item">
+                                <a href="blog.html" class="nav-link">Blog</a>
+                            </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">About Us</a>
                             </li>
@@ -31,17 +31,30 @@
                         </ul>
                     </div>
                     <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa-solid fa-heart"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <button (click)="logout()">Logout</button>
-                        </li>
+                        <li class="nav-item dropdown" id="hd-user-dropdown" *ngIf="(isLoggedIn$ | async) as isAuthenticated">
+                            <div ngbDropdown class="nav-link" *ngIf="isAuthenticated">
+                              <button
+                                ngbDropdownToggle
+                                class="btn btn-outline-primary btn-sm"
+                              >
+                                {{ loggedInUserName }}<i class="fa-solid fa-user"></i>
+                              </button>
+                              <div ngbDropdownMenu>
+                                <button routerLink="/student-page">User Profile</button>
+                                <div class="dropdown-divider"></div>
+                                <button ngbDropdownItem (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i>Log out</button>
+                              </div>
+                            </div>
+                          </li>
+                          
+                          <ng-container *ngIf="!(isLoggedIn$ | async)">
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/userlogin">Login</a>
+                            </li>
+                        </ng-container>
+                        
                     </ul>
-        
+                    
                 </div>
             </nav>
             

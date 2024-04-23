@@ -13,6 +13,10 @@ import { ViewAllContributionComponent } from './User/Contribution/view-all-contr
 import { UpdateContributionPageComponent } from './User/Contribution/update-contribution-page/update-contribution-page.component';
 import { UploadContributionPageComponent } from './User/Contribution/upload-contribution-page/upload-contribution-page.component';
 import { StudentManagementComponent } from './Admin/Student/student-management/student-management.component';
+import { StudentComponent } from './User/Student/student.component';
+import { StudentProfileComponent } from './User/Student/student-profile/student-profile.component';
+import { StudentDocumentsComponent } from './User/Student/student-documents/student-documents.component';
+import { AdminfeComponent } from './adminfe/adminfe.component';
 
 
 const routes: Routes = [
@@ -26,8 +30,9 @@ const routes: Routes = [
   { path: 'view-all-contribution', component: ViewAllContributionComponent},
   { path : 'upload-contribution', component: UploadContributionPageComponent},
   { path: 'admin/studentmanagement', component : StudentManagementComponent},
-
-
+  { path: 'student-page', component: StudentComponent, canActivate: [AuthenticationGuard]},
+  { path: 'adtesting', component:AdminfeComponent},
+  { path: 'student-profile', component: StudentProfileComponent}
 ];
 
 @NgModule({

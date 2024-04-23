@@ -38,6 +38,8 @@ export class AuthenticationService {
     return this.loggedInUserName;
   }
 
+  
+
   logout() {
     this.setLoggedIn(false);
   }

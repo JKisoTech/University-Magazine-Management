@@ -1,0 +1,78 @@
+@import '../student.component.scss';
+@import '../../../../styles.scss';
+
+.user-infor-page{
+    margin-top: 50px;
+    .my-line {
+        /* Adjust these properties for customization */
+        border: 1px solid $text-gray; /* Change color and thickness */
+        margin-top: 30px; /* Add some margin for spacing */
+    }
+    h2{
+        a{
+            font-size: 16px;
+            color: $text-gray !important;
+            margin-left: 10px;
+            @include text-hovering;
+
+        }
+    }
+    .user-details{
+        p{
+            margin: 20px;
+        }
+        span{
+            font-size: 20px;
+            color: var(--Text-gray, #909090);
+            // padding-right: 70px;
+
+            &:nth-child(2){
+                color: $text-black;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .user-doc-details{
+        .user-doc-infor{
+            margin-top: 30px;
+            h4{
+                a{
+                    @include text-hovering;
+                }
+            }
+            p{
+                color: $text-gray;
+                padding-right: 50px;
+            }
+            &:nth-child(n + 6){
+                display: none !important;
+            }
+        }
+    
+    }
+    .user-doc-details-num{
+        margin-top: 20px;
+        .nav-link.active{
+            @include blog-btn;
+            color: $text-white !important;
+        }
+        .nav-link.disabled{
+            display: none !important;
+        }
+        ul{
+            li{
+                margin: 0 5px;
+                @include blog-btn-nonact;
+                a{
+                    width: 43px;
+                    border: 1px solid $text-gray;
+                    border-radius: 0;
+                    height: 42px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+}

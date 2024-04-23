@@ -6,7 +6,13 @@ body{
     font-family: 'Manrope', sans-serif;
     font-family: 'Rethink Sans', sans-serif;
 }
+main{
+    background-color: var(--bgn-color, #F5F5F5);
+}
+header{
+    background-color: var(--bgn-color, #F5F5F5);
 
+}
 h1, h2, h3, h4, h5, h6{
     font-family: 'Rethink Sans', sans-serif;
     margin: 0;
