@@ -31,23 +31,28 @@
                         </ul>
                     </div>
                     <ul class="nav">
-                        <li class="nav-item dropdown" id="hd-user-dropdown">
-                            <div ngbDropdown class="nav-link">
-                                <button type="button" class="btn btn-outline-primary btn-sm" ngbDropdownToggle>User Name<i class="fa-solid fa-user"></i></button>
-                                <div ngbDropdownMenu>
-                                    <button ngbDropdownItem>Action 1</button>
-                                    <div class="dropdown-divider"></div>
-                                    <button ngbDropdownItem><i class="fa-solid fa-right-from-bracket"></i>Log out</button>
-                                </div>
+                        <li class="nav-item dropdown" id="hd-user-dropdown" *ngIf="(isLoggedIn$ | async) as isAuthenticated">
+                            <div ngbDropdown class="nav-link" *ngIf="isAuthenticated">
+                              <button
+                                ngbDropdownToggle
+                                class="btn btn-outline-primary btn-sm"
+                              >
+                                {{ loggedInUserName }}<i class="fa-solid fa-user"></i>
+                              </button>
+                              <div ngbDropdownMenu>
+                                <button routerLink="/student-page">User Profile</button>
+                                <div class="dropdown-divider"></div>
+                                <button ngbDropdownItem (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i>Log out</button>
+                              </div>
                             </div>
-                        </li>
+                          </li>
+                          
+                          <ng-container *ngIf="!(isLoggedIn$ | async)">
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/userlogin">Login</a>
+                            </li>
+                        </ng-container>
                         
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa-solid fa-heart"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-                        </li>
                     </ul>
                     
                 </div>

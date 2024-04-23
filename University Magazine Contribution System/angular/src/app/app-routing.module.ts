@@ -30,8 +30,9 @@ const routes: Routes = [
   { path: 'view-all-contribution', component: ViewAllContributionComponent},
   { path : 'upload-contribution', component: UploadContributionPageComponent},
   { path: 'admin/studentmanagement', component : StudentManagementComponent},
-  { path: 'student-page', component: StudentComponent},
-  { path: 'adtesting', component:AdminfeComponent}
+  { path: 'student-page', component: StudentComponent, canActivate: [AuthenticationGuard]},
+  { path: 'adtesting', component:AdminfeComponent},
+  { path: 'student-profile', component: StudentProfileComponent}
 ];
 
 @NgModule({

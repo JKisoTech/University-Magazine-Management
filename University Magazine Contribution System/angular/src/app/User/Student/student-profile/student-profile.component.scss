@@ -1,7 +1,13 @@
 @import '../student.component.scss';
 @import '../../../../styles.scss';
 
-.user-infor{
+.user-infor-page{
+    margin-top: 50px;
+    .my-line {
+        /* Adjust these properties for customization */
+        border: 1px solid $text-gray; /* Change color and thickness */
+        margin-top: 30px; /* Add some margin for spacing */
+    }
     h2{
         a{
             font-size: 16px;

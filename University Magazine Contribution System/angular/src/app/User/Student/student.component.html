@@ -18,11 +18,11 @@
                 <div class="user-option">
                     <ul class="navbar-nav nav-tabs ">
                         <li class="nav-item">
-                            <a class="nav-link active text-capitalize" data-bs-toggle="tab" ><i class="fa-solid fa-user"></i>User Information</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-capitalize" data-bs-toggle="tab" ><i class="fa-solid fa-book"></i>Documents</a>
-                        </li>
+                            <a class="nav-link active text-capitalize" data-bs-toggle="tab" (click)="showProfile()"><i class="fa-solid fa-user"></i>User Information</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-capitalize" data-bs-toggle="tab" (click)="showDocuments()"><i class="fa-solid fa-book"></i>Documents</a>
+                          </li>
                     </ul>
                     
                 </div>
@@ -30,8 +30,13 @@
                 
             </div>
             <div class="col-xl-8 col-lg-8 col-md-8 user-information">
-                <app-student-documents></app-student-documents>
-            </div>
+                <ng-container *ngIf="showProfileTab">
+                  <app-student-profile></app-student-profile>
+                </ng-container>
+                <ng-container *ngIf="showDocumentsTab">
+                  <app-student-documents></app-student-documents>
+                </ng-container>
+              </div>
         </div>
     </div>
 
