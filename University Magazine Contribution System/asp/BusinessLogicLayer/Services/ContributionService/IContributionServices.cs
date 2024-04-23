@@ -18,7 +18,7 @@ namespace BusinessLogicLayer.Services.ContributionService
         public Task<ContributionsDTO> UpdateContribution(string id, string content, string title, IFormFile type, string description);
         public Task<int> check_SubmitDate();
         public Task<int> check_CompleteDate();
-        public Task<string> WriteFile(IFormFile file);
+        public Task<string> WriteFile(IFormFile file, string id);
         public Task ConvertDocxToPDF(string id);
     }
 }
