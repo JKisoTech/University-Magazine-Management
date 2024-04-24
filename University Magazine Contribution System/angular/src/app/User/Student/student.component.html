@@ -30,12 +30,16 @@
                 
             </div>
             <div class="col-xl-8 col-lg-8 col-md-8 user-information">
-                <ng-container *ngIf="showProfileTab">
-                  <app-student-profile></app-student-profile>
-                </ng-container>
-                <ng-container *ngIf="showDocumentsTab">
-                  <app-student-documents></app-student-documents>
-                </ng-container>
+                <div class="tab-content">
+                    <ng-container *ngIf="showProfileTab">
+                      <app-student-profile></app-student-profile>
+                    </ng-container>
+                    <ng-container *ngIf="showDocumentsTab">
+                      <app-student-documents></app-student-documents>
+                    </ng-container>
+                
+                </div>
+                
               </div>
         </div>
     </div>
