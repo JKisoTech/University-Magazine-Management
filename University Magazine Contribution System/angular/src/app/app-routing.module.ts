@@ -17,6 +17,7 @@ import { StudentComponent } from './User/Student/student.component';
 import { StudentProfileComponent } from './User/Student/student-profile/student-profile.component';
 import { StudentDocumentsComponent } from './User/Student/student-documents/student-documents.component';
 import { AdminfeComponent } from './adminfe/adminfe.component';
+import { FetestComponent } from './fetest/fetest.component';
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
   { path: 'admin/studentmanagement', component : StudentManagementComponent},
   { path: 'student-page', component: StudentComponent, canActivate: [AuthenticationGuard]},
   { path: 'adtesting', component:AdminfeComponent},
-  { path: 'student-profile', component: StudentProfileComponent}
+  { path: 'student-profile', component: StudentProfileComponent},
+  {path: 'fetest', component: FetestComponent},
 ];
 
 @NgModule({

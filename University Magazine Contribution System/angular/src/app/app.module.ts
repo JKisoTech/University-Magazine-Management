@@ -47,6 +47,7 @@ import { DocumentsManagementComponent } from './adminfe/documents-management/doc
 import { AdHeaderComponent } from './adminfe/ad-header/ad-header.component';
 import { UserContronllerComponent } from './adminfe/user-contronller/user-contronller.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FetestComponent } from './fetest/fetest.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DocumentsManagementComponent,
     AdHeaderComponent,
     UserContronllerComponent,
+    FetestComponent,
     
 
   ],
