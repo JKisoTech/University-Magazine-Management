@@ -1,0 +1,10 @@
+@import '../../../../styles.scss';
+
+.dashboard{
+    border: 1px solid $text-gray;
+    border-radius: 10px;
+    margin-top: 20px;
+    canvas{
+        padding: 15px 0;
+    }
+}

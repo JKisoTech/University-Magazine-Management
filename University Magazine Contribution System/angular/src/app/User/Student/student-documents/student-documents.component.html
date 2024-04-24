@@ -2,6 +2,7 @@
     <h2 class="text-capitalize">Documents</h2>
     <hr class="my-line">
     <div class="user-doc-details">
+<<<<<<< Updated upstream
         <div class="user-doc-infor">
             <h4><a href="">Title 1</a></h4>
             <p class="text-truncate">Lorem ipsum dolor sit amet consectetur. Feugiat et pharetra mi magna in sed morbi tortor. Consequat quis enim eget aliquet. Fusce cursus semper lobortis fermentum faucibus vel. Et blandit ut quam auctor purus lectus integer convallis.</p>
@@ -26,11 +27,68 @@
             <h4><a href="">Title 5</a></h4>
             <p class="text-truncate">Lorem ipsum dolor sit amet consectetur. Feugiat et pharetra mi magna in sed morbi tortor. Consequat quis enim eget aliquet. Fusce cursus semper lobortis fermentum faucibus vel. Et blandit ut quam auctor purus lectus integer convallis.</p>
             
+=======
+        <div class="user-doc-infor" *ngFor="let item of contribution">
+            <ng-container *ngIf="user.role === 2 || (user.role === 1 && item.status === 3)">
+                <h4><a (click)="viewContribution(item.contributionID)">{{ item.title }}</a></h4>
+                <p class="text-truncate">{{ item.description }}</p>
+                <div [ngSwitch]="item.status">
+                  <div *ngSwitchCase="0" class="status-unpublic">Unpublic</div>
+                  <div *ngSwitchCase="1" class="status-updated">Updated</div>
+                  <div *ngSwitchCase="2" class="status-public">Public</div>
+                  <div *ngSwitchCase="3" class="status-approved">Approved by Coordinator</div>
+                </div>
+                <button *ngIf="user.role === 2 && item.status !== 3" (click)="confirmApprove(item)">Approve</button>
+              </ng-container>
+        </div>
+        <div class="user-doc-infor" *ngFor="let item of contribution">
+          <ng-container *ngIf="user.role === 2 || (user.role === 1 && item.status === 3)">
+            <div class="d-flex justify-content-between">
+              <div class="text-truncate">
+                  <h4 class="text-break"><a (click)="viewContribution(item.contributionID)">{{ item.title }}</a></h4>
+                  <p class="user-doc-time">Date: 01/01/2024</p>
+              </div>
+              <div class="status">
+                  <div class="status-1 bg-success">
+                      <p class="text-white text-capitalize">approved</p>
+                  </div>
+              </div>
+          </div>
+          <p class="text-truncate">{{ item.description }}</p>
+          <!-- <div [ngSwitch]="item.status">
+              <div *ngSwitchCase="0" class="status-unpublic">Unpublic</div>
+              <div *ngSwitchCase="1" class="status-updated">Updated</div>
+              <div *ngSwitchCase="2" class="status-public">Public</div>
+              <div *ngSwitchCase="3" class="status-approved">Approved by Coordinator</div>
+          </div> -->
+          <div class="user-doc-btn">
+              <button type="button" class="btn btn-info" *ngIf="user.role === 2 && item.status !== 3" (click)="confirmApprove(item)">
+                Approve</button>
+          </div>
+            </ng-container>
+        </div>
+        <div class="user-doc-infor" *ngFor="let item of contribution">
+          <ng-container *ngIf="user.role === 2 || (user.role === 1 && item.status === 3)">
+            <div class="d-flex justify-content-between">
+              <div class="text-truncate">
+                  <h4 class="text-break"><a (click)="viewContribution(item.contributionID)">{{ item.title }}</a></h4>
+                  <p class="user-doc-time">Date: 01/01/2024</p>
+              </div>
+              <div class="status">
+                <div class="status-1 bg-secondary">
+                    <p class="text-white text-capitalize">unpublic</p>
+                </div>
+            </div>
+      </div>
+          <p class="text-truncate">{{ item.description }}</p>
+          <div class="user-doc-btn">
+              <button type="button" class="btn btn-info" *ngIf="user.role === 2 && item.status !== 3" (click)="confirmApprove(item)">
+                Approve</button>
+          </div>
+            </ng-container>
+>>>>>>> Stashed changes
         </div>
 
 
     </div>
-
-    
-
 </div>

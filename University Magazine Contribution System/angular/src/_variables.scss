@@ -22,12 +22,12 @@ $desktop: 1440px;
     }
 }
 @mixin btn-confirm{
-    background-color: $btn;
+    background-color: $btn !important;
     transition: all 0.5s;
     border: none;
     &:hover{
         opacity: 0.8;
-        color: $text-white;
+        color: $text-white !important;
         transition: all 0.5s;
     }
 

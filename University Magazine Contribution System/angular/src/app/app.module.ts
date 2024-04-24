@@ -47,7 +47,12 @@ import { DocumentsManagementComponent } from './adminfe/documents-management/doc
 import { AdHeaderComponent } from './adminfe/ad-header/ad-header.component';
 import { UserContronllerComponent } from './adminfe/user-contronller/user-contronller.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+<<<<<<< Updated upstream
 import { FetestComponent } from './fetest/fetest.component';
+=======
+import { StudentMyDocumentComponent } from './User/Student/student-my-document/student-my-document.component';
+import { UserDashboardComponent } from './User/Student/user-dashboard/user-dashboard.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -79,7 +84,12 @@ import { FetestComponent } from './fetest/fetest.component';
     DocumentsManagementComponent,
     AdHeaderComponent,
     UserContronllerComponent,
+<<<<<<< Updated upstream
     FetestComponent,
+=======
+    StudentMyDocumentComponent,
+    UserDashboardComponent,
+>>>>>>> Stashed changes
     
 
   ],
