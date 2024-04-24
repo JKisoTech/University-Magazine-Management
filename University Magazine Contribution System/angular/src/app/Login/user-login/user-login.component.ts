@@ -12,8 +12,11 @@ import { AuthenticationService } from '../../API/authentication.service';
 export class UserLoginComponent{
     @Output() loginSuccess: EventEmitter<void> = new EventEmitter<void>();
 
+   
 
   form: FormGroup;
+  errorMessage: string = '';
+
 
   constructor(private formBuilder: FormBuilder,    private authService: AuthenticationService  // Inject AuthenticationService
   , private router: Router, private userService: UserService) {
@@ -50,6 +53,8 @@ login(): void {
     (error) => {
       // Handle login error (display error message, etc.)
       console.error('Login failed:', error);
+      this.errorMessage = 'Your password or login name is wrong';
+      alert(this.errorMessage);
     }
   );
 }
