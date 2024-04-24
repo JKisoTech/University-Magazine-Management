@@ -1,4 +1,4 @@
-<app-header></app-header>
+
 <main>
     <form [formGroup]="form" (ngSubmit)="login()">
       <div class="container">
@@ -7,13 +7,12 @@
           <div class="col-lg-9 col-xl-9 col-md-12 col-12 login">
             <h2 class="text-center">Login</h2>
             <div class="mb-3">
-              <label for="loginName" class="form-label">Email</label>
+              <label for="loginName" class="form-label">Login Name</label>
               <input type="email" class="form-control" formControlName="loginName" id="loginName"  placeholder="Please enter your Login Name" />
-              <small id="emailHelpId" class="form-text text-muted">Help text</small>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" formControlName="password" id="password" placeholder="" />
+              <input type="password" class="form-control" formControlName="password" id="password" placeholder="Please enter your Password" />
             </div>
   
             <div class="btn-zone text-center">
@@ -28,4 +27,4 @@
       </div>
     </form>
   </main>
-<app-footer></app-footer>
+

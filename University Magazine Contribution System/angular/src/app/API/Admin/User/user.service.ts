@@ -14,8 +14,9 @@ export class UserService {
     constructor( private http: HttpClient){}
 
 
-    CreateUser(data: UserDto): Observable<any> {
-        return this.http.post(`${this.baseUrl}/CreateUser`, data);
+    CreateUser(data: UserDto, facultyID: string): Observable<any> {
+        const url = `${this.baseUrl}/CreateUser?facultyID=${facultyID}`;
+        return this.http.post(url, data, { responseType: 'text' });
     }
 
     GetAllUser(): Observable<any> {
@@ -31,8 +32,8 @@ export class UserService {
         return this.http.get(url);
       }
 
-    UpdateUser(id: number, data: UserDto) : Observable<any> {
-        return this.http.put(`${this.baseUrl}/${id}`, data)
+    UpdateUser(loginName: string, data: UserDto) : Observable<any> {
+        return this.http.put(`${this.baseUrl}/UpdateUser/${loginName}`, data, { responseType: 'text' })
     }
     
     UserLogin(loginName: string, password: string): Observable<any> {
@@ -45,6 +46,20 @@ export class UserService {
       GetUserRole(loginName: string): Observable<number | null> {
         return this.http.get<number | null>(`${this.baseUrl}/GetRole?_loginName=${loginName}`);
       }
+      
+      UpdateUserStatus(loginName: string, status: boolean): Observable<any> {
+        const url = `${this.baseUrl}/Status/${loginName}?status=${status}`;
+        return this.http.put(url, {});
+      }
+
+      ChangePassword(loginName: string, oldPassword: string, newPassword: string): Observable<any> {
+        const url = `${this.baseUrl}/ChangePassword/${loginName}?_Oldpassword=${oldPassword}&_Newpassword=${newPassword}`;
+        return this.http.put(url, {}, { responseType: 'text' }); // Specify responseType as 'text'
+      }
+
+      
+
+      
     
 
 

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../API/Admin/User/user.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../API/authentication.service';
+import { UserDto } from '../../API/Admin/User/model';
 
 @Component({
   selector: 'app-user-login',
@@ -16,6 +17,7 @@ export class UserLoginComponent{
 
   form: FormGroup;
   errorMessage: string = '';
+  user: UserDto;
 
 
   constructor(private formBuilder: FormBuilder,    private authService: AuthenticationService  // Inject AuthenticationService
@@ -48,7 +50,21 @@ login(): void {
       this.loginSuccess.emit();
       // Handle successful login (store token, navigate, etc.)
       console.log('Login successful');
-      this.router.navigate(['/']); // Redirect to dashboard or desired route
+      this.userService.GetUserByLoginName(loginName).subscribe(
+        (user: any) => {
+          const userRole = user.role; // Assuming the role property is returned in the user object
+
+          if (userRole === 0) {
+            this.router.navigate(['/adtesting']); // Redirect to admin route
+          } else {
+            this.router.navigate(['/']); // Redirect to dashboard or desired route
+          }
+        },
+        (error) => {
+          console.error('Failed to retrieve user:', error);
+          // Handle error while retrieving user role
+        }
+      );
     },
     (error) => {
       // Handle login error (display error message, etc.)

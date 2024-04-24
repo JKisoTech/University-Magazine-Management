@@ -34,9 +34,6 @@ import { UploadContributionPageComponent } from './User/Contribution/upload-cont
 import { ViewAllContributionComponent } from './User/Contribution/view-all-contribution/view-all-contribution.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UpdateContributionPageComponent } from './User/Contribution/update-contribution-page/update-contribution-page.component';
-import { StudentManagementComponent } from './Admin/Student/student-management/student-management.component';
-import { CreateStudentFormComponent } from './Admin/Student/create-student-form/create-student-form.component';
-
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { StudentComponent } from './User/Student/student.component';
 import { StudentProfileComponent } from './User/Student/student-profile/student-profile.component';
@@ -48,6 +45,9 @@ import { AdHeaderComponent } from './adminfe/ad-header/ad-header.component';
 import { UserContronllerComponent } from './adminfe/user-contronller/user-contronller.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StudentMyDocumentComponent } from './User/Student/student-my-document/student-my-document.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { FacultyManagementComponent } from './adminfe/faculty-management/faculty-management.component';
+import { StudentManagementComponent } from './adminfe/student-management/student-management.component';
 
 @NgModule({
   declarations: [
@@ -69,8 +69,6 @@ import { StudentMyDocumentComponent } from './User/Student/student-my-document/s
     UploadContributionPageComponent,
     ViewAllContributionComponent,
     UpdateContributionPageComponent,
-    StudentManagementComponent,
-    CreateStudentFormComponent,
     StudentComponent,
     StudentProfileComponent,
     StudentDocumentsComponent,
@@ -80,6 +78,8 @@ import { StudentMyDocumentComponent } from './User/Student/student-my-document/s
     AdHeaderComponent,
     UserContronllerComponent,
     StudentMyDocumentComponent,
+    FacultyManagementComponent,
+    StudentManagementComponent
     
 
   ],
@@ -98,7 +98,8 @@ import { StudentMyDocumentComponent } from './User/Student/student-my-document/s
     FormsModule,
     ReactiveFormsModule,
     PdfViewerModule,
-    NgbModule
+    NgbModule,
+    MatPaginatorModule,
     
   ],
   providers: [
