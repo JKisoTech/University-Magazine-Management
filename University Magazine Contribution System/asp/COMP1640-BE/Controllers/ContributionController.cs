@@ -119,9 +119,9 @@ namespace COMP1640_BE.Controllers
         }
         
         [HttpPut("Set Expired")]
-        public async Task<ActionResult> SetExpired(string _contributionID)
+        public async Task<ActionResult> SetExpired()
         {
-            var newComment = await _contributionServices.set_Expired(_contributionID);
+            var newComment = await _contributionServices.set_Expired();
             return Ok(newComment);
             
         }

@@ -131,7 +131,7 @@ namespace DataAccessLayer.Repositories.ContributionRepo
             await _context.SaveChangesAsync();
             return contribution;
         }
-        public async Task<Contribution> SetExpired(string id)
+        public async Task<Contribution> SetExpired()
         {
 
             var expired_date = await _systemPRepository.Get_Parameter("EXPIRED_DATE");

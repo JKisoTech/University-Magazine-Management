@@ -110,9 +110,9 @@ namespace BusinessLogicLayer.Services.ContributionService
             return _mapper.Map<CommentDTO>(newComment);
         }
 
-        public async Task<ContributionsDTO> set_Expired(string id)
+        public async Task<ContributionsDTO> set_Expired()
         {
-            var expired = await _contributionRepository.SetExpired(id);
+            var expired = await _contributionRepository.SetExpired();
             return _mapper.Map<ContributionsDTO>(expired);
         }
         public async Task<int> check_SubmitDate()
