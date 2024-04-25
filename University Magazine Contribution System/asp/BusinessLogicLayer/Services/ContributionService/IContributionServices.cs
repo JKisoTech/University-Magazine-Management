@@ -16,7 +16,7 @@ namespace BusinessLogicLayer.Services.ContributionService
         public Task<ContributionsDTO> GetContent(string id);
         public Task<IEnumerable<CommentDTO>> GetComment(string id);
         public Task SetStatus(string id,int status);
-        public Task<ContributionsDTO> set_Expired(string id);
+        public Task<ContributionsDTO> set_Expired();
         public Task<ContributionsDTO> UpdateContribution(string id, string content, string title, IFormFile type, string description);
         public Task<int> check_SubmitDate();
         public Task<int> check_CompleteDate();

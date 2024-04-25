@@ -20,6 +20,6 @@ namespace DataAccessLayer.Repositories.ContributionRepo
 
         Task<Comment> SetComment(string user_id, string contributionId, string title,string comment);
         public Task<int> Get_Maxnumber_ID(string studentId);
-        public Task<Contribution> SetExpired(string id);
+        public Task<Contribution> SetExpired();
     }
 }
