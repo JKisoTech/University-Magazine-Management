@@ -26,7 +26,24 @@ namespace BusinessLogicLayer.Services.SystemService
             return await _systempRepository.Get_Parameter(parameterName);
         }
 
-     
+        public async Task<Dictionary<string, int>> Dashboard()
+        {
+            var result = await _systempRepository.Dashboard();
+
+            return result;
+        }
+
+        public async Task<List<ReportData>> GetReportData()
+        {
+            var report = await _systempRepository.GetReportData();
+            return report;
+        }
+
+        public async Task<List<ReportDataWithoutComment>> GetContributionsWithoutCommentsReport()
+        {
+            var report = await _systempRepository.GetContributionsWithoutCommentsReport();
+            return report;
+        }
 
 
     }

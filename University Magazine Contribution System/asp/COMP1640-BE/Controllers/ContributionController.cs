@@ -56,6 +56,16 @@ namespace COMP1640_BE.Controllers
             var contrbution = await _contributionServices.GetContent(ID);
             return Ok(contrbution); 
         }
+        
+        
+        [HttpGet]
+        [Route("GetComment/{ID}")]
+
+        public async Task<ActionResult<ContributionsDTO>> GetCommentByID(string ID)
+        {
+            var contrbution = await _contributionServices.GetComment(ID);
+            return Ok(contrbution); 
+        }
 
         [HttpPost("CreateContributor")]
         public async Task<ActionResult<ContributionsDTO>> SaveContributor
