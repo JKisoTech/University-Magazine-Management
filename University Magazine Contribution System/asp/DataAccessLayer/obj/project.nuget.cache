@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eMK5t0UEHqLHIiRA3VzCw7bK53SUTh+bypLn4X/yxO7THMLk1Sotx2ANDg5ioSTzf46mq3B/1r7n0x+tG7DPTg==",
+  "dgSpecHash": "h/bSkKxReN/cZdmM0vSmeDI9C2PriEpU4Bw9Tgf6nL+VlTl3sRS9qJbwCvDH59TMaloonlrL2dTF/NdpUZP+vQ==",
   "success": true,
-  "projectFilePath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\asp\\DataAccessLayer\\DataAccessLayer.csproj",
+  "projectFilePath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\DataAccessLayer\\DataAccessLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\quant\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\quant\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

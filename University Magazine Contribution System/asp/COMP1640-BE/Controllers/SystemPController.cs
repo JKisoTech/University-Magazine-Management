@@ -28,13 +28,5 @@ namespace COMP1640_BE.Controllers
             var systemP = await _systempServices.get_completeDate(name);
             return Ok(systemP);
         }
-
-        [HttpGet("Dashboard")]
-        public async Task<IActionResult> Dashboard()
-        {
-            var data = await _systempServices.Dashboard();
-
-            return Ok(data);
-        }
     }
 }

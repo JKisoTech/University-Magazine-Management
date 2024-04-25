@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+    <Compile Remove="Services\CommentService\**" />
+    <EmbeddedResource Remove="Services\CommentService\**" />
+    <None Remove="Services\CommentService\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\CommentService\" />
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
   </ItemGroup>
 
   <ItemGroup>

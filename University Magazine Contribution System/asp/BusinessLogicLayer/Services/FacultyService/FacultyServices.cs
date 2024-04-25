@@ -56,5 +56,23 @@ namespace BusinessLogicLayer.Services.FacultyService
         {
             await _repository.DeleteFacultyAsync(id);
         }
+
+        public async Task<IEnumerable<Contribution>>GetContributionByFacultyID(string id)
+        {
+            var contribution = await _repository.GetAllContributionAsync(id);
+            return _mapper.Map<IEnumerable<Contribution>>(contribution);
+        }
+
+        public async Task<List<StudentDTO>> GetAllStudentAsync()
+        {
+            var studentEntity = await _repository.GetAllStudentAsync();
+            return _mapper.Map<List<StudentDTO>>(studentEntity);
+        }
+
+        public async Task<StudentDTO> GetStudentByIDAsync(string id)
+        {
+            var studentEntity = await _repository.GetStudentbyIDAsync(id);
+            return _mapper.Map<StudentDTO>(studentEntity);
+        }
     }
 }

@@ -48,15 +48,22 @@ namespace COMP1640_BE.Controllers
         }
 
         [HttpGet("GetStudent/{Id}")]
-        public async Task<ActionResult<FacultyDTO>> get_student_id(string id)
+        public async Task<ActionResult<StudentDTO>> get_student_id(string id)
         {
-            return StatusCode(404);
+            var students = await _facultyServices.GetStudentByIDAsync(id);
+
+            if (students == null)
+            {
+                return StatusCode(404, " No Student found");
+            }
+
+            return Ok(students);
         }
 
         [HttpGet("GetStudent")]
-        public async Task<ActionResult<FacultyDTO>> get_students(string id)
+        public async Task<ActionResult<FacultyDTO>> get_students()
         {
-            var user = await _facultyServices.GetFacultyByIdAsync(id);
+            var user = await _facultyServices.GetAllStudentAsync();
 
             if (user == null)
             {
@@ -71,7 +78,7 @@ namespace COMP1640_BE.Controllers
         [HttpGet("GetContribution")]
         public async Task<ActionResult<FacultyDTO>> get_contributors(string id)
         {
-            var user = await _facultyServices.GetFacultyByIdAsync(id);
+            var user = await _facultyServices.GetContributionByFacultyID(id);
 
             if (user == null)
             {

@@ -4920,11 +4920,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\asp\\DataAccessLayer\\DataAccessLayer.csproj",
+      "projectUniqueName": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\DataAccessLayer\\DataAccessLayer.csproj",
       "projectName": "DataAccessLayer",
-      "projectPath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\asp\\DataAccessLayer\\DataAccessLayer.csproj",
+      "projectPath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\DataAccessLayer\\DataAccessLayer.csproj",
       "packagesPath": "C:\\Users\\quant\\.nuget\\packages\\",
-      "outputPath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\asp\\DataAccessLayer\\obj\\",
+      "outputPath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\DataAccessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

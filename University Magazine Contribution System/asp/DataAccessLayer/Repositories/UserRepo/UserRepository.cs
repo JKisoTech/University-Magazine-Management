@@ -59,15 +59,6 @@ namespace DataAccessLayer.Repositories.UsersRepo
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(string _loginName)
-        {
-            var user = await GetByIdAsync(_loginName);
-            if (user != null)
-            {
-                _context.Users.Remove(user);
-                await _context.SaveChangesAsync();
-            }
-        }
 
         public async Task UpdateAsync(Models.User user)
         {
@@ -104,7 +95,7 @@ namespace DataAccessLayer.Repositories.UsersRepo
             return InputPass == hashPass;
         }
 
-
+  
 
     }
 }

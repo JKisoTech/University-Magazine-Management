@@ -56,18 +56,3 @@ C:\Users\quant\Documents\Zalo Received Files\asp\asp\DataAccessLayer\obj\Debug\n
 C:\Users\quant\Documents\Zalo Received Files\asp\asp\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.pdb
 C:\Users\quant\Documents\Zalo Received Files\asp\asp\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.genruntimeconfig.cache
 C:\Users\quant\Documents\Zalo Received Files\asp\asp\DataAccessLayer\obj\Debug\net8.0\ref\DataAccessLayer.dll
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.deps.json
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.runtimeconfig.json
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.dll
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.pdb
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.AssemblyReference.cache
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfoInputs.cache
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfo.cs
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.CoreCompileInputs.cache
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.sourcelink.json
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.dll
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\obj\Debug\net8.0\refint\DataAccessLayer.dll
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.pdb
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.genruntimeconfig.cache
-O:\Github local\COMP1640\University Magazine Contribution System\asp\asp\DataAccessLayer\obj\Debug\net8.0\ref\DataAccessLayer.dll

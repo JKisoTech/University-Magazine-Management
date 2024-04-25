@@ -15,7 +15,8 @@ namespace DataAccessLayer.Repositories.ContributionRepo
         Task<IEnumerable<Contribution>> GetAllAsync();
         Task<Contribution> UpdateAsync(string id, string title, string description, string type, string content);
         Task<Contribution> SetStatus(string id, int status);
-        Task DeleteAsync(string id);
+
+        Task<Comment> SetComment(string user_id, string contributionId, string comment);
 
     }
 }

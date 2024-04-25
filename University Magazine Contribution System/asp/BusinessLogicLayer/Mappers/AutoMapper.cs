@@ -26,7 +26,8 @@ namespace BusinessLogicLayer.Mappers
                 .ReverseMap();
             CreateMap<SystemParameter, SystemParameterDTO>() 
                 .ReverseMap();
-
+            CreateMap<Comment, CommentDTO>()
+                .ReverseMap();
         }
     }
 }

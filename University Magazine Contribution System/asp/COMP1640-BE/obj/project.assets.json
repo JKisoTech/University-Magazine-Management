@@ -10693,11 +10693,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\asp\\COMP1640-BE\\COMP1640-BE.csproj",
+      "projectUniqueName": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\COMP1640-BE\\COMP1640-BE.csproj",
       "projectName": "COMP1640-BE",
-      "projectPath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\asp\\COMP1640-BE\\COMP1640-BE.csproj",
+      "projectPath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\COMP1640-BE\\COMP1640-BE.csproj",
       "packagesPath": "C:\\Users\\quant\\.nuget\\packages\\",
-      "outputPath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\asp\\COMP1640-BE\\obj\\",
+      "outputPath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\COMP1640-BE\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -10719,11 +10719,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\asp\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
-              "projectPath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\asp\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
+            "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+              "projectPath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
             },
-            "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\asp\\DataAccessLayer\\DataAccessLayer.csproj": {
-              "projectPath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\asp\\DataAccessLayer\\DataAccessLayer.csproj"
+            "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\DataAccessLayer\\DataAccessLayer.csproj": {
+              "projectPath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\DataAccessLayer\\DataAccessLayer.csproj"
             }
           }
         }

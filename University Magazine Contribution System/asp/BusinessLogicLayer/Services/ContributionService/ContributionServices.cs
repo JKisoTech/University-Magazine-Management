@@ -41,6 +41,7 @@ namespace BusinessLogicLayer.Services.ContributionService
                 Content = content,
                 Description = description,
                 Type = filename,
+
                 
             };
             await _contributionRepository.AddContributionAsync(id, title, description, filename, content);
@@ -92,6 +93,12 @@ namespace BusinessLogicLayer.Services.ContributionService
             await _contributionRepository.UpdateAsync(id, content, title, filename, description);
             return _mapper.Map<ContributionsDTO>(newContribution);
 
+        }
+
+        public async Task<CommentDTO> SetComment(string user_id, string contributionId, string comment)
+        {
+            var newComment = await _contributionRepository.SetComment(user_id, contributionId, comment);
+            return _mapper.Map<CommentDTO>(newComment);
         }
 
         public async Task<int> check_SubmitDate()

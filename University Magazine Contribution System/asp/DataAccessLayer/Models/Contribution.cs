@@ -20,10 +20,12 @@ namespace DataAccessLayer.Models
         public List<Comment> Comments { get; set; }
         public DateTime Published { get; set; }  
         public bool AgreeOnTerm { get; set; }
+        public int Number_Id { get; set; }
 
+        //public User User { get; set; }
         public Student student { get; set; }
 
 
-    
+
     }
 }

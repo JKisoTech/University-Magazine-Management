@@ -79,13 +79,20 @@ namespace COMP1640_BE.Controllers
 
         }
         [HttpGet("GetEmail")]
-        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersEmail()
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersEmail(string _loginName)
         {
 
-            return StatusCode(204, "Still doing");
+            var user = await _userServices.GetUserByLoginNameAsync(_loginName);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+
 
         }
-        
+
         [HttpGet("GetRole")]
         public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersRole(string _loginName)
         {

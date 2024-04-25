@@ -39,12 +39,5 @@ namespace BusinessLogicLayer.Services.SystemService
             }
             return null;
         }
-
-        public async Task<Dictionary<string, int>> Dashboard()
-        {
-            var result = await _systempRepository.Dashboard();
-
-            return result;
-        }
     }
 }

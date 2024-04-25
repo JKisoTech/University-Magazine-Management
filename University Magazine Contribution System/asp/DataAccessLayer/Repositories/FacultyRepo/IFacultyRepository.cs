@@ -14,5 +14,10 @@ namespace DataAccessLayer.Repositories.FacultyRepo
         public Task AddFacultyAsync(Faculty faculty);
         public Task DeleteFacultyAsync(string id);
         public Task UpdateFacultyAsync(Faculty faculty);
+
+        public Task<IEnumerable<Contribution>> GetAllContributionAsync(string id);
+
+        public Task<IEnumerable<Student>> GetAllStudentAsync();
+        public Task<Student> GetStudentbyIDAsync(string id);
     }
 }

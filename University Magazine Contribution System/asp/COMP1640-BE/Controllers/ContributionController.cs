@@ -107,10 +107,16 @@ namespace COMP1640_BE.Controllers
         }
         
         [HttpPut("UpdateContributorComment")]
-        public async Task<ActionResult> SetComment(string id, string comment ,[FromBody] ContributionsDTO contributionsDTO)
+        public async Task<ActionResult> SetComment(string _coordinatorId, string _contributionID,string comment)
         {
+            var newComment = await _contributionServices.SetComment(_coordinatorId, _contributionID, comment);
+            if ( _contributionID == null )
+            {
+                return NotFound("No Contribution Found");
+            }
+
+            return Ok(newComment);
             
-            return StatusCode(204, "Haven't develop Update-Status function");
         }
 
         [HttpGet("Check Submit Date")]

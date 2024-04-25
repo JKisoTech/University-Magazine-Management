@@ -14,6 +14,7 @@ namespace DataAccessLayer.Models
         public int Role { get; set; }
         public string? FacultyID { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow.Date;
+        public string? Email {  get; set; }
         public List<User_Faculty> user_Faculties { get; set; }
     }
 

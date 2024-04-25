@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "D5xLSTuBlbsDDkmAFau9wIPhqtkNdi7nf4JFkayVRTfLyIHgj/dq1BJUtfHuQROY+J2ZOOxbngCmDmIbN9E9Kw==",
+  "dgSpecHash": "Fz6YVwBjklwMnLlFCSXQXQoGbIBhBy3KiM7AUg7FwRGopqfsHl872NW6GPOu35Mw06D17NST9oEB+DQmpx1e7g==",
   "success": true,
-  "projectFilePath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\asp\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+  "projectFilePath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\quant\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\quant\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

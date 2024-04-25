@@ -49,5 +49,38 @@ namespace DataAccessLayer.Repositories.FacultyRepo
             _context.faculty.Update(faculty);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<Contribution>> GetAllContributionAsync(string id)
+        {
+            var contributions = await _context.contributions
+                .Include(u => u.student)
+                .Where(c => c.student.FacultyID == id)
+                .Select(c => new Contribution
+                {
+                    ContributionID = c.ContributionID,
+                    StudentID = c.StudentID,
+                    Content = c.Content,
+                    SubmissionDate = c.SubmissionDate,
+                    LastUpdateDate = c.LastUpdateDate,
+                    Published = c.Published,
+                    AgreeOnTerm = c.AgreeOnTerm,
+                    Description = c.Description,
+                    Title = c.Title,
+                    Type = c.Type,
+                }).ToListAsync();
+
+            return contributions;
+        }
+        public async Task<IEnumerable<Student>> GetAllStudentAsync()
+        {
+            return await _context.Students.ToListAsync();
+        }
+
+
+        public async Task<Student> GetStudentbyIDAsync(string id)
+        {
+            return await _context.Students.FirstOrDefaultAsync(u => u.StudentID == id);
+        }
     }
+
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer.DTOs;
 using BusinessLogicLayer.Services.User;
+using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -104,5 +105,7 @@ namespace BusinessLogicLayer.Services.UsersService
             var userEntity = await _userRepository.SetStatus(_loginName, status);
             return _mapper.Map<UserDTO>(userEntity);
         }
+
+   
     }
 }

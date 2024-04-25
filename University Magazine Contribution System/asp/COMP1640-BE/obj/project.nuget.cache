@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qrVwYSAedL67lTRnCQkxC0Lxkf8p9I+WFhnSgZODIqatUAMsLND3yqWCghWJM/EYy5732Sk05iY3O2+u+7MJyg==",
+  "dgSpecHash": "gOOIcwKPwjs91lRRBh3DW+Tw7+5itzaoVfw7PuA7VVUGM+Yrm0YzvnyntpLyfh8GLkDJx5RCgxDV//toHF3aiQ==",
   "success": true,
-  "projectFilePath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\asp\\COMP1640-BE\\COMP1640-BE.csproj",
+  "projectFilePath": "O:\\Github local\\COMP1640\\University Magazine Contribution System\\asp\\COMP1640-BE\\COMP1640-BE.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\quant\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\quant\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

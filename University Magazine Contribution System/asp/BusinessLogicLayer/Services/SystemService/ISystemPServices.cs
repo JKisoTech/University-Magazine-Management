@@ -11,7 +11,5 @@ namespace BusinessLogicLayer.Services.SystemService
     {
         public Task<DateTime?> get_submitDate(string parameterName);
         public Task<DateTime?> get_completeDate(string parameterName);
-
-        public Task<Dictionary<string, int>> Dashboard();
     }
 }

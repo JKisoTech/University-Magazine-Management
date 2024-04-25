@@ -10,6 +10,5 @@ namespace DataAccessLayer.Repositories.SystemRepo
     public interface ISystemPRepository
     {
         public Task<SystemParameter> Get_Parameter(string parameterName);
-        public Task<Dictionary<string, int>> Dashboard();
     }
 }
