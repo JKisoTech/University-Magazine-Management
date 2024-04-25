@@ -37,6 +37,12 @@ export class StudentComponent implements OnInit{
             if (this.user?.role !== 1) {
               this.showMyDocumentsTab = false; // Hide "My Documents" tab if user's role is not 1
             }
+            const activeTab = sessionStorage.getItem('activeTab');
+            if (activeTab) {
+            this.showProfileTab = activeTab === 'profile';
+            this.showDocumentsTab = activeTab === 'documents';
+            this.showMyDocumentsTab = activeTab === 'myDocuments';
+          }
           },
           (error) => {
             console.error('Failed to fetch user data:', error);
@@ -58,17 +64,27 @@ export class StudentComponent implements OnInit{
     this.showProfileTab = true;
     this.showDocumentsTab = false;
     this.showMyDocumentsTab = false;
+    sessionStorage.setItem('activeTab', 'profile');
+
   }
 
   showDocuments() {
     this.showProfileTab = false;
     this.showDocumentsTab = true;
     this.showMyDocumentsTab = false;
+    sessionStorage.setItem('activeTab', 'documents');
+
   }
 
   showMyDocuments(){
     this.showProfileTab = false;
     this.showDocumentsTab = false;
     this.showMyDocumentsTab = true;
+    sessionStorage.setItem('activeTab', 'myDocuments');
+
+  }
+  isActiveTab(tabName: string): boolean {
+    const activeTab = sessionStorage.getItem('activeTab');
+    return activeTab === tabName;
   }
 }

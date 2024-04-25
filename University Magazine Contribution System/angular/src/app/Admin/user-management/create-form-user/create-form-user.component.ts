@@ -30,11 +30,11 @@ export class CreateFormUserComponent implements OnInit {
     
   }
 
-  Save( ){
-    this.userService.CreateUser(this.form.value).subscribe(() => {
-      this.dialogRef.close();
-    })
-  }
+  // Save( ){
+  //   this.userService.CreateUser(this.form.value).subscribe(() => {
+  //     this.dialogRef.close();
+  //   })
+  // }
   buildForm() {
     this.form = this.fb.group({
       loginName: [ '' , [Validators.required]],

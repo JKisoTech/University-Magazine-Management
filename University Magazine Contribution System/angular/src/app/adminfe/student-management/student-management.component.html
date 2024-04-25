@@ -1,0 +1,52 @@
+<div class="admin-user-manager tab-pane" id="admin-user-manager">
+    <h2 class="text-capitalize">Student Management</h2>
+    <hr class="my-line">
+
+  
+    <div class="admin-user-details">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Student ID</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Date Of Birth</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">Faculty ID</th>
+
+
+
+
+
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let studentData of paginatedStudent">
+                    <th scope="row">{{ studentData.studentID }}</th>
+                    <td>{{ studentData.studentName}}</td>
+                    <td>{{ studentData.dateOfBirth}}</td>
+                    <td>{{ studentData.email}}</td>
+                    <td>{{ studentData.phones}}</td>
+                    <td>{{ studentData.facultyID}}</td>
+
+                    
+                </tr>
+            
+            </tbody>
+          </table>
+    </div>
+
+    
+    <div class="user-doc-details-num">
+        <ul class="nav justify-content-center">
+            <li class="nav-item" *ngFor="let page of getPageNumbers()">
+              <a class="nav-link" (click)="setCurrentPage(page)">{{ page }}</a>
+            </li>
+            <li class="nav-item" *ngIf="hasNextPage()">
+              <a class="nav-link"><i class="fa-solid fa-angle-right"></i></a>
+            </li>
+          </ul>
+        
+    </div>
+
+</div>

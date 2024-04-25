@@ -37,11 +37,7 @@ export class EditFormUserComponent implements OnInit {
     });
   }
 
-  SaveEdit(){
-    this.userService.UpdateUser(this.currentId, this.form.value).subscribe(() => {
-      this.dialogRef.close();
-    })
-  }
+  
 
 
 

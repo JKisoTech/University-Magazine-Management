@@ -1,9 +1,31 @@
+
+<div class="password-change-form" *ngIf="showPasswordChangeForm">
+    <h3>Change Password</h3>
+    <form [formGroup]="passwordChangeForm" (submit)="changePassword()">
+      <!-- Password input fields -->
+      <div class="form-group">
+        <label for="oldPassword">Old Password</label>
+        <input type="password" class="form-control" id="oldPassword" formControlName="oldPassword" placeholder="Please enter your old Password" required>
+      </div>
+      <div class="form-group">
+        <label for="newPassword">New Password</label>
+        <input type="password" class="form-control" id="newPassword" formControlName="newPassword" placeholder="Please enter your new Password" required>
+      </div>
+      
+  
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
 <div class="tab-content">
     <div class="user-infor tab-pane active" id="user-infor">
         <h2 class="text-capitalize">{{ this.user?.role === 1 ? 'Student Information' : this.user?.role === 2 ? 'Coordinator Information' : this.user?.role === 3 ? 'Marketing Information' : 'User Information' }}</h2>
 
         <hr class="my-line">
         <div class="user-details">
+            <button class="btn btn-primary" (click)="openPasswordChangeForm()">Change Password</button>
+
             <div class="container">
                 <div class="row">
                     <div class="col-6">
