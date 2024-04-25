@@ -73,6 +73,19 @@ namespace DataAccessLayer.Repositories.ContributionRepo
 
             return contribution;
         }
+
+        public async Task<IEnumerable<Comment>> GetComment(string id)
+        {
+            var comements = await _context.comments
+                .Where(c => c.ContributionID == id)
+                .Select(c => new Comment
+                {
+                    CoordinatorID = c.CoordinatorID,
+                    Comments = c.Comments,
+                    CommentDate = c.CommentDate,
+                }).ToListAsync();
+            return comements;
+        }
         public async Task<IEnumerable<Contribution>> GetAllAsync()
         {
             return await _context.contributions
@@ -140,19 +153,14 @@ namespace DataAccessLayer.Repositories.ContributionRepo
                         await _context.SaveChangesAsync();
                         
                     }
+                } else
+                {
+                    firstContribution.Expired = 0;
+                    _context.contributions.Update(firstContribution);
+                    await _context.SaveChangesAsync();
                 }
 
             }
-
-
-            //if (contribution.Status != 3)
-            //{
-            //    if (current_date > Convert.ToDateTime(expired_date.Value))
-            //    {
-            //        contribution.Expired = 1;
-            //    }
-            //}
-            //contribution.LastUpdateDate = DateTime.UtcNow.ToLocalTime();
 
             return null;
         }
@@ -198,7 +206,7 @@ namespace DataAccessLayer.Repositories.ContributionRepo
                 .Select(s => s.Email)
                 .FirstOrDefault();
 
-            var sendEmail = await _systemPRepository.SendEmail(coordinatorEmail, studentEmail, title, comment);
+            
 
             if (contribution == null)
             {
@@ -214,6 +222,7 @@ namespace DataAccessLayer.Repositories.ContributionRepo
 
             _context.comments.Add(comments);
             await _context.SaveChangesAsync();
+            var sendEmail = await _systemPRepository.SendEmail(coordinatorEmail, studentEmail, title, comment);
             return comments;
         }
 

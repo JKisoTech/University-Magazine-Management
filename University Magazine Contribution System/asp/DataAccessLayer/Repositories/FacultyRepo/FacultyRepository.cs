@@ -67,6 +67,10 @@ namespace DataAccessLayer.Repositories.FacultyRepo
                     Description = c.Description,
                     Title = c.Title,
                     Type = c.Type,
+                    Expired = c.Expired,
+                    Number_Id = c.Number_Id,
+                    student = c.student,
+                    Comments = c.Comments,
                 }).ToListAsync();
 
             return contributions;

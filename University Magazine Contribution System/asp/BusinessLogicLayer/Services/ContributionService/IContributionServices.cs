@@ -14,6 +14,7 @@ namespace BusinessLogicLayer.Services.ContributionService
         public Task<ContributionsDTO> AddContributionAync(string id, string content, string title, IFormFile type, string description);
         public Task<List<ContributionsDTO>> GetContribution();
         public Task<ContributionsDTO> GetContent(string id);
+        public Task<IEnumerable<CommentDTO>> GetComment(string id);
         public Task SetStatus(string id,int status);
         public Task<ContributionsDTO> set_Expired(string id);
         public Task<ContributionsDTO> UpdateContribution(string id, string content, string title, IFormFile type, string description);

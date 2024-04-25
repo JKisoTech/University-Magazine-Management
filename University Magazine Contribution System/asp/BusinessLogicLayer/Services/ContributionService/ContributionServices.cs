@@ -55,6 +55,12 @@ namespace BusinessLogicLayer.Services.ContributionService
             var contributionEntity = await _contributionRepository.GetAllAsync();
             return _mapper.Map<List<ContributionsDTO>>(contributionEntity);
         }
+
+        public async Task<IEnumerable<CommentDTO>> GetComment(string id)
+        {
+            var comment = await _contributionRepository.GetComment(id);
+            return _mapper.Map<IEnumerable<CommentDTO>>(comment);
+        }
         public async Task<ContributionsDTO> GetContent(string id)
         {
             

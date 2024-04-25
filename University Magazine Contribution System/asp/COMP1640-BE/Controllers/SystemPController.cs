@@ -28,5 +28,27 @@ namespace COMP1640_BE.Controllers
             var systemP = await _systempServices.Get_Parameter(name);
             return Ok(systemP);
         }
+
+        [HttpGet("Dashboard")]
+        public async Task<IActionResult> Dashboard()
+        {
+            var data = await _systempServices.Dashboard();
+
+            return Ok(data);
+        }        
+        [HttpGet("Report")]
+        public async Task<IActionResult> ReportData()
+        {
+            var data = await _systempServices.GetReportData();
+
+            return Ok(data);
+        }
+        [HttpGet("Report Without Comment Within 14 days")]
+        public async Task<IActionResult> ReportDataWithoutComment()
+        {
+            var data = await _systempServices.GetContributionsWithoutCommentsReport();
+
+            return Ok(data);
+        }
     }
 }
