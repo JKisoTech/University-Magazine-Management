@@ -18,14 +18,14 @@ namespace COMP1640_BE.Controllers
         [HttpGet("Get Submit Date")]
         public async Task<ActionResult> Get_SubmitDate(string name)
         {
-            var systemP = await _systempServices.get_submitDate(name);
+            var systemP = await _systempServices.Get_Parameter(name);
             return Ok(systemP);
         }
 
         [HttpGet("Get Complete Date")]
         public async Task<ActionResult> Get_CompleteDate(string name)
         {
-            var systemP = await _systempServices.get_completeDate(name);
+            var systemP = await _systempServices.Get_Parameter(name);
             return Ok(systemP);
         }
     }

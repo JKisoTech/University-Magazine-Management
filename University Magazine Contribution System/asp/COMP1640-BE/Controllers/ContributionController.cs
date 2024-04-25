@@ -40,7 +40,8 @@ namespace COMP1640_BE.Controllers
             }
             
             await _contributionServices.ConvertDocxToPDF(Id);
-            var filepath = Path.Combine(Directory.GetCurrentDirectory(), "PDFFiles", $"{Path.GetFileNameWithoutExtension(contributors.Type)}.pdf");
+            var filepath = Path.Combine(Directory.GetCurrentDirectory(), "PDFFiles",
+                $"{Path.GetFileNameWithoutExtension(contributors.Type)}.pdf");
             if (System.IO.File.Exists(filepath))
             {
                 return File(System.IO.File.OpenRead(filepath), "application/pdf");
@@ -57,10 +58,9 @@ namespace COMP1640_BE.Controllers
         }
 
         [HttpPost("CreateContributor")]
-        public async Task<ActionResult<ContributionsDTO>> SaveContributor(string user_id,string content, string title, IFormFile type, string description)
+        public async Task<ActionResult<ContributionsDTO>> SaveContributor
+            (string user_id,string content, string title, IFormFile type, string description)
         {
-
-           
             await _contributionServices.AddContributionAync(user_id,content, title, type, description);
             if (user_id == null)
             {
@@ -70,17 +70,6 @@ namespace COMP1640_BE.Controllers
             return StatusCode(201,"User Submit successfully");
         }
 
-        //[HttpPut("ConvertPDF")]
-        //public async Task<IActionResult> ConvertPDF(string id)
-        //{
-        //    var existingContribution = await _contributionServices.GetContent(id);
-        //    if(existingContribution == null)
-        //    {
-        //        return NotFound("Contribution Not Found");
-        //    }
-        //    await _contributionServices.ConvertDocxToPDF(id);
-        //    return Ok();
-        //}
 
         [HttpPut("UpdateContributor")]
         public async Task<ActionResult> UpdateContributor(string id, string content, string title, IFormFile type, string description)
@@ -107,14 +96,22 @@ namespace COMP1640_BE.Controllers
         }
         
         [HttpPut("UpdateContributorComment")]
-        public async Task<ActionResult> SetComment(string _coordinatorId, string _contributionID,string comment)
+        public async Task<ActionResult> SetComment(string _coordinatorId, string _contributionID,string title,string comment)
         {
-            var newComment = await _contributionServices.SetComment(_coordinatorId, _contributionID, comment);
+            var newComment = await _contributionServices.SetComment(_coordinatorId, _contributionID, title, comment);
             if ( _contributionID == null )
             {
                 return NotFound("No Contribution Found");
             }
 
+            return Ok(newComment);
+            
+        }
+        
+        [HttpPut("Set Expired")]
+        public async Task<ActionResult> SetExpired(string _contributionID)
+        {
+            var newComment = await _contributionServices.set_Expired(_contributionID);
             return Ok(newComment);
             
         }

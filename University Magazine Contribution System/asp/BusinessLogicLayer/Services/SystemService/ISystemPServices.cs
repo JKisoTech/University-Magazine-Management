@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.DTOs;
+using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace BusinessLogicLayer.Services.SystemService
 {
     public interface ISystemPServices
     {
-        public Task<DateTime?> get_submitDate(string parameterName);
-        public Task<DateTime?> get_completeDate(string parameterName);
-        public Task<int> SendEmail(string _sender, string _receiver);
+        public Task<SystemParameter> Get_Parameter(string parameterName);
+
+        
     }
 }
