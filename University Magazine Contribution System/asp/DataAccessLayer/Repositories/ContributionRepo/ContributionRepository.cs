@@ -116,17 +116,22 @@ namespace DataAccessLayer.Repositories.ContributionRepo
 
         private async Task<int> Get_Maxnumber_ID(string studentId)
         {
-            var indexNumber = _context.contributions
-                .Where(c => c.StudentID == studentId)
-                .Max(c => c.Number_Id);
-
-            if (indexNumber == null)
+            int indexNumber=0;
+            try
             {
-                indexNumber = 0;
+                 indexNumber = _context.contributions
+                    .Where(c => c.StudentID == studentId)
+                    .Max(c => c.Number_Id);
+            }
+            catch {
+                indexNumber = 1;
             }
 
 
+
+
             return indexNumber;
+            
         }
 
         public async Task<Comment> SetComment(string user_id, string contributionId, string comment)

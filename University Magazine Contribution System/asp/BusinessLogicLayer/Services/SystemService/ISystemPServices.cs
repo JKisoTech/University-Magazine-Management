@@ -11,5 +11,6 @@ namespace BusinessLogicLayer.Services.SystemService
     {
         public Task<DateTime?> get_submitDate(string parameterName);
         public Task<DateTime?> get_completeDate(string parameterName);
+        public Task<int> SendEmail(string _sender, string _receiver);
     }
 }

@@ -39,5 +39,10 @@ namespace BusinessLogicLayer.Services.SystemService
             }
             return null;
         }
+
+        public async Task<int> SendEmail(string _sender, string _receiver,string title, string content)
+        {
+            return 0;
+        }
     }
 }

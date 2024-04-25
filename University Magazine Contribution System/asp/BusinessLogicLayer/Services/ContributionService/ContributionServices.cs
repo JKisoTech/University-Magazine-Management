@@ -98,6 +98,7 @@ namespace BusinessLogicLayer.Services.ContributionService
         public async Task<CommentDTO> SetComment(string user_id, string contributionId, string comment)
         {
             var newComment = await _contributionRepository.SetComment(user_id, contributionId, comment);
+            //var emailService = await _systemPServices.SendEmail(user_id, contributionId);
             return _mapper.Map<CommentDTO>(newComment);
         }
 
