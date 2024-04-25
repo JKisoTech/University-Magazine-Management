@@ -48,16 +48,16 @@ login(): void {
       // Emit event upon successful login
       this.authService.setLoggedIn(true, loginName);
       this.loginSuccess.emit();
-      // Handle successful login (store token, navigate, etc.)
+      
       console.log('Login successful');
       this.userService.GetUserByLoginName(loginName).subscribe(
         (user: any) => {
-          const userRole = user.role; // Assuming the role property is returned in the user object
+          const userRole = user.role; 
 
           if (userRole === 0) {
-            this.router.navigate(['/adtesting']); // Redirect to admin route
+            this.router.navigate(['/admin']); // Redirect to admin route
           } else {
-            this.router.navigate(['/']); // Redirect to dashboard or desired route
+            this.router.navigate(['/']); 
           }
         },
         (error) => {

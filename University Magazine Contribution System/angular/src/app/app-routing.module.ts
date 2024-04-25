@@ -31,7 +31,7 @@ const routes: Routes = [
   { path : 'update-contribution/:id', component: UpdateContributionPageComponent},
 
   { path: 'student-page', component: StudentComponent, canActivate: [AuthenticationGuard]},
-  { path: 'adtesting', component:AdminfeComponent},
+  { path: 'admin', component:AdminfeComponent},
   { path: 'student-profile', component: StudentProfileComponent},
 
 
