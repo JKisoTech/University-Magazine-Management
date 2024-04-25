@@ -34,7 +34,9 @@ namespace BusinessLogicLayer.Services.ContributionService
 
         public async Task<ContributionsDTO> AddContributionAync(string id, string content, string title, IFormFile type, string description)
         {
-            var filename = await WriteFile(type,id);
+            var indexNumber = await _contributionRepository.Get_Maxnumber_ID(id);
+            var academy = await _systemPServices.Get_Parameter("ACADEMIC_YEAR");
+            var filename = await WriteFile(type, id + "_" +academy.Value  + "_" +(indexNumber + 1));
             var contributionDTO = new ContributionsDTO
             {
                 Title = title,
@@ -42,9 +44,8 @@ namespace BusinessLogicLayer.Services.ContributionService
                 Description = description,
                 Type = filename,
 
-                
             };
-            await _contributionRepository.AddContributionAsync(id, title, description, filename, content);
+            await _contributionRepository.AddContributionAsync(id, title, description, filename, content, indexNumber, academy.Value);
             _mapper.Map<ContributionsDTO>(contributionDTO);
             return contributionDTO;
         }
@@ -95,18 +96,24 @@ namespace BusinessLogicLayer.Services.ContributionService
 
         }
 
-        public async Task<CommentDTO> SetComment(string user_id, string contributionId, string comment)
+        public async Task<CommentDTO> SetComment(string user_id, string contributionId, string title,string comment)
         {
-            var newComment = await _contributionRepository.SetComment(user_id, contributionId, comment);
+            var newComment = await _contributionRepository.SetComment(user_id, contributionId, title,comment);
+
             //var emailService = await _systemPServices.SendEmail(user_id, contributionId);
             return _mapper.Map<CommentDTO>(newComment);
         }
 
+        public async Task<ContributionsDTO> set_Expired(string id)
+        {
+            var expired = await _contributionRepository.SetExpired(id);
+            return _mapper.Map<ContributionsDTO>(expired);
+        }
         public async Task<int> check_SubmitDate()
         {
             DateTime currentDate = DateTime.UtcNow.Date;
-            var submitDate = await _systemPServices.get_submitDate("SUBMIT_DATE");
-            DateTime submit_duedate = submitDate.Value;
+            var submitDate = await _systemPServices.Get_Parameter("SUBMIT_DATE");
+            DateTime submit_duedate = Convert.ToDateTime(submitDate);
             if (currentDate <= submit_duedate)
             {
                 return 0;
@@ -116,14 +123,15 @@ namespace BusinessLogicLayer.Services.ContributionService
         public async Task<int> check_CompleteDate()
         {
             DateTime currentDate = DateTime.UtcNow.Date;
-            var completeDate = await _systemPServices.get_completeDate("COMPLETE_DATE");
-            DateTime complete_duedate = completeDate.Value;
+            var completeDate = await _systemPServices.Get_Parameter("COMPLETE_DATE");
+            DateTime complete_duedate = Convert.ToDateTime(completeDate);
             if (currentDate <= complete_duedate)
             {
                 return 0;
             }
             return 1;
         }
+
 
         public async Task<string> WriteFile(IFormFile file, string id)
         {

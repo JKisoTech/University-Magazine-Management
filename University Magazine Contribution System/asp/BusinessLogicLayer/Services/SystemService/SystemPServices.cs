@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer.DTOs;
+using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.SystemRepo;
 using System;
 using System.Collections.Generic;
@@ -20,29 +21,13 @@ namespace BusinessLogicLayer.Services.SystemService
             _mapper = mapper;
         }
 
-        public async Task<DateTime?> get_submitDate(string parameterName)
+        public async Task<SystemParameter> Get_Parameter(string parameterName)
         {
-            var systemEntity = await _systempRepository.Get_Parameter(parameterName);
-            if (systemEntity != null && DateTime.TryParse(systemEntity.Value, out DateTime submitDate))
-            {
-                return submitDate;
-            }
-            return null;
+            return await _systempRepository.Get_Parameter(parameterName);
         }
 
-        public async Task<DateTime?> get_completeDate(string parameterName)
-        {
-            var systemEntity = await _systempRepository.Get_Parameter(parameterName);
-            if (systemEntity != null && DateTime.TryParse(systemEntity.Value, out DateTime completeDate))
-            {
-                return completeDate;
-            }
-            return null;
-        }
+     
 
-        public async Task<int> SendEmail(string _sender, string _receiver,string title, string content)
-        {
-            return 0;
-        }
+
     }
 }

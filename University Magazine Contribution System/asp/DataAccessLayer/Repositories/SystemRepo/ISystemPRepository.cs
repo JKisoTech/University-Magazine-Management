@@ -10,5 +10,7 @@ namespace DataAccessLayer.Repositories.SystemRepo
     public interface ISystemPRepository
     {
         public Task<SystemParameter> Get_Parameter(string parameterName);
+
+        public Task<int> SendEmail(string _sender, string _receiver, string title, string content);
     }
 }

@@ -24,6 +24,8 @@ namespace BusinessLogicLayer.DTOs
         public string Description { get; set; }
         public string Type { get; set; }
 
+        public int Expired { get; set; }
+
         public DateTime LastUpdateDate { get; set; } = DateTime.UtcNow;
     }
 }
