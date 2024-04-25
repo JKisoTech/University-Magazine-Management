@@ -1,12 +1,44 @@
 <div class="user-infor tab-pane " id="user-doc-up">
     <h2 class="text-capitalize">Documents</h2>
-    <button routerLink="/upload-contribution">Upload New Contribution</button>
+    <button class="btn contribution-btn" routerLink="/upload-contribution">Upload New Contribution</button>
     <hr class="my-line">
     <div class="user-doc-details">
         <div class="user-doc-infor" *ngFor="let item of contributions">
             <h4><a (click)="viewContribution(item.contributionID)">{{ item.title }}</a></h4>
             <p class="text-truncate">{{ item.description }}</p>
-            <div [ngSwitch]="item.status">
+            <div class="d-flex justify-content-between">
+                <div class="text-truncate">
+                    <h4 class="text-break"><a (click)="viewContribution(item.contributionID)"></a></h4>
+                    
+                </div>
+                <div class="status" [ngSwitch]="item.status">
+                    <div class="status-unpublic" *ngSwitchCase="0">
+                        <p class="text-white text-capitalize">Unpublic</p>
+                    </div>
+                    <div class="status-updated" *ngSwitchCase="1">
+                        <p class="text-white text-capitalize">Updated</p>
+                    </div>
+                    <div class="status-public" *ngSwitchCase="2">
+                        <p class="text-white text-capitalize">Public</p>
+                    </div>
+                    <div class="status-approved" *ngSwitchCase="3">
+                        <p class="text-white text-capitalize">Approved By Cordinator</p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div [ngSwitch]="item.status">
+                <div *ngSwitchCase="0" class="status-unpublic">Unpublic</div>
+                <div *ngSwitchCase="1" class="status-updated">Updated</div>
+                <div *ngSwitchCase="2" class="status-public">Public</div>
+                <div *ngSwitchCase="3" class="status-approved">Approved by Coordinator</div>
+            </div> -->
+            <div class="user-doc-btn">
+                <button type="button" class="btn btn-info" *ngIf="item.status !== 2" (click)="confirmPublic(item)">
+                    Public</button>
+                <button type="button" class="btn btn-secondary" routerLink="/update-contribution/{{ item.contributionID }}">
+                    Update</button>
+            </div>
+            <!-- <div [ngSwitch]="item.status">
                 <div *ngSwitchCase="0" class="status-unpublic">Unpublic</div>
                 <div *ngSwitchCase="1" class="status-updated">Updated</div>
                 <div *ngSwitchCase="2" class="status-public">Public</div>
@@ -14,7 +46,7 @@
               </div>
               <button *ngIf="item.status !== 2" (click)="confirmPublic(item)">Public</button>
               <button routerLink="/update-contribution/{{ item.contributionID }}">Update</button>
-          </div>
+          </div> -->
         
 
 

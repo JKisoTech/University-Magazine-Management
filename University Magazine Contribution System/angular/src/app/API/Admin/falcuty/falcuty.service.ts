@@ -30,4 +30,10 @@ export class FalcutyService {
     UpdateFalcuty(id: number, data: FacultyDTO) : Observable<any> {
         return this.http.put(`${this.baseUrl}/${id}`, data)
     }
+    
+    GetContributionbyFaculty(facultyID: string): Observable<any>{
+        const url = `${this.baseUrl}/GetContribution?id=${facultyID}`;
+        return this.http.get(url)
+
+    }
 }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../API/authentication.service';
 import { UserService } from '../../../API/Admin/User/user.service';
 import { UserDto } from '../../../API/Admin/User/model';
+import { FalcutyService } from '../../../API/Admin/falcuty/falcuty.service';
 
 @Component({
   selector: 'app-student-documents',
@@ -21,6 +22,7 @@ export class StudentDocumentsComponent implements OnInit {
     private router : Router,
     private authService: AuthenticationService,
     private userService: UserService,
+    private facultyService: FalcutyService
 
   ){}
 
@@ -30,12 +32,30 @@ export class StudentDocumentsComponent implements OnInit {
       this.userService.GetUserByLoginName(loggedInUserName).subscribe(
         (response) => {
           this.user = response;
-          this.contributionService.GetContributor().subscribe((result) => {
-            this.contribution = result;
-          },
-          (error) => {
-            console.error('Failed to fetch contributions:', error);
-          });
+          if (this.user.role === 2) {
+            const facultyID = this.user.facultyID;
+            if (facultyID) {
+              this.facultyService.GetContributionbyFaculty(facultyID).subscribe(
+                (result) => {
+                  this.contribution = result;
+                },
+                (error) => {
+                  console.error('Failed to fetch contributions:', error);
+                }
+              );
+            } else {
+              console.error('Faculty ID is undefined.');
+            }
+          } else if (this.user.role === 3) {
+            this.contributionService.GetContributor().subscribe(
+              (result) => {
+                this.contribution = result;
+              },
+              (error) => {
+                console.error('Failed to fetch contributions:', error);
+              }
+            );
+          }
         },
         (error) => {
           console.error('Failed to fetch user data:', error);

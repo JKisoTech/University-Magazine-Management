@@ -13,6 +13,10 @@
 
         }
     }
+    .contribution-btn{
+        @include blog-btn-nonact;
+        border: 1px solid $text-gray;
+    }
     .user-details{
         p{
             margin: 20px;
@@ -33,6 +37,7 @@
         .user-doc-infor{
             margin-top: 30px;
             h4{
+                padding-right: 20px;
                 a{
                     @include text-hovering;
                 }
@@ -43,6 +48,33 @@
             }
             &:nth-child(n + 6){
                 display: none !important;
+            }
+            .user-doc-time{
+                color: $text-black;
+            }
+            .status{
+                .status-1{
+                    border-radius: 8px;
+                    margin-left: 20px;
+                    p{
+                        padding: 10px !important;
+                        font-weight: bold;
+                        border-radius: 8px;
+    
+                    }
+
+                }
+            }
+            .user-doc-btn{
+                margin-top: 5px;
+                button {
+                    margin: 0;
+                    &:nth-child(n + 2){
+                        margin-left: 10px;
+                    }
+        
+                }
+                  
             }
         }
     
@@ -70,5 +102,33 @@
             }
         }
     }
+    .status-container {
+        padding: 10px;
+        border-radius: 4px;
+        font-weight: bold;
+        text-align: center;
+        width: fit-content;
+      }
+      
+      .status-unpublic {
+        background-color: yellow;
+        color: black;
+      }
+      
+      .status-updated {
+        background-color: blue;
+        color: white;
+      }
+      
+      .status-public {
+        background-color: yellow;
+        color: black;
+      }
+      
+      .status-approved {
+        background-color: green;
+        color: white;
+      }
+    
 
 }
