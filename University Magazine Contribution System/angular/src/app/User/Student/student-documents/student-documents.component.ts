@@ -55,6 +55,16 @@ export class StudentDocumentsComponent implements OnInit {
                 console.error('Failed to fetch contributions:', error);
               }
             );
+          } else if (this.user.role === 1) {
+            this.contributionService.GetContributor().subscribe(
+              (result: ContributionDto[]) => { // Specify the type as ContributionDto[]
+                // Filter contributions with status = 3
+                this.contribution = result.filter((contribution: ContributionDto) => contribution.status === 3);
+              },
+              (error) => {
+                console.error('Failed to fetch contributions:', error);
+              }
+            );
           }
         },
         (error) => {
@@ -67,9 +77,14 @@ export class StudentDocumentsComponent implements OnInit {
     this.router.navigate(['/contribution', contributionID]);
   }
   confirmApprove(contribution: ContributionDto): void {
+    if (contribution.status !== 2) {
+      alert('Contribution still not public by Student.');
+      return;
+    }
+  
     const confirmed = confirm('Are you sure you want to make this contribution Approve?');
     if (confirmed) {
-      contribution.status = 3; 
+      contribution.status = 3;
       this.contributionService.UpdateContributorStatus(contribution).subscribe(
         () => {
           // Status updated successfully

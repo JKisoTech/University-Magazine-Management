@@ -3,7 +3,7 @@
   <hr class="my-line">
   <div class="user-doc-details">
     <div class="user-doc-infor" *ngFor="let item of contribution">
-      <ng-container *ngIf="user.role === 2 || (user.role === 1 && item.status === 3) || user.role === 3">
+      <ng-container *ngIf="user.role === 2 || (user.role === 1 && item.status === 3) || (user.role === 3 && item.status === 3)">
         <h4><a (click)="viewContribution(item.contributionID)">{{ item.title }}</a></h4>
         <p class="text-truncate">{{ item.description }}</p>
         <div class="text-truncate">
@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="user-doc-btn" *ngIf="user.role === 2">
-          <button type="button" class="btn btn-info" *ngIf="item.status !== 2" (click)="confirmApprove(item)">
+          <button type="button" class="btn btn-info" (click)="confirmApprove(item)">
             Approve
           </button>
         </div>

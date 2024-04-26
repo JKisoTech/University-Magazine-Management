@@ -1,5 +1,5 @@
 <div class="user-infor tab-pane " id="user-doc-up">
-    <h2 class="text-capitalize">Documents</h2>
+    <h2 class="text-capitalize">My Documents</h2>
     <button class="btn contribution-btn" routerLink="/upload-contribution">Upload New Contribution</button>
     <hr class="my-line">
     <div class="user-doc-details">
@@ -33,7 +33,7 @@
                 <div *ngSwitchCase="3" class="status-approved">Approved by Coordinator</div>
             </div> -->
             <div class="user-doc-btn">
-                <button type="button" class="btn btn-info" *ngIf="item.status !== 2" (click)="confirmPublic(item)">
+                <button type="button" class="btn btn-info" *ngIf="item.status !== 3" (click)="confirmPublic(item)">
                     Public</button>
                 <button type="button" class="btn btn-secondary" routerLink="/update-contribution/{{ item.contributionID }}">
                     Update</button>

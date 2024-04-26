@@ -5,7 +5,6 @@ import { AuthenticationService } from '../../../API/authentication.service';
 import { UserDto } from '../../../API/Admin/User/model';
 import { StudentDTO } from '../../../API/Admin/Student/model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-student-profile',

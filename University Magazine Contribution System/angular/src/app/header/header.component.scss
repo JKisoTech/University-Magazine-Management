@@ -1,4 +1,3 @@
-// Assuming `styles.scss` is in `src`:
 @import '../../styles.scss';
 
 .logo{
@@ -6,6 +5,7 @@
     height: auto;
     img{
         padding: 32px;
+        height: 150px;
     }
 }
 .hd-menu{

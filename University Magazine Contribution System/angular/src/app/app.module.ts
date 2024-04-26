@@ -48,6 +48,7 @@ import { StudentMyDocumentComponent } from './User/Student/student-my-document/s
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FacultyManagementComponent } from './adminfe/faculty-management/faculty-management.component';
 import { StudentManagementComponent } from './adminfe/student-management/student-management.component';
+import { UserDashboardComponent } from './User/Student/user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { StudentManagementComponent } from './adminfe/student-management/student
     UserContronllerComponent,
     StudentMyDocumentComponent,
     FacultyManagementComponent,
-    StudentManagementComponent
+    StudentManagementComponent,
+    UserDashboardComponent
     
 
   ],

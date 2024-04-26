@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-
 import { ContributionDto } from './model';
+import { CommentDTO } from './commentDTO';
 
 @Injectable({
     providedIn: 'root',
@@ -17,6 +16,10 @@ export class ContributionService {
     GetContributor(): Observable<any> {
         return this.http.get(`${this.baseUrl}/GetContributor`);
     }
+    GetComments(contributionID: string): Observable<any> {
+        const url = `${this.baseUrl}/GetComment/${contributionID}`;
+        return this.http.get(url);
+      }
 
     PostContribution(data: ContributionDto, file: File): Observable<any> {
         const user_id = data.studentID;
@@ -67,5 +70,20 @@ export class ContributionService {
 
 
     }
+    
+    UpdateComment(comment: CommentDTO): Observable<any> {
+        const coordinatorId = encodeURIComponent(comment.coordinatorID);
+        const contributionId = encodeURIComponent(comment.contributionID);
+        const title = encodeURIComponent(comment.title);
+        const comments = encodeURIComponent(comment.comments);
+      
+        const url = `${this.baseUrl}/UpdateContributorComment?_coordinatorId=${coordinatorId}&_contributionID=${contributionId}&title=${title}&comment=${comments}`;
+      
+        return this.http.put(url, null, { responseType: 'text' });
+      }
+
+      
+
+    
       
 }

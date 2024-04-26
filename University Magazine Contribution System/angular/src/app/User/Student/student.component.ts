@@ -19,6 +19,7 @@ export class StudentComponent implements OnInit{
   showProfileTab = true;
   showDocumentsTab = false;
   showMyDocumentsTab = false;
+  showDashboardTab = false;
   faculties: FacultyDTO[] = [];
 
 
@@ -42,6 +43,7 @@ export class StudentComponent implements OnInit{
             this.showProfileTab = activeTab === 'profile';
             this.showDocumentsTab = activeTab === 'documents';
             this.showMyDocumentsTab = activeTab === 'myDocuments';
+            this.showDashboardTab = activeTab === 'dashboard';
           }
           },
           (error) => {
@@ -64,6 +66,7 @@ export class StudentComponent implements OnInit{
     this.showProfileTab = true;
     this.showDocumentsTab = false;
     this.showMyDocumentsTab = false;
+    this.showDashboardTab = false;
     sessionStorage.setItem('activeTab', 'profile');
 
   }
@@ -72,6 +75,7 @@ export class StudentComponent implements OnInit{
     this.showProfileTab = false;
     this.showDocumentsTab = true;
     this.showMyDocumentsTab = false;
+    this.showDashboardTab = false;
     sessionStorage.setItem('activeTab', 'documents');
 
   }
@@ -80,7 +84,16 @@ export class StudentComponent implements OnInit{
     this.showProfileTab = false;
     this.showDocumentsTab = false;
     this.showMyDocumentsTab = true;
+    this.showDashboardTab = false;
     sessionStorage.setItem('activeTab', 'myDocuments');
+
+  }
+  showDashboard(){
+    this.showProfileTab = false;
+    this.showDocumentsTab = false;
+    this.showMyDocumentsTab = false;
+    this.showDashboardTab = true;
+    sessionStorage.setItem('activeTab', 'dashboard');
 
   }
   isActiveTab(tabName: string): boolean {

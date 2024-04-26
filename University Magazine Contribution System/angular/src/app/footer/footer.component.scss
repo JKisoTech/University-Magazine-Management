@@ -4,6 +4,13 @@
 
 
 /* SCSS Document */
+.ft-all{
+    .ft-logo{
+        img{
+            height: 80px;
+        }
+    }
+}
 
 .service-content {
   h4 {
@@ -30,16 +37,6 @@
   padding: 0 12px;
 }
 
-.service-content {
-  width: 80%;
-  padding: 0 12px;
-
-  .slider {
-    background-image: url("../../assets/Image/banner.png");
-    background-size: cover;
-    padding: 200px 0;
-  }
-}
 
 /* SCSS Document */
 
@@ -144,6 +141,9 @@
             .ft-logo{
                 display: flex;
                 justify-content: center;
+                img{
+                    height: 20px;
+                }
             }
             p{
                 text-align: center

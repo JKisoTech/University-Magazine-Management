@@ -11,7 +11,7 @@
                             <h2 class="text-capitalize">
                                 {{ this.user?.role === 1 ? this.user?.fullName : this.user?.role === 2 ? this.user?.fullName : this.user?.fullName }}
                               </h2>
-                              <p>
+                              <p> Faculty :
                                 {{ this.user?.role === 1 ? this.user?.facultyID : this.user?.role === 2 ? this.user?.facultyID  : this.user?.facultyID }}
                               </p>
                         </div>
@@ -29,6 +29,10 @@
                       <li class="nav-item" *ngIf="user?.role === 1">
                         <a class="nav-link" [class.active]="isActiveTab('myDocuments')" (click)="showMyDocuments()"><i class="fa-solid fa-book"></i>My Documents</a>
                       </li>
+                      <li class="nav-item" *ngIf="user?.role !== 1">
+                        <a class="nav-link" [class.active]="isActiveTab('dashboad')" (click)="showDashboard()"><i class="fa-solid fa-book"></i>Dashboard</a>
+                      </li>
+                      
                     </ul>
                     
                 </div>
@@ -46,9 +50,15 @@
                 <ng-container *ngIf="showMyDocumentsTab">
                     <app-student-my-document></app-student-my-document>
                 </ng-container>
+
+                <ng-container *ngIf="showDashboardTab">
+                  <app-user-dashboard></app-user-dashboard>
+              </ng-container>
               </div>
         </div>
     </div>
 
 
-</main>    
+</main>   
+
+

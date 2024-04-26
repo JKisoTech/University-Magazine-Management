@@ -13,6 +13,8 @@
   import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   import Docx from 'docx';
   import { PDFDocument } from 'pdf-lib';
+import { CommentDTO } from '../../../API/Admin/Contribution/commentDTO';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -33,8 +35,9 @@
     contributionId: string ;
     student: StudentDTO | null = null;
     pdfSrc: SafeResourceUrl | null = null;
-  studentId: string | undefined;
-
+  studentId: string | undefined ;
+  comments: CommentDTO[] = [] ;
+  formGroup : FormGroup;
 
     constructor(private authService: AuthenticationService, private userService : UserService,
       private dialog: MatDialog,
@@ -42,12 +45,14 @@
       private route: ActivatedRoute,
       private studentService: StudentService,
       private sanitizer: DomSanitizer,
-      private changeDetectorRef: ChangeDetectorRef // Inject ChangeDetectorRef
+      private changeDetectorRef: ChangeDetectorRef,
+      private fb : FormBuilder,
 
-
+      private router: Router
     ) { }
 
     ngOnInit(): void {
+      this.buildForm();
       const loggedInUserName = this.authService.getLoggedInUserName();
       if (loggedInUserName) {
         this.userService.GetUserByLoginName(loggedInUserName).subscribe(
@@ -88,6 +93,15 @@
                   }
                 );
               }
+              this.contributionService.GetComments(this.contributionId).subscribe(
+                (response) => {
+                  this.comments = response;
+                  console.log(response);
+                },
+                (error) => {
+                  console.error('Failed to fetch comments:', error);
+                }
+              );
             },
 
             (error) => {
@@ -97,6 +111,43 @@
         }
       });
     }
+
+    buildForm(){
+      this.formGroup = this.fb.group({
+        title: ['', [Validators.required]],
+        comment: ['', [Validators.required]],
+      })
+    }
+
+    commentForm() {
+      const title = this.formGroup.get('title')?.value;
+      const comment = this.formGroup.get('comment')?.value;
+  
+      if (this.user && this.user.loginName) {
+        const commentData: CommentDTO = {
+          coordinatorID: this.user.loginName,
+          contributionID: this.contribution?.contributionID || '',
+          title: title,
+          comments: comment,
+          commentDate: '',
+        };
+  
+        this.contributionService.UpdateComment(commentData).subscribe(
+          (response) => {
+            this.router.navigate(['/contribution', this.contributionId]);
+          },
+          (error) => {
+            console.error('Error submitting comment:', error);
+          }
+        );
+      } else {
+        console.error('User loginName not available.');
+      }
+    }
+    
+
+   
+    
     
 
   }
