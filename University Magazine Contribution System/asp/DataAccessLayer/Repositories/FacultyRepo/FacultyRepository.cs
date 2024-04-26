@@ -66,6 +66,8 @@ namespace DataAccessLayer.Repositories.FacultyRepo
                     AgreeOnTerm = c.AgreeOnTerm,
                     Description = c.Description,
                     Title = c.Title,
+                    Status = c.Status,
+
                     Type = c.Type,
                     Expired = c.Expired,
                     Number_Id = c.Number_Id,

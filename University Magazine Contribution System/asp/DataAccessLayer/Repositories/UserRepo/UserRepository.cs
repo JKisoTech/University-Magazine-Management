@@ -38,10 +38,13 @@ namespace DataAccessLayer.Repositories.UsersRepo
             _context.Users.Add(_user);
             if (_user.Role == 1 || _user.Role == 2)
             {
+        
                 var userFacultyList = facultyID.Select(facultyId => new User_Faculty
                 {
                     LoginName = _user.LoginName,
-                    FacultyId = facultyId.ToString()
+                    FacultyId = facultyId.ToString(),
+                    
+                    
                 });
 
                 if (_user.Role == 3)

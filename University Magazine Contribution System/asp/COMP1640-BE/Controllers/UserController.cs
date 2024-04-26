@@ -61,7 +61,7 @@ namespace COMP1640_BE.Controllers
             }
             await _userServices.AddUserAsync(userDTO, facultyID);
             return StatusCode(200, "User Added Successfully");
-        }
+            }
 
         #endregion
 
@@ -107,13 +107,6 @@ namespace COMP1640_BE.Controllers
 
         }
         
-        [HttpGet("GetFaculties")]
-        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersFaculties()
-        {
-
-            return StatusCode(204, "Still doing");
-
-        }
 
 
         

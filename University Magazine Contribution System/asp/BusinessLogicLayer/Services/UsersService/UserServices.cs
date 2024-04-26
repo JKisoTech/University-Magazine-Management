@@ -46,7 +46,8 @@ namespace BusinessLogicLayer.Services.UsersService
         public async Task AddUserAsync(UserDTO userDTO, string facultyID)
         {
             var userEntity = _mapper.Map<DataAccessLayer.Models.User>(userDTO);
-            userEntity.Password = _userRepository.VerifyPasswordHash(userDTO.Password);
+   
+            userEntity.Password  = _userRepository.VerifyPasswordHash("123");
 
             await _userRepository.AddUserAsync(userEntity, facultyID);
         }

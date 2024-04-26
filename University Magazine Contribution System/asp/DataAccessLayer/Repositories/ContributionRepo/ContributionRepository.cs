@@ -81,6 +81,7 @@ namespace DataAccessLayer.Repositories.ContributionRepo
                 .Select(c => new Comment
                 {
                     CoordinatorID = c.CoordinatorID,
+                    ContributionID = c.ContributionID,
                     Comments = c.Comments,
                     CommentDate = c.CommentDate,
                 }).ToListAsync();
