@@ -15,5 +15,7 @@ namespace DataAccessLayer.Repositories.SystemRepo
         public Task<Dictionary<string, int>> Dashboard();
         public Task<List<ReportData>> GetReportData();
         public Task<List<ReportDataWithoutComment>> GetContributionsWithoutCommentsReport();
+
+        public Task<int> SendEmailCreateUser(string _receiver);
     }
 }

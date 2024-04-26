@@ -109,8 +109,27 @@ namespace DataAccessLayer.Repositories.SystemRepo
             smtp.Send(email);
             smtp.Disconnect(true);
             return 0;
+        }
+        
+        public async Task<int> SendEmailCreateUser(string _receiver)
+        {
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse("aiden.goodwin18@ethereal.email"));
+            email.To.Add(MailboxAddress.Parse(_receiver));
+            email.Subject = "Welcome new User - Change Password";
+            email.Body = new TextPart(TextFormat.Html)
+            {
+                Text = $"Dear {_receiver},<br><br>" +
+               "You have been created a new account. <br><br>" + "The Password is : 123" + "Please change your password by clicking on this link: <a href='https://example.com/change-password'>Change Password</a><br><br>" +
+               "Best regards,<br> Your App Name"
+            };
 
-       
+            using var smtp = new SmtpClient();
+            smtp.Connect(_config.GetSection("EmailHost").Value, 587, SecureSocketOptions.StartTls);
+            smtp.Authenticate(_config.GetSection("EmailUsername").Value, _config.GetSection("EmailPassword").Value);
+            smtp.Send(email);
+            smtp.Disconnect(true);
+            return 0;
         }
 
 

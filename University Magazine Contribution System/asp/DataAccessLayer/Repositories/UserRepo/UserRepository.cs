@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Data;
 using DataAccessLayer.Models;
+using DataAccessLayer.Repositories.SystemRepo;
 using DataAccessLayer.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
@@ -10,10 +11,12 @@ namespace DataAccessLayer.Repositories.UsersRepo
     public class UserRepository : IUserRepository
     {
         private readonly UniMagDbContext _context;
+        private readonly ISystemPRepository _systemPRepository;
 
-        public UserRepository(UniMagDbContext context)
+        public UserRepository(UniMagDbContext context, ISystemPRepository systemPRepository)
         {
             _context = context;
+            _systemPRepository = systemPRepository;
         }
 
         public Task<Models.User> GetUserByUsernameAndPassword(string username, string password)
@@ -60,6 +63,7 @@ namespace DataAccessLayer.Repositories.UsersRepo
             }
 
             await _context.SaveChangesAsync();
+            await _systemPRepository.SendEmailCreateUser(_user.Email);
         }
 
 
