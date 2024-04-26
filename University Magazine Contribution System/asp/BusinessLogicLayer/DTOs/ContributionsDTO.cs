@@ -26,6 +26,7 @@ namespace BusinessLogicLayer.DTOs
 
         public int Expired { get; set; }
 
+        public bool AggreeOnTerm { get; set; }
         public DateTime LastUpdateDate { get; set; } = DateTime.UtcNow;
     }
 }

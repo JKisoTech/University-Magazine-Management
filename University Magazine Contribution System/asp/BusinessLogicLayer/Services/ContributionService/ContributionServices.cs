@@ -43,7 +43,7 @@ namespace BusinessLogicLayer.Services.ContributionService
                 Content = content,
                 Description = description,
                 Type = filename,
-
+                AggreeOnTerm = true
             };
             await _contributionRepository.AddContributionAsync(id, title, description, filename, content, indexNumber, academy.Value);
             _mapper.Map<ContributionsDTO>(contributionDTO);

@@ -154,13 +154,10 @@ namespace DataAccessLayer.Repositories.ContributionRepo
                         await _context.SaveChangesAsync();
                         
                     }
-                } else
-                {
                     firstContribution.Expired = 0;
                     _context.contributions.Update(firstContribution);
                     await _context.SaveChangesAsync();
-                }
-
+                } 
             }
 
             return null;
