@@ -99,8 +99,10 @@
         loginName: [ '' , [Validators.required]],
         fullName: ['' , [Validators.required]],
         status: [ true, [Validators.required]],
-        password: [ '', [Validators.required]],
         role: [ 0, [Validators.required]],
+        password: [''],
+        email: ['', [Validators.required]],
+        
         facultyID: [null],
       });
     }
@@ -116,8 +118,8 @@
         loginName: userData.loginName,
         fullName: userData.fullName,
         status: userData.status,
-        password: userData.password,
         role: userData.role,
+        email: userData.email,
         facultyID: userData.facultyID
       });
       this.isEditFormVisible = true;

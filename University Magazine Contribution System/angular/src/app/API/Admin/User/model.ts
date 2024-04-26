@@ -6,6 +6,7 @@ export interface UserDto {
     role?: number;  
     createDate?: string;
     facultyID?: string;
+    email?: string;
     oldPassword?: string; // Added property for old password
     newPassword?: string;
 }
