@@ -32,17 +32,19 @@ namespace BusinessLogicLayer.Services.ContributionService
             _systemPServices = systemPServices;
         }
 
-        public async Task<ContributionsDTO> AddContributionAync(string id, string content, string title, IFormFile type, string description)
+        public async Task<ContributionsDTO> AddContributionAync(string id, string content, string title, IFormFile type, IFormFile image,string description)
         {
             var indexNumber = await _contributionRepository.Get_Maxnumber_ID(id);
             var academy = await _systemPServices.Get_Parameter("ACADEMIC_YEAR");
-            var filename = await WriteFile(type, id + "_" +academy.Value  + "_" +(indexNumber + 1));
+            var filename = await WriteFile(type, id + "_" + academy.Value  + "_" +(indexNumber + 1));
+            var imageFile = await SaveImage(image, id + "_" + academy.Value + "_" + (indexNumber + 1));
             var contributionDTO = new ContributionsDTO
             {
                 Title = title,
                 Content = content,
                 Description = description,
                 Type = filename,
+                Image = imageFile,
                 AggreeOnTerm = true
             };
             await _contributionRepository.AddContributionAsync(id, title, description, filename, content, indexNumber, academy.Value);
@@ -75,7 +77,7 @@ namespace BusinessLogicLayer.Services.ContributionService
             var contributionEntity = await _contributionRepository.SetStatus(id, status);
             _mapper.Map<ContributionsDTO>(contributionEntity);
         }
-        public async Task<ContributionsDTO> UpdateContribution(string id, string content, string title, IFormFile type, string description)
+        public async Task<ContributionsDTO> UpdateContribution(string id, string content, string title, IFormFile type, IFormFile image,string description)
         {
             var newContribution = await _contributionRepository.GetByIdAsync(id);
             var filepath = Path.Combine(Directory.GetCurrentDirectory(), "ContributionFiles");
@@ -87,13 +89,27 @@ namespace BusinessLogicLayer.Services.ContributionService
                     File.Delete(oldpath);
                 }
             }
-            
+
+            var imagepath = Path.Combine(Directory.GetCurrentDirectory(), "Image");
+            ContributionsDTO contributions = new ContributionsDTO();
+
+            var imageoldpath = Path.Combine(imagepath, image.FileName);
+            if (!Directory.Exists(imageoldpath))
+            {
+                if (File.Exists(imageoldpath))
+                {
+                    File.Delete(imageoldpath);
+                }
+            }
+
             newContribution.ContributionID = id;
             newContribution.Title = title;
             newContribution.Content = content;
 
             var filename = await WriteFile(type,id);
-            
+            var imagefile = await SaveImage(image, id);
+
+            contributions.Image = imagefile;
             newContribution.Type = filename;
             newContribution.Description = description;
 
@@ -138,6 +154,31 @@ namespace BusinessLogicLayer.Services.ContributionService
             return 1;
         }
 
+        public async Task<string> SaveImage(IFormFile image, string id)
+        {
+            string filename = "";
+            var filepath = Path.Combine(Directory.GetCurrentDirectory(), "Image");
+
+            try
+            {
+                var extension = Path.GetExtension(image.FileName).ToLowerInvariant();
+                if (extension == ".jpg" || extension == ".jpeg" || extension == ".png")
+                {
+                    filename = $"{id}{extension}";
+                }
+                else
+                {
+                    throw new NotSupportedException("Image format not supported.");
+                }
+                var exactpath = Path.Combine(filepath, filename);
+                using (var stream = new FileStream(exactpath, FileMode.Create))
+                {
+                    await image.CopyToAsync(stream);
+                }
+            }
+            catch (Exception ex) { }
+            return filename;
+        }
 
         public async Task<string> WriteFile(IFormFile file, string id)
         {
@@ -150,10 +191,7 @@ namespace BusinessLogicLayer.Services.ContributionService
                 if (extension == ".docx")
                 {
                     filename = $"{id}{extension}";
-                } else if (extension == ".jpg" || extension == ".jpeg" || extension == ".png")
-                {
-                    filename = $"{id}{extension}";
-                }
+                } 
                 else
                 {
                     throw new NotSupportedException("File format not supported.");

@@ -40,6 +40,7 @@
 
   <ItemGroup>
     <Folder Include="ContributionFiles\" />
+    <Folder Include="Image\" />
     <Folder Include="PDFFiles\" />
   </ItemGroup>
 

@@ -69,27 +69,28 @@ namespace COMP1640_BE.Controllers
 
         [HttpPost("CreateContributor")]
         public async Task<ActionResult<ContributionsDTO>> SaveContributor
-            (string user_id,string content, string title, IFormFile type, string description)
+            (string user_id,string content, string title, IFormFile type, IFormFile image, string description)
         {
-            await _contributionServices.AddContributionAync(user_id,content, title, type, description);
+            await _contributionServices.AddContributionAync(user_id,content, title, type, image ,description);
             if (user_id == null)
             {
                 return BadRequest();
             }
             await _contributionServices.WriteFile(type, user_id);
+            await _contributionServices.SaveImage(image, user_id);
             return StatusCode(201,"User Submit successfully");
         }
 
 
         [HttpPut("UpdateContributor")]
-        public async Task<ActionResult> UpdateContributor(string id, string content, string title, IFormFile type, string description)
+        public async Task<ActionResult> UpdateContributor(string id, string content, string title, IFormFile type, IFormFile image, string description)
         {
             var existingContribution = await _contributionServices.GetContent(id);
             if (existingContribution == null)
             {
                 return StatusCode(404, "Contributor Not found");
             }
-            await _contributionServices.UpdateContribution( id,  content,  title,  type, description);
+            await _contributionServices.UpdateContribution( id,  content,  title,  type, image,description);
             return Ok("Updated");
         }
         
