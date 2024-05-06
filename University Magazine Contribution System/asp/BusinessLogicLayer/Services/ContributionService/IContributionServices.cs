@@ -11,15 +11,16 @@ namespace BusinessLogicLayer.Services.ContributionService
 {
     public interface IContributionServices
     {
-        public Task<ContributionsDTO> AddContributionAync(string id, string content, string title, IFormFile type, string description);
+        public Task<ContributionsDTO> AddContributionAync(string id, string content, string title, IFormFile type,IFormFile image, string description);
         public Task<List<ContributionsDTO>> GetContribution();
         public Task<ContributionsDTO> GetContent(string id);
         public Task<IEnumerable<CommentDTO>> GetComment(string id);
         public Task SetStatus(string id,int status);
         public Task<ContributionsDTO> set_Expired();
-        public Task<ContributionsDTO> UpdateContribution(string id, string content, string title, IFormFile type, string description);
+        public Task<ContributionsDTO> UpdateContribution(string id, string content, string title, IFormFile type, IFormFile image,string description);
         public Task<int> check_SubmitDate();
         public Task<int> check_CompleteDate();
+        public Task<string> SaveImage(IFormFile image, string id);
         public Task<string> WriteFile(IFormFile file, string id);
         public Task<CommentDTO> SetComment(string user_id, string contributionId, string title, string comment);
         public Task ConvertDocxToPDF(string id);

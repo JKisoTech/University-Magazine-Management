@@ -57,41 +57,82 @@ namespace DataAccessLayer.Repositories.SystemRepo
         }
 
 
-        public async Task<Dictionary<string, int>> Dashboard()
+        public async Task<Dictionary<string, string>> Dashboard()
         {
-            var totalContributions = await _context.contributions.CountAsync();
+            //var totalContributions = await _context.contributions.CountAsync();
+
+            //var facultyContributions = await _context.contributions
+            //     .Where(c => c.Status == 3) // Filter by Contribution Status 
+            //     .Join(_context.faculty, // Join with the Faculty table
+            //         c => c.student.FacultyID,
+            //         f => f.FacultyID,
+            //         (c, f) => new // Project to an anonymous type with both entities
+            //         {
+            //             Contribution = c,
+            //             Faculty = f
+            //         })
+            //     .GroupBy(cf => cf.Faculty) // Group by Faculty entity from the join
+            //     .Select(group => new // Project a new anonymous type
+            //     {
+            //         Faculty = group.Key.FacultyName, // Access FacultyName from the Faculty entity
+            //         NumOfC = group.Count() // Count contributions within each group
+            //     })
+            //     .ToListAsync();
+
+            //var result = new Dictionary<string, int>
+            //{
+            //    { "TotalContributions", totalContributions }
+            //};
+
+            //if (facultyContributions != null && facultyContributions.Any())
+            //{
+            //    foreach (var fc in facultyContributions)
+            //    {
+            //        result.Add($"NumOfC_{fc.Faculty}", fc.NumOfC);
+            //    }
+            //}
+
+            //return result;
+
+            var currentAcademicYear = await Get_Parameter("ACADEMIC_YEAR");
+            var academicYear = currentAcademicYear.Value;
+
+            var totalContributions = await _context.contributions
+               .Where(c => c.ContributionID.Contains(academicYear))
+               .CountAsync();
 
             var facultyContributions = await _context.contributions
-                 .Where(c => c.Status == 3) // Filter by Contribution Status 
-                 .Join(_context.faculty, // Join with the Faculty table
-                     c => c.student.FacultyID,
-                     f => f.FacultyID,
-                     (c, f) => new // Project to an anonymous type with both entities
-                     {
-                         Contribution = c,
-                         Faculty = f
-                     })
-                 .GroupBy(cf => cf.Faculty) // Group by Faculty entity from the join
-                 .Select(group => new // Project a new anonymous type
-                 {
-                     Faculty = group.Key.FacultyName, // Access FacultyName from the Faculty entity
-                     NumOfC = group.Count() // Count contributions within each group
-                 })
-                 .ToListAsync();
+               .Where(c => c.Status == 3 && c.ContributionID.Contains(academicYear))
+               .Join(_context.faculty,
+                    c => c.student.FacultyID,
+                    f => f.FacultyID,
+                    (c, f) => new
+                    {
+                        Contribution = c,
+                        Faculty = f
+                    })
+               .GroupBy(cf => cf.Faculty)
+               .Select(group => new
+               {
+                   Faculty = group.Key.FacultyName,
+                   NumOfC = group.Count()
+               })
+               .ToListAsync();
 
-            var result = new Dictionary<string, int>
+            var result = new Dictionary<string, string>
             {
-                { "TotalContributions", totalContributions }
+                { "TotalContributions", totalContributions.ToString() },
+                { "Academic Years", academicYear }
             };
 
             if (facultyContributions != null && facultyContributions.Any())
             {
                 foreach (var fc in facultyContributions)
                 {
-                    result.Add($"NumOfC_{fc.Faculty}", fc.NumOfC);
+                    result.Add($"NumOfC_{fc.Faculty}", fc.NumOfC.ToString());
+
                 }
             }
-
             return result;
         }
 

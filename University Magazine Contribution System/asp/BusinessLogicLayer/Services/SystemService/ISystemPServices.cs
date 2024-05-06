@@ -12,7 +12,7 @@ namespace BusinessLogicLayer.Services.SystemService
     {
         public Task<SystemParameter> Get_Parameter(string parameterName);
 
-        public Task<Dictionary<string, int>> Dashboard();
+        public Task<Dictionary<string, string>> Dashboard();
         public Task<List<ReportData>> GetReportData();
         public Task<List<ReportDataWithoutComment>> GetContributionsWithoutCommentsReport();
     }
