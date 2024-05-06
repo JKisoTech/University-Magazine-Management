@@ -50,41 +50,19 @@
     
     <div class="popular-post">
         <div class="container">
-            <div class="row">
-                <h2 class="text-capitalize text-center">popular post</h2>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-12 pp-doc">
-                    <a href="">
-                        <img src="../../../assets/Image/blog-item4.png" alt="" class="w-100">
-                        <div class="blog-detail">
-                            <p class="text-center">11/02/2024</p>
-                            <h4 class="text-capitalize text-center">New shoes in the collection</h4>
-                            <p class="text-center">Lorem ipsum dolor sit amet consectetur. Pellentesque in ornare in fermentum arcu. Vehicula viverra volutpat habitasse velit id interdum.</p>
-                        </div>
-                    </a>
+          <div class="row">
+            <h2 class="text-capitalize text-center">popular post</h2>
+            <div *ngFor="let item of contribution" class="col-xl-4 col-lg-4 col-md-6 col-12 pp-doc">
+              <a href="">
+                <div class="blog-detail">
+                  <h4 class="text-capitalize text-center">{{ item.title }}</h4>
+                  <p class="text-center">{{ item.description }}</p>
                 </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-12 pp-doc">
-                    <a href="">
-                        <img src="../../../assets/Image/blog-item4.png" alt="" class="w-100">
-                        <div class="blog-detail">
-                            <p class="text-center">11/02/2024</p>
-                            <h4 class="text-capitalize text-center">New shoes in the collection</h4>
-                            <p class="text-center">Lorem ipsum dolor sit amet consectetur. Pellentesque in ornare in fermentum arcu. Vehicula viverra volutpat habitasse velit id interdum.</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-12 pp-doc">
-                    <a href="">
-                        <img src="../../../assets/Image/blog-item4.png" alt="" class="w-100">
-                        <div class="blog-detail">
-                            <p class="text-center">11/02/2024</p>
-                            <h4 class="text-capitalize text-center">New shoes in the collection</h4>
-                            <p class="text-center">Lorem ipsum dolor sit amet consectetur. Pellentesque in ornare in fermentum arcu. Vehicula viverra volutpat habitasse velit id interdum.</p>
-                        </div>
-                    </a>
-                </div>
+              </a>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
 
     <div class="university">
         <div class="container">

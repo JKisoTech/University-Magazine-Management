@@ -63,7 +63,7 @@ export class UploadContributionPageComponent implements OnInit{
         content: ['', [Validators.required]],
         title: ['', [Validators.required]],
         description: ['', [Validators.required]],
-        type: ['', Validators.required],
+        type: [''],
     });
 }
 

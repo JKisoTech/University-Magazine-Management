@@ -107,11 +107,9 @@
               <tr>
                 <th scope="col">Login Name</th>
                 <th scope="col">Full Name</th>
-                <th scope="col">Password</th>
                 <th scope="col">Role</th>
                 <th scope="col">Faculty ID</th>
                 <th scope="col">Status</th>
-                <th scope="col">Action</th>
 
 
               </tr>
@@ -120,7 +118,6 @@
                 <tr *ngFor="let userData of paginatedUsers">
                     <th scope="row">{{ userData.loginName }}</th>
                     <td>{{ userData.fullName}}</td>
-                    <td>{{ userData.password }}</td>
                     <td>{{ getRoleText(userData.role)}}</td>
                     <td>{{ userData.facultyID }}</td>
 
@@ -131,9 +128,7 @@
                                 (click)="updateUserStatus(userData)">Disabled</button>
                         
                       </td>
-                    <td>
-                      <button type="button" class="btn btn-danger" (click)="editUser(userData)">Edit</button>
-                    </td>
+                    
                   </tr>
             
             </tbody>

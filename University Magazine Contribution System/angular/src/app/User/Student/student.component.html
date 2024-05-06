@@ -10,10 +10,13 @@
                         <div class="ms-3 sidebar-uploader-infor">
                             <h2 class="text-capitalize">
                                 {{ this.user?.role === 1 ? this.user?.fullName : this.user?.role === 2 ? this.user?.fullName : this.user?.fullName }}
+                              
+                             
                               </h2>
-                              <p> Faculty :
-                                {{ this.user?.role === 1 ? this.user?.facultyID : this.user?.role === 2 ? this.user?.facultyID  : this.user?.facultyID }}
+                             <ng-container  *ngIf="user?.role !== 3">
+                              <p> Faculty : {{ this.user?.role === 1 ? this.user?.facultyID : this.user?.role === 2 ? this.user?.facultyID  : this.user?.facultyID }}
                               </p>
+                            </ng-container> 
                         </div>
                     </div>
                 </div>
